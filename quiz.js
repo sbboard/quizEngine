@@ -18,7 +18,7 @@ let profile = {
   smoke: null,
   drink: null,
   supplements: null,
-  goals: [],
+  goals: { top: null, mid: null, low: null },
 };
 
 const questions = [
@@ -205,20 +205,6 @@ const questions = [
   },
 ];
 
-const goalRange = 3;
-const goalSelection = [
-  "Digestion",
-  "Sleep",
-  "Fitness",
-  "Stress",
-  "Mood",
-  "Energy",
-  "Brain",
-  "Mental Health",
-  "Mystery Illness",
-  "Overall Health & Prevention",
-];
-
 const quizElement = document.getElementById("quiz");
 let currentQ = 0;
 
@@ -268,7 +254,7 @@ function startQuiz() {
           }
         };
         let rLabel = document.createElement("label");
-        if (typeof(v) === "boolean") {
+        if (typeof v === "boolean") {
           v ? (rLabel.innerHTML = "Yes") : (rLabel.innerHTML = "No");
         } else {
           rLabel.innerHTML = v;
@@ -285,10 +271,11 @@ function startQuiz() {
     let submitBtn = document.createElement("button");
     if (currentQ < questions.length - 1) {
       submitBtn.innerHTML = "next";
-      submitBtn.onclick = submitQ;
+      // submitBtn.onclick = submitQ;
+      submitBtn.onclick = displayPriorityChart;
     } else {
-      submitBtn.innerHTML = "done";
-      submitBtn.onclick = displayResults;
+      submitBtn.innerHTML = "next";
+      submitBtn.onclick = displayPriorityChart;
     }
     quizBlock.appendChild(submitBtn);
   }
@@ -308,6 +295,108 @@ function startQuiz() {
   quizBlock.id = "quizBlock";
   quizElement.appendChild(quizBlock);
   postQ(quizBlock);
+}
+
+function displayPriorityChart() {
+  const goalSelection = [
+    "Digestion",
+    "Sleep",
+    "Fitness",
+    "Stress",
+    "Mood",
+    "Energy",
+    "Brain",
+    "Mental Health",
+    "Mystery Illness",
+    "Overall Health & Prevention",
+  ];
+  const goalRange = 3;
+  quizElement.innerHTML = null;
+  let goalBlock = document.createElement("div");
+  goalBlock.id = "goalBlock";
+
+  //create header
+  let headerEl = document.createElement("h1");
+  headerEl.innerHTML = `Choose up to ${goalRange} HEALTH GOALS and prioritize importance with 1 = most important`;
+  goalBlock.appendChild(headerEl);
+
+  //create table
+  let tableWrap = document.createElement("div");
+  tableWrap.id = "goalTable";
+
+  //create number key
+  let keyWrap = document.createElement("div");
+  keyWrap.id = "tableRow";
+  let keyLabel = document.createElement("label");
+  keyWrap.appendChild(keyLabel);
+  for (let i = 0; i < goalRange; i++) {
+    let span = document.createElement("span");
+    span.innerHTML = i + 1;
+    keyWrap.appendChild(span);
+  }
+  tableWrap.appendChild(keyWrap);
+
+  let endBtn = document.createElement("button");
+  endBtn.disabled = true;
+
+  //create radio buttons
+  goalSelection.map((v) => {
+    let rowWrap = document.createElement("div");
+    rowWrap.id = "tableRow";
+    let label = document.createElement("label");
+    label.innerHTML = v;
+    rowWrap.appendChild(label);
+    for (let i = 0; i < goalRange; i++) {
+      let radioBtn = document.createElement("input");
+      radioBtn.type = "radio";
+      radioBtn.name = i + 1;
+      radioBtn.dataset.goal = v;
+      //on click
+      radioBtn.onclick = () => {
+        //make sure it's the only one clicked
+        let currentElm = document.querySelectorAll('[data-goal="' + v + '"]');
+        //assign goal
+        switch (i) {
+          case 0:
+            currentElm[1].checked = false;
+            currentElm[2].checked = false;
+            profile.goals.top = v;
+            break;
+          case 1:
+            currentElm[0].checked = false;
+            currentElm[2].checked = false;
+            profile.goals.mid = v;
+            break;
+          case 2:
+            currentElm[0].checked = false;
+            currentElm[1].checked = false;
+            profile.goals.low = v;
+            break;
+          default:
+            profile.goals.top = v;
+            break;
+        }
+        //check for 3 done
+        var checkedBoxes = document.querySelectorAll("input:checked");
+        if (checkedBoxes.length > 2) {
+          endBtn.disabled = false;
+        } else {
+          endBtn.disabled = true;
+        }
+      };
+      rowWrap.appendChild(radioBtn);
+    }
+    tableWrap.appendChild(rowWrap);
+  });
+  goalBlock.appendChild(tableWrap);
+
+  //create finisj button
+  endBtn.onclick = displayResults;
+  endBtn.innerHTML = "finish";
+
+  goalBlock.appendChild(endBtn);
+
+  quizElement.appendChild(goalBlock);
 }
 
 function displayResults() {

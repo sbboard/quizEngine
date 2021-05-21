@@ -10,5 +10,20 @@
   display: block;
   margin-top: 1em;
 }
+#quiz #goalTable #tableRow {
+  border-top: 1px solid black;
+}
+#quiz #goalTable #tableRow label {
+  width: 7em;
+  display: inline-block;
+}
+#quiz #goalTable span, #quiz #goalTable input {
+  width: 1em;
+  font-size: 1em;
+  height: 1em;
+  display: inline-block;
+  text-align: center;
+  margin: 0.25em;
+}
 
 /*# sourceMappingURL=quizStyle.css.map */

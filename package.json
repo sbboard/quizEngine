@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server",
-    "sass": "sass --watch quizStyle.sass:quizStyle.css"
+    "sass": "sass --watch quizStyle.sass:quizStyle.css",
+    "minify": "uglifyjs -c -m --keep-fnames -o quiz.min.js -- quiz.js"
   },
   "author": "",
   "license": "ISC",
