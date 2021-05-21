@@ -271,8 +271,7 @@ function startQuiz() {
     let submitBtn = document.createElement("button");
     if (currentQ < questions.length - 1) {
       submitBtn.innerHTML = "next";
-      // submitBtn.onclick = submitQ;
-      submitBtn.onclick = displayPriorityChart;
+      submitBtn.onclick = submitQ;
     } else {
       submitBtn.innerHTML = "next";
       submitBtn.onclick = displayPriorityChart;
