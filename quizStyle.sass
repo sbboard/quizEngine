@@ -1,0 +1,34 @@
+#vidContain
+    width: 100vw
+    height: 300px
+    display: flex
+    justify-content: center
+    align-items: center
+    overflow: hidden
+    position: relative
+    iframe
+        height: 200%
+        width: 100%
+        position: absolute
+        z-index: 0
+        pointer-events: none
+    #headerContain
+        position: relative
+        height: 1em
+        color: white
+        h1
+            display: inline-block
+            .word
+                position: absolute
+                transition: opacity .25s, bottom .25s
+                bottom: -1em
+                opacity: 0
+                text-transform: capitalize
+                z-index: 10
+            .currentWord
+                @extend .word
+                bottom: 0
+                opacity: 1
+            .prevWord
+                @extend .word
+                bottom: 1em
