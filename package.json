@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server",
-    "sass": "sass --watch headStyle.sass:headStyle.css"
+    "sass": "sass --watch quizStyle.sass:quizStyle.css"
   },
   "author": "",
   "license": "ISC",

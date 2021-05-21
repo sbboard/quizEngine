@@ -244,40 +244,38 @@ function startQuiz() {
       };
       quizBlock.appendChild(qInput);
     }
-    //post radio list
-    else if (currentIndex.multipleAnsAllow == false) {
+    //post radio/check list
+    else {
       let qInput = document.createElement("div");
       qInput.id = "radioInputs";
       currentIndex.options.map((v) => {
+        let optionWrap = document.createElement("div");
+        optionWrap.classList.add("opWrap");
         let rOption = document.createElement("input");
-        rOption.type = "radio";
+        if (currentIndex.multipleAnsAllow == false) {
+          rOption.type = "radio";
+        } else {
+          rOption.type = "checkbox";
+        }
         rOption.value = v;
-        rOption.name = v;
+        rOption.name = "currentQ";
         rOption.onclick = function (e) {
-          profile[currentIndex.answer] = e.target.value;
+          if (currentIndex.multipleAnsAllow == false) {
+            profile[currentIndex.answer] = e.target.value;
+          } else {
+            //right now this only adds, it doesnt subtract
+            profile[currentIndex.answer].push(e.target.value);
+          }
         };
         let rLabel = document.createElement("label");
-        rLabel.innerHTML = v;
-        qInput.appendChild(rOption);
-        qInput.appendChild(rLabel);
-      });
-      quizBlock.appendChild(qInput);
-    } else {
-      let qInput = document.createElement("div");
-      qInput.id = "radioInputs";
-      currentIndex.options.map((v) => {
-        let rOption = document.createElement("input");
-        rOption.type = "checkbox";
-        rOption.value = v;
-        rOption.name = v;
-        rOption.onclick = function (e) {
-          //right now this only adds, it doesnt subtract
-          profile[currentIndex.answer].push(e.target.value);
-        };
-        let rLabel = document.createElement("label");
-        rLabel.innerHTML = v;
-        qInput.appendChild(rOption);
-        qInput.appendChild(rLabel);
+        if (typeof(v) === "boolean") {
+          v ? (rLabel.innerHTML = "Yes") : (rLabel.innerHTML = "No");
+        } else {
+          rLabel.innerHTML = v;
+        }
+        optionWrap.appendChild(rOption);
+        optionWrap.appendChild(rLabel);
+        qInput.appendChild(optionWrap);
       });
       quizBlock.appendChild(qInput);
     }
@@ -301,7 +299,6 @@ function startQuiz() {
       currentIndex.required == false ||
       profile[currentIndex.answer] != null
     ) {
-      console.log(currentIndex.answer);
       currentQ++;
       postQ();
     }
