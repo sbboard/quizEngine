@@ -7,15 +7,18 @@ let profile = {
   gender: null,
   inUS: null,
   diet: null,
+  dietOther: null,
   nearBelmar: null,
   commit: null,
   diagnose: [],
+  diagnoseOther: null,
   previous: null,
   exercise: null,
   exIntense: null,
   sweat: null,
   dailyBowel: null,
   smoke: null,
+  pregnant: null,
   drink: null,
   supplements: null,
   goals: { top: null, mid: null, low: null },
@@ -25,34 +28,47 @@ const questions = [
   {
     question: "What is your first name?",
     answer: "name",
-    required: true,
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
     options: [],
+    relyOnPrior: false,
   },
   {
     question: "Select your age range",
     answer: "age",
-    required: true,
     category: "basics",
     multipleAnsAllow: false,
     otherOption: false,
     options: ["0-13", "14-18", "19-30", "31-45", "46-65", "65+"],
+    relyOnPrior: false,
   },
   {
     question: "Gender",
     answer: "gender",
-    required: true,
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
     options: ["Female", "Male", "Non-binary"],
+    relyOnPrior: false,
+  },
+  {
+    question: "Pregancy",
+    answer: "pregnant",
+    multipleAnsAllow: false,
+    category: "basics",
+    otherOption: false,
+    options: [
+      "Hope to be pregnant within 1-2 years",
+      "Prenatal (currently pregnant)",
+      "Postpartum",
+      "None of the above / Not Applicable",
+    ],
+    relyOnPrior: false,
   },
   {
     question: "Level of commitment",
     answer: "commit",
-    required: true,
     multipleAnsAllow: false,
     otherOption: false,
     category: "basics",
@@ -61,11 +77,11 @@ const questions = [
       "Interested",
       "Ready to dive in... where do I sign?",
     ],
+    relyOnPrior: false,
   },
   {
     question: "Check off all you've been diagnosed with",
     answer: "diagnose",
-    required: true,
     multipleAnsAllow: true,
     category: "health history",
     otherOption: true,
@@ -82,48 +98,48 @@ const questions = [
       "Mental Health (Depression)",
       "None",
     ],
+    relyOnPrior: false,
   },
   {
     question:
       "Have you previously been to a function medicine practitioner before?",
     answer: "previous",
-    required: false,
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
     options: yesNo,
+    relyOnPrior: false,
   },
   {
     question: "Enter your email so we can send you results",
     answer: "email",
-    required: false,
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
     options: [],
+    relyOnPrior: false,
   },
   {
     question: "Do you reside within the US?",
     answer: "inUS",
-    required: true,
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
     options: yesNo,
+    relyOnPrior: false,
   },
   {
     question: "Are you local to Belmar, New Jersey? (within X miles)",
     answer: "nearBelmar",
-    required: false,
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
     options: yesNo,
+    relyOnPrior: true,
   },
   {
     question: "Does your diet fall into any of these categories?",
     answer: "diet",
-    required: false,
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: true,
@@ -135,20 +151,20 @@ const questions = [
       "Intermittent Fasting",
       "None",
     ],
+    relyOnPrior: false,
   },
   {
     question: "How many times/week do you exercise?",
     answer: "exercise",
-    required: false,
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: ["0", "1-2", "3-5", "7+"],
+    relyOnPrior: false,
   },
   {
     question: "What intensity level is your exercise",
     answer: "exIntense",
-    required: false,
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
@@ -157,51 +173,52 @@ const questions = [
       "Moderate (jogging, body weight exercises)",
       "Intense (marathon, HIIT, weight lifting)",
     ],
+    relyOnPrior: false,
   },
   {
     question: "Do you sweat when you exercise? (If you glisten, mark no)",
     answer: "sweat",
-    required: false,
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
+    relyOnPrior: false,
   },
   {
     question: "Do you have a daily bowel movement?",
     answer: "dailyBowel",
-    required: false,
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
+    relyOnPrior: false,
   },
   {
     question: "Do you smoke?",
     answer: "smoke",
-    required: false,
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
+    relyOnPrior: false,
   },
   {
     question: "Do you drink?",
     answer: "drink",
-    required: false,
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
+    relyOnPrior: false,
   },
   {
     question: "Do you take any supplements?",
     answer: "supplements",
-    required: false,
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
+    relyOnPrior: false,
   },
 ];
 
@@ -249,8 +266,14 @@ function startQuiz() {
           if (currentIndex.multipleAnsAllow == false) {
             profile[currentIndex.answer] = e.target.value;
           } else {
-            //right now this only adds, it doesnt subtract
-            profile[currentIndex.answer].push(e.target.value);
+            if (e.target.checked) {
+              profile[currentIndex.answer].push(e.target.value);
+            } else {
+              var index = profile[currentIndex.answer].indexOf(e.target.value);
+              if (index !== -1) {
+                profile[currentIndex.answer].splice(index, 1);
+              }
+            }
           }
         };
         let rLabel = document.createElement("label");
@@ -263,6 +286,50 @@ function startQuiz() {
         optionWrap.appendChild(rLabel);
         qInput.appendChild(optionWrap);
       });
+      /////
+      //Other Option
+      ///
+      if (currentIndex.otherOption == true) {
+        //used to submit info on keyup and onclick
+        function checkOtherInput() {
+          if (
+            document.getElementById("otherBtn").checked &&
+            document.getElementById("otherInput").value.length > 0
+          ) {
+            profile[`${currentIndex.answer}Other`] =
+              document.getElementById("otherInput").value;
+          }
+          console.log(profile);
+        }
+        //creating the element
+        let optionWrap = document.createElement("div");
+        optionWrap.classList.add("opWrap");
+        let rOption = document.createElement("input");
+        if (currentIndex.multipleAnsAllow == false) {
+          rOption.type = "radio";
+        } else {
+          rOption.type = "checkbox";
+        }
+        rOption.value = "Other";
+        rOption.name = "currentQ";
+        rOption.id = "otherBtn";
+        //on click
+        rOption.onclick = function (e) {
+          checkOtherInput();
+        };
+        let rLabel = document.createElement("label");
+        rLabel.innerHTML = "Other:";
+        let otherInput = document.createElement("input");
+        otherInput.id = "otherInput";
+        //on keyup
+        qInput.onkeyup = function (e) {
+          checkOtherInput();
+        };
+        optionWrap.appendChild(rOption);
+        optionWrap.appendChild(rLabel);
+        optionWrap.appendChild(otherInput);
+        qInput.appendChild(optionWrap);
+      }
       quizBlock.appendChild(qInput);
     }
     //////////////////////////////////////
@@ -281,10 +348,7 @@ function startQuiz() {
 
   function submitQ() {
     let currentIndex = questions[currentQ];
-    if (
-      currentIndex.required == false ||
-      profile[currentIndex.answer] != null
-    ) {
+    if (profile[currentIndex.answer] != null) {
       currentQ++;
       postQ();
     }
@@ -295,6 +359,10 @@ function startQuiz() {
   quizElement.appendChild(quizBlock);
   postQ(quizBlock);
 }
+
+///////////////////////////
+// PRIORITY CHART
+//////////////////////////
 
 function displayPriorityChart() {
   const goalSelection = [
@@ -398,6 +466,9 @@ function displayPriorityChart() {
   quizElement.appendChild(goalBlock);
 }
 
+//////////////////////////////
+// RESULTS
+/////////////////////////////
 function displayResults() {
   let resultsBlock = document.createElement("div");
   console.log(`${profile.name}'s Healing Journey`);
@@ -420,4 +491,7 @@ function displayResults() {
   console.log(profile);
 }
 
+/////////////////////////
+// START
+//////////////////////
 startQuiz();
