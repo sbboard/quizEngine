@@ -226,6 +226,7 @@ const quizElement = document.getElementById("quiz");
 let currentQ = 0;
 
 function startQuiz() {
+  quizElement.innerHTML = null;
   function postQ() {
     let currentIndex = questions[currentQ];
     //clear block
@@ -490,8 +491,3 @@ function displayResults() {
   console.log("-");
   console.log(profile);
 }
-
-/////////////////////////
-// START
-//////////////////////
-startQuiz();
