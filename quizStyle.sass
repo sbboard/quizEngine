@@ -1,14 +1,35 @@
-$elMargin: 1em
-
+$thatYellow: #FFCF6B
+    
 #quiz
     display: block
+    text-align: center
+    padding: 3em
+    height: 500px
+    max-width: 750px
+    margin: 0 auto
+    #quizBlock
+        margin: 0 auto
+        label
+            display: inline
+            &::before
+                content: " "
+        .opWrap
+            width: 49%
+            margin: 0 auto
+            text-align: left
     h1
         font-weight: 800
         text-transform: capitalize
-        margin-bottom: $elMargin
+        margin-bottom: .5em
     button
         display: block
-        margin-top: $elMargin
+        margin: 1em auto 0 auto
+        background-color: $thatYellow
+        border-radius: 2em
+        border: 0
+        padding: 0.75em
+        text-transform: capitalize
+        width: 10em
     #goalTable
         #tableRow
             border-top: 1px solid black

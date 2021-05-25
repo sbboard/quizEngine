@@ -1,14 +1,39 @@
 #quiz {
   display: block;
+  text-align: center;
+  padding: 3em;
+  height: 500px;
+  max-width: 750px;
+  margin: 0 auto;
+}
+#quiz #quizBlock {
+  margin: 0 auto;
+}
+#quiz #quizBlock label {
+  display: inline;
+}
+#quiz #quizBlock label::before {
+  content: " ";
+}
+#quiz #quizBlock .opWrap {
+  width: 49%;
+  margin: 0 auto;
+  text-align: left;
 }
 #quiz h1 {
   font-weight: 800;
   text-transform: capitalize;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 #quiz button {
   display: block;
-  margin-top: 1em;
+  margin: 1em auto 0 auto;
+  background-color: #FFCF6B;
+  border-radius: 2em;
+  border: 0;
+  padding: 0.75em;
+  text-transform: capitalize;
+  width: 10em;
 }
 #quiz #goalTable #tableRow {
   border-top: 1px solid black;

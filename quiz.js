@@ -26,7 +26,7 @@ let profile = {
 
 const questions = [
   {
-    question: "What is your first name?",
+    question: "Enter your name",
     answer: "name",
     multipleAnsAllow: false,
     category: "basics",
@@ -44,7 +44,7 @@ const questions = [
     relyOnPrior: false,
   },
   {
-    question: "Gender",
+    question: "Select your gender",
     answer: "gender",
     multipleAnsAllow: false,
     category: "basics",
@@ -53,7 +53,7 @@ const questions = [
     relyOnPrior: false,
   },
   {
-    question: "Pregancy",
+    question: "Do you have pregnancy goals?",
     answer: "pregnant",
     multipleAnsAllow: false,
     category: "basics",
@@ -67,7 +67,7 @@ const questions = [
     relyOnPrior: false,
   },
   {
-    question: "Level of commitment",
+    question: "What's your Level of commitment?",
     answer: "commit",
     multipleAnsAllow: false,
     otherOption: false,
@@ -129,7 +129,7 @@ const questions = [
     relyOnPrior: false,
   },
   {
-    question: "Are you local to Belmar, New Jersey? (within X miles)",
+    question: "Are you local to Belmar, New Jersey?<br/>(within X miles)",
     answer: "nearBelmar",
     multipleAnsAllow: false,
     category: "basics",
@@ -319,7 +319,7 @@ function startQuiz() {
           checkOtherInput();
         };
         let rLabel = document.createElement("label");
-        rLabel.innerHTML = "Other:";
+        rLabel.innerHTML = "Other: ";
         let otherInput = document.createElement("input");
         otherInput.id = "otherInput";
         //on keyup
@@ -340,8 +340,11 @@ function startQuiz() {
     if (currentQ < questions.length - 1) {
       submitBtn.innerHTML = "next";
       submitBtn.onclick = submitQ;
+      submitBtn.type="submit"
+      onkeypress="if(event.keyCode==13) {this.submit();}"
     } else {
       submitBtn.innerHTML = "next";
+      submitBtn.type="submit"
       submitBtn.onclick = displayPriorityChart;
     }
     quizBlock.appendChild(submitBtn);
@@ -355,7 +358,7 @@ function startQuiz() {
     }
   }
 
-  let quizBlock = document.createElement("div");
+  let quizBlock = document.createElement("form");
   quizBlock.id = "quizBlock";
   quizElement.appendChild(quizBlock);
   postQ(quizBlock);
