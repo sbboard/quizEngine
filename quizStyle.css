@@ -13,6 +13,16 @@ body {
   border: 0.5em double #FFCF6B;
   overflow-y: auto;
 }
+#quiz::-webkit-scrollbar {
+  width: 1em;
+}
+#quiz::-webkit-scrollbar-thumb {
+  background: #FFCF6B;
+  border: solid white 1px;
+}
+#quiz::-webkit-scrollbar-track {
+  background: white;
+}
 #quiz #quizBlock {
   margin: 0 auto;
 }

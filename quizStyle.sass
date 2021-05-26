@@ -13,6 +13,13 @@ body
     background-color: white
     border: .5em double $thatYellow
     overflow-y: auto
+    &::-webkit-scrollbar
+        width: 1em
+    &::-webkit-scrollbar-thumb
+        background: $thatYellow
+        border: solid white 1px
+    &::-webkit-scrollbar-track
+        background: white
     #quizBlock
         margin: 0 auto
         label
