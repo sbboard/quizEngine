@@ -257,6 +257,9 @@ function startQuiz() {
       //post input
       if (currentIndex.options.length == 0) {
         let qInput = document.createElement("input");
+        if (profile[currentIndex.answer] != null) {
+          qInput.value = profile[currentIndex.answer];
+        }
         qInput.onkeyup = function (e) {
           profile[currentIndex.answer] = e.target.value;
         };
@@ -272,8 +275,20 @@ function startQuiz() {
           let rOption = document.createElement("input");
           if (currentIndex.multipleAnsAllow == false) {
             rOption.type = "radio";
+
+            if (profile[currentIndex.answer] != null) {
+              if (profile[currentIndex.answer] === v.toString()) {
+                rOption.checked = true;
+              }
+            }
           } else {
             rOption.type = "checkbox";
+
+            if (profile[currentIndex.answer].length > 0) {
+              if (profile[currentIndex.answer].indexOf(v) > -1) {
+                rOption.checked = true;
+              }
+            }
           }
           rOption.value = v;
           rOption.name = "currentQ";
@@ -439,7 +454,8 @@ function displayPriorityChart() {
 
   //create number key
   let keyWrap = document.createElement("div");
-  keyWrap.id = "tableRow";
+  keyWrap.classList.add("tableRow");
+  keyWrap.classList.add("topRow");
   let keyLabel = document.createElement("label");
   keyWrap.appendChild(keyLabel);
   for (let i = 0; i < goalRange; i++) {
@@ -455,7 +471,7 @@ function displayPriorityChart() {
   //create radio buttons
   goalSelection.map((v) => {
     let rowWrap = document.createElement("div");
-    rowWrap.id = "tableRow";
+    rowWrap.classList.add("tableRow");
     let label = document.createElement("label");
     label.innerHTML = v;
     rowWrap.appendChild(label);

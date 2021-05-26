@@ -1,3 +1,7 @@
+body {
+  background-color: #FFCF6B;
+}
+
 #quiz {
   display: block;
   text-align: center;
@@ -5,6 +9,9 @@
   height: 500px;
   max-width: 750px;
   margin: 0 auto;
+  background-color: white;
+  border: 0.5em double #FFCF6B;
+  overflow-y: auto;
 }
 #quiz #quizBlock {
   margin: 0 auto;
@@ -30,7 +37,6 @@
 }
 #quiz button {
   background-color: #FFCF6B;
-  border-radius: 2em;
   border: 0;
   padding: 0.75em;
   text-transform: capitalize;
@@ -38,12 +44,15 @@
   display: inline-block;
   margin: 1em 0.5em 0 0;
 }
-#quiz #goalTable #tableRow {
+#quiz #goalTable .tableRow {
   border-top: 1px solid black;
 }
-#quiz #goalTable #tableRow label {
-  width: 7em;
+#quiz #goalTable .tableRow label {
+  width: 14em;
   display: inline-block;
+}
+#quiz #goalTable .topRow {
+  border-top: 0;
 }
 #quiz #goalTable span, #quiz #goalTable input {
   width: 1em;

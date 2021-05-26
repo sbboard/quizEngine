@@ -1,5 +1,8 @@
 $thatYellow: #FFCF6B
-    
+
+body
+    background-color: $thatYellow
+
 #quiz
     display: block
     text-align: center
@@ -7,6 +10,9 @@ $thatYellow: #FFCF6B
     height: 500px
     max-width: 750px
     margin: 0 auto
+    background-color: white
+    border: .5em double $thatYellow
+    overflow-y: auto
     #quizBlock
         margin: 0 auto
         label
@@ -25,7 +31,6 @@ $thatYellow: #FFCF6B
         display: block
     button
         background-color: $thatYellow
-        border-radius: 2em
         border: 0
         padding: 0.75em
         text-transform: capitalize
@@ -33,11 +38,13 @@ $thatYellow: #FFCF6B
         display: inline-block
         margin: 1em .5em 0 0
     #goalTable
-        #tableRow
+        .tableRow
             border-top: 1px solid black
             label
-                width: 7em
+                width: 14em
                 display: inline-block
+        .topRow
+            border-top: 0
         span, input
             width: 1em
             font-size: 1em
