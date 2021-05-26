@@ -192,7 +192,7 @@ const questions = [
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
-    relyOnThisBeingTrue: null,
+    relyOnThisBeingTrue: "doesEx",
   },
   {
     question: "Do you have a daily bowel movement?",
@@ -237,11 +237,11 @@ let currentQ = 0;
 
 function startQuiz() {
   quizElement.innerHTML = null;
-  function postQ() {
+  function postQ(isForward) {
     let currentIndex = questions[currentQ];
     if (
       currentIndex.relyOnThisBeingTrue == null ||
-      profile[currentIndex.relyOnThisBeingTrue] == true
+      profile[currentIndex.relyOnThisBeingTrue] === "true"
     ) {
       //clear block
       quizBlock.innerHTML = null;
@@ -316,7 +316,6 @@ function startQuiz() {
               profile[`${currentIndex.answer}Other`] =
                 document.getElementById("otherInput").value;
             }
-            console.log(profile);
           }
           //creating the element
           let optionWrap = document.createElement("div");
@@ -374,26 +373,28 @@ function startQuiz() {
       btnWrap.appendChild(submitBtn);
       quizBlock.appendChild(btnWrap);
     } else {
-      console.log("not needed")
       let currentIndex = questions[currentQ];
       profile[currentIndex.answer] = "n/a";
-      submitQ();
+      submitQ(isForward);
     }
   }
 
-  function submitQ() {
+  function submitQ(isForward) {
     let currentIndex = questions[currentQ];
     if (profile[currentIndex.answer] != null) {
-      currentQ++;
-      console.log(currentQ)
-      postQ();
+      if (isForward) {
+        currentQ++;
+        postQ(true);
+      } else {
+        currentQ = currentQ - 1;
+        postQ(false);
+      }
     }
   }
 
   function backQ() {
-    console.log("back hit");
     currentQ = currentQ - 1;
-    postQ();
+    postQ(false);
   }
 
   let quizBlock = document.createElement("form");
@@ -402,7 +403,7 @@ function startQuiz() {
   };
   quizBlock.id = "quizBlock";
   quizElement.appendChild(quizBlock);
-  postQ(quizBlock);
+  postQ(true);
 }
 
 ///////////////////////////
