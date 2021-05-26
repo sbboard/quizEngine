@@ -9,6 +9,7 @@ let profile = {
   diet: null,
   dietOther: null,
   nearBelmar: null,
+  doesEx: null,
   commit: null,
   diagnose: [],
   diagnoseOther: null,
@@ -32,7 +33,7 @@ const questions = [
     category: "basics",
     otherOption: false,
     options: [],
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
   {
     question: "Select your age range",
@@ -41,7 +42,16 @@ const questions = [
     multipleAnsAllow: false,
     otherOption: false,
     options: ["0-13", "14-18", "19-30", "31-45", "46-65", "65+"],
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
+  },
+  {
+    question: "Enter your email so we can send you results",
+    answer: "email",
+    multipleAnsAllow: false,
+    category: "basics",
+    otherOption: false,
+    options: [],
+    relyOnThisBeingTrue: null,
   },
   {
     question: "Select your gender",
@@ -50,24 +60,38 @@ const questions = [
     category: "basics",
     otherOption: false,
     options: ["Female", "Male", "Non-binary"],
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
   {
-    question: "Do you have pregnancy goals?",
-    answer: "pregnant",
+    question: "Do you reside within the US?",
+    answer: "inUS",
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
-    options: [
-      "Hope to be pregnant within 1-2 years",
-      "Prenatal (currently pregnant)",
-      "Postpartum",
-      "None of the above / Not Applicable",
-    ],
-    relyOnPrior: false,
+    options: yesNo,
+    relyOnThisBeingTrue: null,
   },
   {
-    question: "What's your Level of commitment?",
+    question: "Are you local to Belmar, New Jersey?<br/>(within X miles)",
+    answer: "nearBelmar",
+    multipleAnsAllow: false,
+    category: "basics",
+    otherOption: false,
+    options: yesNo,
+    relyOnThisBeingTrue: "inUS",
+  },
+  {
+    question:
+      "Have you previously been to a function medicine practitioner before?",
+    answer: "previous",
+    multipleAnsAllow: false,
+    category: "basics",
+    otherOption: false,
+    options: yesNo,
+    relyOnThisBeingTrue: null,
+  },
+  {
+    question: "What's your Level of commitment to X?",
     answer: "commit",
     multipleAnsAllow: false,
     otherOption: false,
@@ -77,7 +101,7 @@ const questions = [
       "Interested",
       "Ready to dive in... where do I sign?",
     ],
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
   {
     question: "Check off all you've been diagnosed with",
@@ -98,44 +122,21 @@ const questions = [
       "Mental Health (Depression)",
       "None",
     ],
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
   {
-    question:
-      "Have you previously been to a function medicine practitioner before?",
-    answer: "previous",
+    question: "Do you have pregnancy goals?",
+    answer: "pregnant",
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
-    options: yesNo,
-    relyOnPrior: false,
-  },
-  {
-    question: "Enter your email so we can send you results",
-    answer: "email",
-    multipleAnsAllow: false,
-    category: "basics",
-    otherOption: false,
-    options: [],
-    relyOnPrior: false,
-  },
-  {
-    question: "Do you reside within the US?",
-    answer: "inUS",
-    multipleAnsAllow: false,
-    category: "basics",
-    otherOption: false,
-    options: yesNo,
-    relyOnPrior: false,
-  },
-  {
-    question: "Are you local to Belmar, New Jersey?<br/>(within X miles)",
-    answer: "nearBelmar",
-    multipleAnsAllow: false,
-    category: "basics",
-    otherOption: false,
-    options: yesNo,
-    relyOnPrior: true,
+    options: [
+      "Hope to be pregnant within 1-2 years",
+      "Prenatal (currently pregnant)",
+      "Postpartum",
+      "None of the above / Not Applicable",
+    ],
+    relyOnThisBeingTrue: null,
   },
   {
     question: "Does your diet fall into any of these categories?",
@@ -151,7 +152,16 @@ const questions = [
       "Intermittent Fasting",
       "None",
     ],
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
+  },
+  {
+    question: "Do you exercise?",
+    answer: "doesEx",
+    multipleAnsAllow: false,
+    category: "lifestyle",
+    otherOption: false,
+    options: yesNo,
+    relyOnThisBeingTrue: null,
   },
   {
     question: "How many times/week do you exercise?",
@@ -160,7 +170,7 @@ const questions = [
     category: "lifestyle",
     otherOption: false,
     options: ["0", "1-2", "3-5", "7+"],
-    relyOnPrior: false,
+    relyOnThisBeingTrue: "doesEx",
   },
   {
     question: "What intensity level is your exercise",
@@ -173,7 +183,7 @@ const questions = [
       "Moderate (jogging, body weight exercises)",
       "Intense (marathon, HIIT, weight lifting)",
     ],
-    relyOnPrior: false,
+    relyOnThisBeingTrue: "doesEx",
   },
   {
     question: "Do you sweat when you exercise? (If you glisten, mark no)",
@@ -182,7 +192,7 @@ const questions = [
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
   {
     question: "Do you have a daily bowel movement?",
@@ -191,7 +201,7 @@ const questions = [
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
   {
     question: "Do you smoke?",
@@ -200,7 +210,7 @@ const questions = [
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
   {
     question: "Do you drink?",
@@ -209,7 +219,7 @@ const questions = [
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
   {
     question: "Do you take any supplements?",
@@ -218,7 +228,7 @@ const questions = [
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
-    relyOnPrior: false,
+    relyOnThisBeingTrue: null,
   },
 ];
 
@@ -229,136 +239,167 @@ function startQuiz() {
   quizElement.innerHTML = null;
   function postQ() {
     let currentIndex = questions[currentQ];
-    //clear block
-    quizBlock.innerHTML = null;
+    if (
+      currentIndex.relyOnThisBeingTrue == null ||
+      profile[currentIndex.relyOnThisBeingTrue] == true
+    ) {
+      //clear block
+      quizBlock.innerHTML = null;
 
-    //create question
-    let qHead = document.createElement("h1");
-    qHead.innerHTML = currentIndex.question;
-    quizBlock.appendChild(qHead);
+      //create question
+      let qHead = document.createElement("h1");
+      qHead.innerHTML = currentIndex.question;
+      quizBlock.appendChild(qHead);
 
-    ///////////////////////
-    // DIFFERENT INPUT TYPES
-    /////////////////////////
-    //post input
-    if (currentIndex.options.length == 0) {
-      let qInput = document.createElement("input");
-      qInput.onkeyup = function (e) {
-        profile[currentIndex.answer] = e.target.value;
-      };
-      quizBlock.appendChild(qInput);
-    }
-    //post radio/check list
-    else {
-      let qInput = document.createElement("div");
-      qInput.id = "radioInputs";
-      currentIndex.options.map((v) => {
-        let optionWrap = document.createElement("div");
-        optionWrap.classList.add("opWrap");
-        let rOption = document.createElement("input");
-        if (currentIndex.multipleAnsAllow == false) {
-          rOption.type = "radio";
-        } else {
-          rOption.type = "checkbox";
-        }
-        rOption.value = v;
-        rOption.name = "currentQ";
-        rOption.onclick = function (e) {
+      ///////////////////////
+      // DIFFERENT INPUT TYPES
+      /////////////////////////
+      //post input
+      if (currentIndex.options.length == 0) {
+        let qInput = document.createElement("input");
+        qInput.onkeyup = function (e) {
+          profile[currentIndex.answer] = e.target.value;
+        };
+        quizBlock.appendChild(qInput);
+      }
+      //post radio/check list
+      else {
+        let qInput = document.createElement("div");
+        qInput.id = "radioInputs";
+        currentIndex.options.map((v) => {
+          let optionWrap = document.createElement("div");
+          optionWrap.classList.add("opWrap");
+          let rOption = document.createElement("input");
           if (currentIndex.multipleAnsAllow == false) {
-            profile[currentIndex.answer] = e.target.value;
+            rOption.type = "radio";
           } else {
-            if (e.target.checked) {
-              profile[currentIndex.answer].push(e.target.value);
+            rOption.type = "checkbox";
+          }
+          rOption.value = v;
+          rOption.name = "currentQ";
+          rOption.onclick = function (e) {
+            if (currentIndex.multipleAnsAllow == false) {
+              profile[currentIndex.answer] = e.target.value;
             } else {
-              var index = profile[currentIndex.answer].indexOf(e.target.value);
-              if (index !== -1) {
-                profile[currentIndex.answer].splice(index, 1);
+              if (e.target.checked) {
+                profile[currentIndex.answer].push(e.target.value);
+              } else {
+                var index = profile[currentIndex.answer].indexOf(
+                  e.target.value
+                );
+                if (index !== -1) {
+                  profile[currentIndex.answer].splice(index, 1);
+                }
               }
             }
+          };
+          let rLabel = document.createElement("label");
+          if (typeof v === "boolean") {
+            v ? (rLabel.innerHTML = "Yes") : (rLabel.innerHTML = "No");
+          } else {
+            rLabel.innerHTML = v;
           }
-        };
-        let rLabel = document.createElement("label");
-        if (typeof v === "boolean") {
-          v ? (rLabel.innerHTML = "Yes") : (rLabel.innerHTML = "No");
-        } else {
-          rLabel.innerHTML = v;
-        }
-        optionWrap.appendChild(rOption);
-        optionWrap.appendChild(rLabel);
-        qInput.appendChild(optionWrap);
-      });
-      /////
-      //Other Option
-      ///
-      if (currentIndex.otherOption == true) {
-        //used to submit info on keyup and onclick
-        function checkOtherInput() {
-          if (
-            document.getElementById("otherBtn").checked &&
-            document.getElementById("otherInput").value.length > 0
-          ) {
-            profile[`${currentIndex.answer}Other`] =
-              document.getElementById("otherInput").value;
+          optionWrap.appendChild(rOption);
+          optionWrap.appendChild(rLabel);
+          qInput.appendChild(optionWrap);
+        });
+        /////
+        //Other Option
+        ///
+        if (currentIndex.otherOption == true) {
+          //used to submit info on keyup and onclick
+          function checkOtherInput() {
+            if (
+              document.getElementById("otherBtn").checked &&
+              document.getElementById("otherInput").value.length > 0
+            ) {
+              profile[`${currentIndex.answer}Other`] =
+                document.getElementById("otherInput").value;
+            }
+            console.log(profile);
           }
-          console.log(profile);
+          //creating the element
+          let optionWrap = document.createElement("div");
+          optionWrap.classList.add("opWrap");
+          let rOption = document.createElement("input");
+          if (currentIndex.multipleAnsAllow == false) {
+            rOption.type = "radio";
+          } else {
+            rOption.type = "checkbox";
+          }
+          rOption.value = "Other";
+          rOption.name = "currentQ";
+          rOption.id = "otherBtn";
+          //on click
+          rOption.onclick = function (e) {
+            checkOtherInput();
+          };
+          let rLabel = document.createElement("label");
+          rLabel.innerHTML = "Other: ";
+          let otherInput = document.createElement("input");
+          otherInput.id = "otherInput";
+          //on keyup
+          qInput.onkeyup = function (e) {
+            checkOtherInput();
+          };
+          optionWrap.appendChild(rOption);
+          optionWrap.appendChild(rLabel);
+          optionWrap.appendChild(otherInput);
+          qInput.appendChild(optionWrap);
         }
-        //creating the element
-        let optionWrap = document.createElement("div");
-        optionWrap.classList.add("opWrap");
-        let rOption = document.createElement("input");
-        if (currentIndex.multipleAnsAllow == false) {
-          rOption.type = "radio";
-        } else {
-          rOption.type = "checkbox";
-        }
-        rOption.value = "Other";
-        rOption.name = "currentQ";
-        rOption.id = "otherBtn";
-        //on click
-        rOption.onclick = function (e) {
-          checkOtherInput();
-        };
-        let rLabel = document.createElement("label");
-        rLabel.innerHTML = "Other: ";
-        let otherInput = document.createElement("input");
-        otherInput.id = "otherInput";
-        //on keyup
-        qInput.onkeyup = function (e) {
-          checkOtherInput();
-        };
-        optionWrap.appendChild(rOption);
-        optionWrap.appendChild(rLabel);
-        optionWrap.appendChild(otherInput);
-        qInput.appendChild(optionWrap);
+        quizBlock.appendChild(qInput);
       }
-      quizBlock.appendChild(qInput);
-    }
-    //////////////////////////////////////
+      //////////////////////////////////////
 
-    //create next / submit
-    let submitBtn = document.createElement("button");
-    if (currentQ < questions.length - 1) {
-      submitBtn.innerHTML = "next";
-      submitBtn.onclick = submitQ;
-      submitBtn.type="submit"
-      onkeypress="if(event.keyCode==13) {this.submit();}"
+      //create next / submit
+      let btnWrap = document.createElement("div");
+      btnWrap.id = "btnWrap";
+      let submitBtn = document.createElement("button");
+      let backBtn = document.createElement("button");
+      if (currentQ < questions.length - 1) {
+        submitBtn.innerHTML = "next";
+        submitBtn.onclick = submitQ;
+        submitBtn.type = "submit";
+      } else {
+        submitBtn.innerHTML = "next";
+        submitBtn.type = "submit";
+        submitBtn.onclick = displayPriorityChart;
+      }
+      if (currentQ > 0) {
+        backBtn.innerHTML = "back";
+        backBtn.onclick = backQ;
+        backBtn.type = "button";
+        btnWrap.appendChild(backBtn);
+      }
+      btnWrap.appendChild(submitBtn);
+      quizBlock.appendChild(btnWrap);
     } else {
-      submitBtn.innerHTML = "next";
-      submitBtn.type="submit"
-      submitBtn.onclick = displayPriorityChart;
+      console.log("not needed")
+      let currentIndex = questions[currentQ];
+      profile[currentIndex.answer] = "n/a";
+      submitQ();
     }
-    quizBlock.appendChild(submitBtn);
   }
 
   function submitQ() {
     let currentIndex = questions[currentQ];
     if (profile[currentIndex.answer] != null) {
       currentQ++;
+      console.log(currentQ)
       postQ();
     }
   }
 
+  function backQ() {
+    console.log("back hit");
+    currentQ = currentQ - 1;
+    postQ();
+  }
+
   let quizBlock = document.createElement("form");
+  quizBlock.onsubmit = () => {
+    return false;
+  };
   quizBlock.id = "quizBlock";
   quizElement.appendChild(quizBlock);
   postQ(quizBlock);
