@@ -341,6 +341,7 @@ function startQuiz() {
           } else {
             rOption.type = "checkbox";
           }
+
           rOption.value = "Other";
           rOption.name = "currentQ";
           rOption.id = "otherBtn";
@@ -356,6 +357,11 @@ function startQuiz() {
           qInput.onkeyup = function (e) {
             checkOtherInput();
           };
+
+          if (profile[`${currentIndex.answer}Other`] != null) {
+            rOption.checked = true;
+            otherInput.value = profile[`${currentIndex.answer}Other`];
+          }
           optionWrap.appendChild(rOption);
           optionWrap.appendChild(rLabel);
           optionWrap.appendChild(otherInput);
