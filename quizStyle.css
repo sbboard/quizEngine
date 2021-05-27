@@ -13,7 +13,7 @@
 }
 #quiz progress#quizProg::-webkit-progress-value {
   transition: width 0.5s ease-out;
-  background: #FFCF6B;
+  background: #1ABC9C;
 }
 #quiz progress#quizProg::-webkit-progress-bar {
   background-color: #222329;
@@ -28,8 +28,8 @@
   width: 1em;
 }
 #quiz #quizBlock::-webkit-scrollbar-thumb {
-  background: #FFCF6B;
-  border: solid #FFCF6B 1px;
+  background: #1ABC9C;
+  border: solid #1ABC9C 1px;
 }
 #quiz #quizBlock::-webkit-scrollbar-track {
   background: #222329;
@@ -74,11 +74,11 @@
   margin: 0.5em auto 0 auto;
 }
 #quiz #quizBlock .opWrap.selected {
-  background-color: #FFCF6B;
-  border: 1px solid #FFCF6B;
+  background-color: #1ABC9C;
+  border: 1px solid #1ABC9C;
 }
 #quiz #quizBlock .opWrap.selected:hover {
-  background-color: #FFCF6B;
+  background-color: #1ABC9C;
   color: black;
 }
 #quiz #quizBlock .opWrap:hover {
@@ -95,7 +95,7 @@
   display: block;
 }
 #quiz button {
-  background-color: #FFCF6B;
+  background-color: #1ABC9C;
   border: 0;
   padding: 0.75em;
   text-transform: capitalize;
