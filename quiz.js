@@ -263,7 +263,6 @@ function startQuiz() {
       //post input
       if (currentIndex.options.length == 0) {
         let qInput = document.createElement("input");
-        qInput.required = true;
         if (currentIndex.answer == "email") {
           qInput.type = "email";
         }
@@ -283,7 +282,6 @@ function startQuiz() {
           let optionWrap = document.createElement("div");
           optionWrap.classList.add("opWrap");
           let rOption = document.createElement("input");
-          rOption.required = true;
           if (currentIndex.multipleAnsAllow == false) {
             rOption.type = "radio";
 
@@ -356,7 +354,6 @@ function startQuiz() {
           rOption.value = "Other";
           rOption.name = "currentQ";
           rOption.id = "otherBtn";
-          rOption.required = true;
           //on click
           rOption.onclick = function (e) {
             checkOtherInput();
