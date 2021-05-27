@@ -45,15 +45,6 @@ const questions = [
     relyOnThisBeingTrue: null,
   },
   {
-    question: "Enter your email so we can send you results",
-    answer: "email",
-    multipleAnsAllow: false,
-    category: "basics",
-    otherOption: false,
-    options: [],
-    relyOnThisBeingTrue: null,
-  },
-  {
     question: "Select your gender",
     answer: "gender",
     multipleAnsAllow: false,
@@ -91,7 +82,7 @@ const questions = [
     relyOnThisBeingTrue: null,
   },
   {
-    question: "What's your Level of commitment to X?",
+    question: "What's your Level of commitment?",
     answer: "commit",
     multipleAnsAllow: false,
     otherOption: false,
@@ -101,6 +92,15 @@ const questions = [
       "Interested",
       "Ready to dive in... where do I sign?",
     ],
+    relyOnThisBeingTrue: null,
+  },
+  {
+    question: "Enter your email so we can send you results",
+    answer: "email",
+    multipleAnsAllow: false,
+    category: "basics",
+    otherOption: false,
+    options: [],
     relyOnThisBeingTrue: null,
   },
   {
@@ -237,6 +237,11 @@ let currentQ = 0;
 
 function startQuiz() {
   quizElement.innerHTML = null;
+  let progressBar = document.createElement("progress");
+  progressBar.id = "quizProg";
+  progressBar.value = currentQ;
+  progressBar.max = questions.length + 1;
+  quizElement.appendChild(progressBar);
   function postQ(isForward) {
     let currentIndex = questions[currentQ];
     if (
@@ -245,6 +250,7 @@ function startQuiz() {
     ) {
       //clear block
       quizBlock.innerHTML = null;
+      quizBlock.classList.remove("fadein");
 
       //create question
       let qHead = document.createElement("h1");
@@ -257,6 +263,10 @@ function startQuiz() {
       //post input
       if (currentIndex.options.length == 0) {
         let qInput = document.createElement("input");
+        qInput.required = true;
+        if (currentIndex.answer == "email") {
+          qInput.type = "email";
+        }
         if (profile[currentIndex.answer] != null) {
           qInput.value = profile[currentIndex.answer];
         }
@@ -273,6 +283,7 @@ function startQuiz() {
           let optionWrap = document.createElement("div");
           optionWrap.classList.add("opWrap");
           let rOption = document.createElement("input");
+          rOption.required = true;
           if (currentIndex.multipleAnsAllow == false) {
             rOption.type = "radio";
 
@@ -345,6 +356,7 @@ function startQuiz() {
           rOption.value = "Other";
           rOption.name = "currentQ";
           rOption.id = "otherBtn";
+          rOption.required = true;
           //on click
           rOption.onclick = function (e) {
             checkOtherInput();
@@ -393,6 +405,8 @@ function startQuiz() {
       }
       btnWrap.appendChild(submitBtn);
       quizBlock.appendChild(btnWrap);
+      void quizBlock.offsetWidth;
+      quizBlock.classList.add("fadein");
     } else {
       let currentIndex = questions[currentQ];
       profile[currentIndex.answer] = "n/a";
@@ -401,20 +415,38 @@ function startQuiz() {
   }
 
   function submitQ(isForward) {
+    function validateEmail(email) {
+      const re =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+
     let currentIndex = questions[currentQ];
-    if (profile[currentIndex.answer] != null) {
-      if (isForward) {
-        currentQ++;
-        postQ(true);
-      } else {
-        currentQ = currentQ - 1;
-        postQ(false);
+    if (
+      profile[currentIndex.answer] != null &&
+      profile[currentIndex.answer].length > 0
+    ) {
+      if (
+        currentIndex.answer != "email" ||
+        (currentIndex.answer == "email" &&
+          validateEmail(profile[currentIndex.answer]))
+      ) {
+        if (isForward) {
+          currentQ++;
+          progressBar.value = currentQ;
+          postQ(true);
+        } else {
+          currentQ = currentQ - 1;
+          progressBar.value = currentQ;
+          postQ(false);
+        }
       }
     }
   }
 
   function backQ() {
     currentQ = currentQ - 1;
+    progressBar.value = currentQ;
     postQ(false);
   }
 
@@ -530,6 +562,7 @@ function displayPriorityChart() {
   endBtn.innerHTML = "finish";
 
   goalBlock.appendChild(endBtn);
+  goalBlock.classList.add("fadein");
 
   quizElement.appendChild(goalBlock);
 }
