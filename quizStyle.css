@@ -75,7 +75,7 @@
 }
 #quiz #quizBlock .opWrap.selected {
   background-color: #FFCF6B;
-  border: 1px solid white;
+  border: 1px solid #222329;
 }
 #quiz #quizBlock .opWrap:hover {
   color: white;

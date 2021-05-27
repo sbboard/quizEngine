@@ -281,11 +281,23 @@ function startQuiz() {
         currentIndex.options.map((v) => {
           let optionWrap = document.createElement("div");
           optionWrap.classList.add("opWrap");
+          //change option text if boolean
           if (typeof v === "boolean") {
             v ? (optionWrap.innerHTML = "Yes") : (optionWrap.innerHTML = "No");
           } else {
             optionWrap.innerHTML = v;
           }
+          //check if it's been filled in already
+          if (currentIndex.multipleAnsAllow == false) {
+            if (profile[currentIndex.answer] == v) {
+              optionWrap.classList.add("selected");
+            }
+          } else {
+            if (profile[currentIndex.answer].indexOf(v) > -1) {
+              optionWrap.classList.add("selected");
+            }
+          }
+
           optionWrap.onclick = () => {
             if (currentIndex.multipleAnsAllow == false) {
               Array.from(document.querySelectorAll(".selected")).forEach((el) =>
@@ -314,9 +326,7 @@ function startQuiz() {
         if (currentIndex.otherOption == true) {
           //used to submit info on keyup and onclick
           function checkOtherInput() {
-            if (
-              document.getElementById("otherInput").value.length > 0
-            ) {
+            if (document.getElementById("otherInput").value.length > 0) {
               profile[`${currentIndex.answer}Other`] =
                 document.getElementById("otherInput").value;
             }
