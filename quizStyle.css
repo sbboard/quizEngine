@@ -42,6 +42,11 @@
 #quiz #quizBlock input#otherInput {
   width: initial;
   padding: 0;
+  border: 0;
+  border-bottom: 1px solid black;
+  background-color: initial;
+  color: inherit;
+  pointer-events: none;
 }
 #quiz #quizBlock input[type=radio] {
   width: initial;

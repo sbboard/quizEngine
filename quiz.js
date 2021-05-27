@@ -36,6 +36,22 @@ const questions = [
     relyOnThisBeingTrue: null,
   },
   {
+    question: "Does your diet fall into any of these categories?",
+    answer: "diet",
+    multipleAnsAllow: false,
+    category: "lifestyle",
+    otherOption: true,
+    options: [
+      "Vegan",
+      "Vegetarian",
+      "Paleo",
+      "Gluten-Free",
+      "Intermittent Fasting",
+      "None",
+    ],
+    relyOnThisBeingTrue: null,
+  },
+  {
     question: "Select your age range",
     answer: "age",
     category: "basics",
@@ -135,22 +151,6 @@ const questions = [
       "Prenatal (currently pregnant)",
       "Postpartum",
       "None of the above / Not Applicable",
-    ],
-    relyOnThisBeingTrue: null,
-  },
-  {
-    question: "Does your diet fall into any of these categories?",
-    answer: "diet",
-    multipleAnsAllow: false,
-    category: "lifestyle",
-    otherOption: true,
-    options: [
-      "Vegan",
-      "Vegetarian",
-      "Paleo",
-      "Gluten-Free",
-      "Intermittent Fasting",
-      "None",
     ],
     relyOnThisBeingTrue: null,
   },
@@ -315,7 +315,6 @@ function startQuiz() {
           //used to submit info on keyup and onclick
           function checkOtherInput() {
             if (
-              document.getElementById("otherBtn").checked &&
               document.getElementById("otherInput").value.length > 0
             ) {
               profile[`${currentIndex.answer}Other`] =
@@ -325,34 +324,22 @@ function startQuiz() {
           //creating the element
           let optionWrap = document.createElement("div");
           optionWrap.classList.add("opWrap");
-          let rOption = document.createElement("input");
-          if (currentIndex.multipleAnsAllow == false) {
-            rOption.type = "radio";
-          } else {
-            rOption.type = "checkbox";
-          }
-
-          rOption.value = "Other";
-          rOption.name = "currentQ";
-          rOption.id = "otherBtn";
           //on click
-          rOption.onclick = function (e) {
+          optionWrap.onclick = function (e) {
             checkOtherInput();
           };
-          let rLabel = document.createElement("label");
+          let rLabel = document.createElement("span");
           rLabel.innerHTML = "Other: ";
           let otherInput = document.createElement("input");
           otherInput.id = "otherInput";
           //on keyup
-          qInput.onkeyup = function (e) {
+          qInput.onkeyup = () => {
             checkOtherInput();
           };
 
           if (profile[`${currentIndex.answer}Other`] != null) {
-            rOption.checked = true;
             otherInput.value = profile[`${currentIndex.answer}Other`];
           }
-          optionWrap.appendChild(rOption);
           optionWrap.appendChild(rLabel);
           optionWrap.appendChild(otherInput);
           qInput.appendChild(optionWrap);
