@@ -281,50 +281,31 @@ function startQuiz() {
         currentIndex.options.map((v) => {
           let optionWrap = document.createElement("div");
           optionWrap.classList.add("opWrap");
-          let rOption = document.createElement("input");
-          if (currentIndex.multipleAnsAllow == false) {
-            rOption.type = "radio";
-
-            if (profile[currentIndex.answer] != null) {
-              if (profile[currentIndex.answer] === v.toString()) {
-                rOption.checked = true;
-              }
-            }
+          if (typeof v === "boolean") {
+            v ? (optionWrap.innerHTML = "Yes") : (optionWrap.innerHTML = "No");
           } else {
-            rOption.type = "checkbox";
-
-            if (profile[currentIndex.answer].length > 0) {
-              if (profile[currentIndex.answer].indexOf(v) > -1) {
-                rOption.checked = true;
-              }
-            }
+            optionWrap.innerHTML = v;
           }
-          rOption.value = v;
-          rOption.name = "currentQ";
-          rOption.onclick = function (e) {
+          optionWrap.onclick = () => {
             if (currentIndex.multipleAnsAllow == false) {
-              profile[currentIndex.answer] = e.target.value;
+              Array.from(document.querySelectorAll(".selected")).forEach((el) =>
+                el.classList.remove("selected")
+              );
+              profile[currentIndex.answer] = v.toString();
+              optionWrap.classList.add("selected");
             } else {
-              if (e.target.checked) {
-                profile[currentIndex.answer].push(e.target.value);
+              if (optionWrap.classList.contains("selected") == false) {
+                profile[currentIndex.answer].push(v.toString());
+                optionWrap.classList.add("selected");
               } else {
-                var index = profile[currentIndex.answer].indexOf(
-                  e.target.value
-                );
+                optionWrap.classList.remove("selected");
+                var index = profile[currentIndex.answer].indexOf(v.toString());
                 if (index !== -1) {
                   profile[currentIndex.answer].splice(index, 1);
                 }
               }
             }
           };
-          let rLabel = document.createElement("label");
-          if (typeof v === "boolean") {
-            v ? (rLabel.innerHTML = "Yes") : (rLabel.innerHTML = "No");
-          } else {
-            rLabel.innerHTML = v;
-          }
-          optionWrap.appendChild(rOption);
-          optionWrap.appendChild(rLabel);
           qInput.appendChild(optionWrap);
         });
         /////

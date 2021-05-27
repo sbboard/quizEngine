@@ -13,7 +13,7 @@ $thatBlack: #222329
         width: 1em
     &::-webkit-scrollbar-thumb
         background: $thatYellow
-        border: solid $thatBlack 1px
+        border: solid $thatYellow 1px
     &::-webkit-scrollbar-track
         background: $thatBlack
     progress#quizProg
@@ -45,9 +45,27 @@ $thatBlack: #222329
             &::before
                 content: " "
         .opWrap
-            width: 49%
-            margin: 0 auto
-            text-align: left
+            text-align: center
+            width: 21em
+            padding: .5em
+            cursor: pointer
+            margin: .5em auto
+            border: 1px solid $thatBlack
+            transition: background-color .15s, color .15s
+            text-transform: capitalize
+            &:last-of-type
+                margin: .5em auto 0 auto
+            &.selected
+                background-color: $thatYellow
+                border: 1px solid white
+            &:hover
+                color: white
+                background-color: $thatBlack
+                border: 1px solid white
+            &:active
+                background-color: $thatYellow
+                color: $thatBlack
+                border: 1px solid white
     h1
         font-weight: 800
         text-transform: capitalize
@@ -68,7 +86,7 @@ $thatBlack: #222329
             background-color: $thatBlack
     #goalTable
         .tableRow
-            border-top: 1px solid black
+            border-top: 1px solid $thatBlack
             label
                 width: 14em
                 display: inline-block
