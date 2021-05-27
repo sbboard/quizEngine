@@ -2,27 +2,14 @@
   display: block;
   color: #222329;
   text-align: center;
-  height: 500px;
   max-width: 750px;
   margin: 3em auto;
-  overflow-y: auto;
-}
-#quiz::-webkit-scrollbar {
-  width: 1em;
-}
-#quiz::-webkit-scrollbar-thumb {
-  background: #FFCF6B;
-  border: solid #FFCF6B 1px;
-}
-#quiz::-webkit-scrollbar-track {
-  background: #222329;
+  height: calc(440px + 3em);
 }
 #quiz progress#quizProg {
   background-color: #000;
   width: 20.5em;
-  overflow: auto;
-  border-radius: 0.5em;
-  margin-bottom: 1em;
+  margin-top: 1em;
 }
 #quiz progress#quizProg::-webkit-progress-value {
   transition: width 0.5s ease-out;
@@ -34,6 +21,18 @@
 #quiz #quizBlock {
   margin: 0 auto;
   opacity: 0;
+  height: calc(440px - 6em);
+  overflow-y: auto;
+}
+#quiz #quizBlock::-webkit-scrollbar {
+  width: 1em;
+}
+#quiz #quizBlock::-webkit-scrollbar-thumb {
+  background: #FFCF6B;
+  border: solid #FFCF6B 1px;
+}
+#quiz #quizBlock::-webkit-scrollbar-track {
+  background: #222329;
 }
 #quiz #quizBlock input {
   padding: 0.5em;
@@ -66,31 +65,31 @@
   padding: 0.5em;
   cursor: pointer;
   margin: 0.5em auto;
-  border: 1px solid #222329;
   transition: background-color 0.15s, color 0.15s;
   text-transform: capitalize;
+  background-color: white;
+  border: 1px solid #222329;
 }
 #quiz #quizBlock .opWrap:last-of-type {
   margin: 0.5em auto 0 auto;
 }
 #quiz #quizBlock .opWrap.selected {
   background-color: #FFCF6B;
-  border: 1px solid #222329;
+  border: 1px solid #FFCF6B;
+}
+#quiz #quizBlock .opWrap.selected:hover {
+  background-color: #FFCF6B;
+  color: black;
 }
 #quiz #quizBlock .opWrap:hover {
   color: white;
   background-color: #222329;
-  border: 1px solid white;
-}
-#quiz #quizBlock .opWrap:active {
-  background-color: #FFCF6B;
-  color: #222329;
-  border: 1px solid white;
 }
 #quiz h1 {
   font-weight: 800;
   text-transform: capitalize;
-  margin-bottom: 0.5em;
+  height: 2em;
+  margin-bottom: 0;
 }
 #quiz #btnWrap {
   display: block;

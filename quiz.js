@@ -241,8 +241,33 @@ function startQuiz() {
   progressBar.id = "quizProg";
   progressBar.value = currentQ;
   progressBar.max = questions.length + 1;
-  quizElement.appendChild(progressBar);
+  let qHead = document.createElement("h1");
+  quizElement.appendChild(qHead);
+  let btnWrap = document.createElement("div");
+  btnWrap.id = "btnWrap";
+
+  function handleKeyPress(e) {
+    var key = e.keyCode || e.which;
+    if (key == 13) {
+      if (document.getElementById("nextBtn") != null) {
+        document.getElementById("nextBtn").click();
+      }
+    }
+  }
+  document.addEventListener("keyup", handleKeyPress);
+
   function postQ(isForward) {
+    let submitBtn = document.createElement("button");
+    function checkForSubmit() {
+      if (
+        profile[currentIndex.answer] != null &&
+        profile[currentIndex.answer].length > 0
+      ) {
+        submitBtn.disabled = false;
+      } else {
+        submitBtn.disabled = true;
+      }
+    }
     let currentIndex = questions[currentQ];
     if (
       currentIndex.relyOnThisBeingTrue == null ||
@@ -253,9 +278,7 @@ function startQuiz() {
       quizBlock.classList.remove("fadein");
 
       //create question
-      let qHead = document.createElement("h1");
       qHead.innerHTML = currentIndex.question;
-      quizBlock.appendChild(qHead);
 
       ///////////////////////
       // DIFFERENT INPUT TYPES
@@ -271,6 +294,7 @@ function startQuiz() {
         }
         qInput.onkeyup = function (e) {
           profile[currentIndex.answer] = e.target.value;
+          checkForSubmit();
         };
         quizBlock.appendChild(qInput);
       }
@@ -317,6 +341,8 @@ function startQuiz() {
                 }
               }
             }
+
+            checkForSubmit();
           };
           qInput.appendChild(optionWrap);
         });
@@ -359,10 +385,9 @@ function startQuiz() {
       //////////////////////////////////////
 
       //create next / submit
-      let btnWrap = document.createElement("div");
-      btnWrap.id = "btnWrap";
-      let submitBtn = document.createElement("button");
+      btnWrap.innerHTML = null;
       let backBtn = document.createElement("button");
+      submitBtn.id = "nextBtn";
       if (currentQ < questions.length - 1) {
         submitBtn.innerHTML = "next";
         submitBtn.onclick = submitQ;
@@ -379,9 +404,9 @@ function startQuiz() {
         btnWrap.appendChild(backBtn);
       }
       btnWrap.appendChild(submitBtn);
-      quizBlock.appendChild(btnWrap);
       void quizBlock.offsetWidth;
       quizBlock.classList.add("fadein");
+      checkForSubmit();
     } else {
       let currentIndex = questions[currentQ];
       profile[currentIndex.answer] = "n/a";
@@ -431,6 +456,8 @@ function startQuiz() {
   };
   quizBlock.id = "quizBlock";
   quizElement.appendChild(quizBlock);
+  quizElement.appendChild(btnWrap);
+  quizElement.appendChild(progressBar);
   postQ(true);
 }
 
@@ -535,6 +562,7 @@ function displayPriorityChart() {
   //create finisj button
   endBtn.onclick = displayResults;
   endBtn.innerHTML = "finish";
+  endBtn.id = "nextBtn";
 
   goalBlock.appendChild(endBtn);
   goalBlock.classList.add("fadein");
