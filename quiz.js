@@ -115,7 +115,7 @@ const questions = [
   },
   {
     question:
-      "Have you previously been to a function medicine practitioner before?",
+      "Have you previously been to a function medicine practitioner?",
     subQ: null,
     answer: "previous",
     multipleAnsAllow: false,

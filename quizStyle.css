@@ -5,6 +5,7 @@
   max-width: 750px;
   margin: 2.25em auto;
   height: calc(600px - 4.5em);
+  font-family: "Lato", sans-serif;
 }
 #quiz progress#quizProg {
   background-color: #000;
@@ -91,13 +92,16 @@
   text-transform: capitalize;
   height: 1em;
   margin-bottom: 0;
+  color: #222329;
+  font-family: "Playfair Display", serif;
 }
 #quiz h2 {
-  font-family: inherit;
+  font-family: "Playfair Display", serif;
   margin-top: 0.5em;
   height: 1em;
   font-weight: 400;
   text-transform: capitalize;
+  color: #222329;
 }
 #quiz #btnWrap {
   display: block;
