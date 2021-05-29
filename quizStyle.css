@@ -45,10 +45,16 @@
   width: initial;
   padding: 0;
   border: 0;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #222329;
   background-color: initial;
   color: inherit;
   pointer-events: none;
+  text-align: center;
+}
+#quiz #quizBlock input#otherInput:focus {
+  border: 0;
+  border-bottom: 1px solid #222329;
+  outline: none !important;
 }
 #quiz #quizBlock input[type=radio] {
   width: initial;
@@ -108,7 +114,7 @@
 }
 #quiz button {
   background-color: #AFD6C1;
-  color: black;
+  color: #222329;
   border: 0;
   padding: 0.75em;
   text-transform: capitalize;

@@ -114,8 +114,7 @@ const questions = [
     relyAnswer: null,
   },
   {
-    question:
-      "Have you previously been to a function medicine practitioner?",
+    question: "Have you previously been to a function medicine practitioner?",
     subQ: null,
     answer: "previous",
     multipleAnsAllow: false,
@@ -270,8 +269,8 @@ function startQuiz() {
   progressBar.max = questions.length + 1;
   let qHead = document.createElement("h1");
   quizElement.appendChild(qHead);
-  let subQ = document.createElement("h2")
-  quizElement.appendChild(subQ)
+  let subQ = document.createElement("h2");
+  quizElement.appendChild(subQ);
   let btnWrap = document.createElement("div");
   btnWrap.id = "btnWrap";
 
@@ -311,11 +310,10 @@ function startQuiz() {
       qHead.innerHTML = currentIndex.question;
 
       //create subQ
-      if(currentIndex.subQ != null){
-        subQ.innerHTML = currentIndex.subQ
-      }
-      else{
-        subQ.innerHTML = null
+      if (currentIndex.subQ != null) {
+        subQ.innerHTML = currentIndex.subQ;
+      } else {
+        subQ.innerHTML = null;
       }
 
       ///////////////////////
@@ -384,6 +382,8 @@ function startQuiz() {
           };
           qInput.appendChild(optionWrap);
         });
+
+        /////////////////////////////////////////////////
         /////
         //Other Option
         ///
@@ -393,18 +393,29 @@ function startQuiz() {
             if (document.getElementById("otherInput").value.length > 0) {
               profile[`${currentIndex.answer}Other`] =
                 document.getElementById("otherInput").value;
+            } else {
+              profile[`${currentIndex.answer}Other`] = null;
             }
           }
+          let otherInput = document.createElement("input");
           //creating the element
           let optionWrap = document.createElement("div");
           optionWrap.classList.add("opWrap");
+
           //on click
           optionWrap.onclick = function (e) {
-            checkOtherInput();
+            if (optionWrap.classList.contains("selected")) {
+              optionWrap.classList.remove("selected");
+              profile[`${currentIndex.answer}Other`] = null;
+            } else {
+              optionWrap.classList.add("selected");
+              otherInput.focus();
+              checkOtherInput();
+            }
           };
+
           let rLabel = document.createElement("span");
           rLabel.innerHTML = "Other: ";
-          let otherInput = document.createElement("input");
           otherInput.id = "otherInput";
           //on keyup
           qInput.onkeyup = () => {
@@ -412,6 +423,7 @@ function startQuiz() {
           };
 
           if (profile[`${currentIndex.answer}Other`] != null) {
+            optionWrap.classList.add("selected");
             otherInput.value = profile[`${currentIndex.answer}Other`];
           }
           optionWrap.appendChild(rLabel);
@@ -528,8 +540,8 @@ function displayPriorityChart() {
   goalBlock.appendChild(headerEl);
 
   let subHead = document.createElement("h2");
-  subHead.innerHTML = 'prioritize importance with 1 = most important'
-  goalBlock.appendChild(subHead)
+  subHead.innerHTML = "prioritize importance with 1 = most important";
+  goalBlock.appendChild(subHead);
 
   //create table
   let tableWrap = document.createElement("div");
