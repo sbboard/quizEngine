@@ -6,7 +6,7 @@ let profile = {
   age: null,
   gender: null,
   inUS: null,
-  diet: null,
+  diet: [],
   dietOther: null,
   nearBelmar: null,
   doesEx: null,
@@ -28,61 +28,56 @@ let profile = {
 const questions = [
   {
     question: "Enter your name",
+    subQ: null,
     answer: "name",
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
     options: [],
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "Select your age range",
+    subQ: null,
     answer: "age",
     category: "basics",
     multipleAnsAllow: false,
     otherOption: false,
     options: ["0-13", "14-18", "19-30", "31-45", "46-65", "65+"],
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "Select your gender",
+    subQ: null,
     answer: "gender",
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
-    options: ["Female", "Male", "Non-binary"],
+    options: ["Female", "Male", "Non-binary", "Prefer not to share"],
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
-    question: "Do you reside within the US?",
-    answer: "inUS",
+    question: "Do you have pregnancy goals?",
+    subQ: null,
+    answer: "pregnant",
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
-    options: yesNo,
-    relyOnThisBeingTrue: null,
-  },
-  {
-    question: "Are you local to Belmar, New Jersey?<br/>(within X miles)",
-    answer: "nearBelmar",
-    multipleAnsAllow: false,
-    category: "basics",
-    otherOption: false,
-    options: yesNo,
-    relyOnThisBeingTrue: "inUS",
-  },
-  {
-    question:
-      "Have you previously been to a function medicine practitioner before?",
-    answer: "previous",
-    multipleAnsAllow: false,
-    category: "basics",
-    otherOption: false,
-    options: yesNo,
-    relyOnThisBeingTrue: null,
+    options: [
+      "Hope to be pregnant within 1-2 years",
+      "Prenatal (currently pregnant)",
+      "Postpartum",
+      "None of the above",
+    ],
+    relyOnThisBeingTrue: "gender",
+    relyAnswer: "Female",
   },
   {
     question: "What's your Level of commitment?",
+    subQ: null,
     answer: "commit",
     multipleAnsAllow: false,
     otherOption: false,
@@ -93,18 +88,11 @@ const questions = [
       "Ready to dive in... where do I sign?",
     ],
     relyOnThisBeingTrue: null,
-  },
-  {
-    question: "Enter your email so we can send you results",
-    answer: "email",
-    multipleAnsAllow: false,
-    category: "basics",
-    otherOption: false,
-    options: [],
-    relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "Check off all you've been diagnosed with",
+    subQ: "(select all that apply)",
     answer: "diagnose",
     multipleAnsAllow: true,
     category: "health history",
@@ -123,25 +111,58 @@ const questions = [
       "None",
     ],
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
-    question: "Do you have pregnancy goals?",
-    answer: "pregnant",
+    question:
+      "Have you previously been to a function medicine practitioner before?",
+    subQ: null,
+    answer: "previous",
     multipleAnsAllow: false,
     category: "basics",
     otherOption: false,
-    options: [
-      "Hope to be pregnant within 1-2 years",
-      "Prenatal (currently pregnant)",
-      "Postpartum",
-      "None of the above / Not Applicable",
-    ],
+    options: yesNo,
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
+  },
+  {
+    question: "Enter your email so we can send you results",
+    subQ: null,
+    answer: "email",
+    multipleAnsAllow: false,
+    category: "basics",
+    otherOption: false,
+    options: [],
+    relyOnThisBeingTrue: null,
+    relyAnswer: null,
+  },
+  {
+    question: "Do you reside within the US?",
+    subQ: null,
+    answer: "inUS",
+    multipleAnsAllow: false,
+    category: "basics",
+    otherOption: false,
+    options: yesNo,
+    relyOnThisBeingTrue: null,
+    relyAnswer: null,
+  },
+  {
+    question: "Are you local to Belmar, New Jersey?",
+    subQ: "(within 50 miles)",
+    answer: "nearBelmar",
+    multipleAnsAllow: false,
+    category: "basics",
+    otherOption: false,
+    options: yesNo,
+    relyOnThisBeingTrue: "inUS",
+    relyAnswer: null,
   },
   {
     question: "Does your diet fall into any of these categories?",
+    subQ: "(select all that apply)",
     answer: "diet",
-    multipleAnsAllow: false,
+    multipleAnsAllow: true,
     category: "lifestyle",
     otherOption: true,
     options: [
@@ -153,27 +174,22 @@ const questions = [
       "None",
     ],
     relyOnThisBeingTrue: null,
-  },
-  {
-    question: "Do you exercise?",
-    answer: "doesEx",
-    multipleAnsAllow: false,
-    category: "lifestyle",
-    otherOption: false,
-    options: yesNo,
-    relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "How many times/week do you exercise?",
+    subQ: null,
     answer: "exercise",
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: ["0", "1-2", "3-5", "7+"],
-    relyOnThisBeingTrue: "doesEx",
+    relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "What intensity level is your exercise",
+    subQ: null,
     answer: "exIntense",
     multipleAnsAllow: false,
     category: "lifestyle",
@@ -183,52 +199,63 @@ const questions = [
       "Moderate (jogging, body weight exercises)",
       "Intense (marathon, HIIT, weight lifting)",
     ],
-    relyOnThisBeingTrue: "doesEx",
+    relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
-    question: "Do you sweat when you exercise? (If you glisten, mark no)",
+    question: "Do you sweat when you exercise?",
+    subQ: "(If you glisten, mark no)",
     answer: "sweat",
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
-    relyOnThisBeingTrue: "doesEx",
+    relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "Do you have a daily bowel movement?",
+    subQ: null,
     answer: "dailyBowel",
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "Do you smoke?",
+    subQ: null,
     answer: "smoke",
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "Do you drink?",
+    subQ: null,
     answer: "drink",
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
   {
     question: "Do you take any supplements?",
+    subQ: null,
     answer: "supplements",
     multipleAnsAllow: false,
     category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
+    relyAnswer: null,
   },
 ];
 
@@ -243,6 +270,8 @@ function startQuiz() {
   progressBar.max = questions.length + 1;
   let qHead = document.createElement("h1");
   quizElement.appendChild(qHead);
+  let subQ = document.createElement("h2")
+  quizElement.appendChild(subQ)
   let btnWrap = document.createElement("div");
   btnWrap.id = "btnWrap";
 
@@ -271,7 +300,8 @@ function startQuiz() {
     let currentIndex = questions[currentQ];
     if (
       currentIndex.relyOnThisBeingTrue == null ||
-      profile[currentIndex.relyOnThisBeingTrue] === "true"
+      profile[currentIndex.relyOnThisBeingTrue] === "true" ||
+      profile[currentIndex.relyOnThisBeingTrue] === currentIndex.relyAnswer
     ) {
       //clear block
       quizBlock.innerHTML = null;
@@ -279,6 +309,14 @@ function startQuiz() {
 
       //create question
       qHead.innerHTML = currentIndex.question;
+
+      //create subQ
+      if(currentIndex.subQ != null){
+        subQ.innerHTML = currentIndex.subQ
+      }
+      else{
+        subQ.innerHTML = null
+      }
 
       ///////////////////////
       // DIFFERENT INPUT TYPES
@@ -475,6 +513,7 @@ function displayPriorityChart() {
     "Energy",
     "Brain",
     "Mental Health",
+    "Weight Loss",
     "Mystery Illness",
     "Overall Health & Prevention",
   ];
@@ -485,8 +524,12 @@ function displayPriorityChart() {
 
   //create header
   let headerEl = document.createElement("h1");
-  headerEl.innerHTML = `Choose up to ${goalRange} HEALTH GOALS and prioritize importance with 1 = most important`;
+  headerEl.innerHTML = `Choose up to ${goalRange} HEALTH GOALS`;
   goalBlock.appendChild(headerEl);
+
+  let subHead = document.createElement("h2");
+  subHead.innerHTML = 'prioritize importance with 1 = most important'
+  goalBlock.appendChild(subHead)
 
   //create table
   let tableWrap = document.createElement("div");
