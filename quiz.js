@@ -31,9 +31,17 @@ const questions = [
     subQ: null,
     answer: "name",
     multipleAnsAllow: false,
-    category: "basics",
     otherOption: false,
     options: [],
+    relyOnThisBeingTrue: null,
+    relyAnswer: null,
+  },
+  {
+    question: "TIP",
+    tip: "hello to you",
+    answer: "age",
+    multipleAnsAllow: false,
+    otherOption: false,
     relyOnThisBeingTrue: null,
     relyAnswer: null,
   },
@@ -41,7 +49,6 @@ const questions = [
     question: "Select your age range",
     subQ: null,
     answer: "age",
-    category: "basics",
     multipleAnsAllow: false,
     otherOption: false,
     options: ["0-13", "14-18", "19-30", "31-45", "46-65", "65+"],
@@ -53,7 +60,6 @@ const questions = [
     subQ: null,
     answer: "gender",
     multipleAnsAllow: false,
-    category: "basics",
     otherOption: false,
     options: ["Female", "Male", "Non-binary", "Prefer not to share"],
     relyOnThisBeingTrue: null,
@@ -64,7 +70,6 @@ const questions = [
     subQ: null,
     answer: "pregnant",
     multipleAnsAllow: false,
-    category: "basics",
     otherOption: false,
     options: [
       "Hope to be pregnant within 1-2 years",
@@ -81,7 +86,6 @@ const questions = [
     answer: "commit",
     multipleAnsAllow: false,
     otherOption: false,
-    category: "basics",
     options: [
       "Skeptical",
       "Interested",
@@ -95,7 +99,6 @@ const questions = [
     subQ: "(select all that apply)",
     answer: "diagnose",
     multipleAnsAllow: true,
-    category: "health history",
     otherOption: true,
     options: [
       "Cancer",
@@ -118,7 +121,6 @@ const questions = [
     subQ: null,
     answer: "previous",
     multipleAnsAllow: false,
-    category: "basics",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
@@ -129,7 +131,6 @@ const questions = [
     subQ: null,
     answer: "email",
     multipleAnsAllow: false,
-    category: "basics",
     otherOption: false,
     options: [],
     relyOnThisBeingTrue: null,
@@ -140,7 +141,6 @@ const questions = [
     subQ: null,
     answer: "inUS",
     multipleAnsAllow: false,
-    category: "basics",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
@@ -151,7 +151,6 @@ const questions = [
     subQ: "(within 50 miles)",
     answer: "nearBelmar",
     multipleAnsAllow: false,
-    category: "basics",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: "inUS",
@@ -162,7 +161,6 @@ const questions = [
     subQ: "(select all that apply)",
     answer: "diet",
     multipleAnsAllow: true,
-    category: "lifestyle",
     otherOption: true,
     options: [
       "Vegan",
@@ -180,7 +178,6 @@ const questions = [
     subQ: null,
     answer: "exercise",
     multipleAnsAllow: false,
-    category: "lifestyle",
     otherOption: false,
     options: ["0", "1-2", "3-5", "7+"],
     relyOnThisBeingTrue: null,
@@ -191,7 +188,6 @@ const questions = [
     subQ: null,
     answer: "exIntense",
     multipleAnsAllow: false,
-    category: "lifestyle",
     otherOption: false,
     options: [
       "Low (walking, yoga)",
@@ -206,18 +202,21 @@ const questions = [
     subQ: "(If you glisten, mark no)",
     answer: "sweat",
     multipleAnsAllow: false,
-    category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
     relyAnswer: null,
   },
   {
+    question: "TIP",
+    relyOnThisBeingTrue: null,
+    tip: `Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry. With repeated scheduled treatments, the temporary extra high oxygen levels encourage normal tissue oxygen levels, even after the therapy is completed.`,
+  },
+  {
     question: "Do you have a daily bowel movement?",
     subQ: null,
     answer: "dailyBowel",
     multipleAnsAllow: false,
-    category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
@@ -228,7 +227,6 @@ const questions = [
     subQ: null,
     answer: "smoke",
     multipleAnsAllow: false,
-    category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
@@ -239,7 +237,6 @@ const questions = [
     subQ: null,
     answer: "drink",
     multipleAnsAllow: false,
-    category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
@@ -250,7 +247,6 @@ const questions = [
     subQ: null,
     answer: "supplements",
     multipleAnsAllow: false,
-    category: "lifestyle",
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
@@ -306,157 +302,201 @@ function startQuiz() {
       quizBlock.innerHTML = null;
       quizBlock.classList.remove("fadein");
 
-      //create question
-      qHead.innerHTML = currentIndex.question;
+      if (currentIndex.question != "TIP") {
+        //create question
+        qHead.innerHTML = currentIndex.question;
 
-      //create subQ
-      if (currentIndex.subQ != null) {
-        subQ.innerHTML = currentIndex.subQ;
-      } else {
-        subQ.innerHTML = null;
-      }
-
-      ///////////////////////
-      // DIFFERENT INPUT TYPES
-      /////////////////////////
-      //post input
-      if (currentIndex.options.length == 0) {
-        let qInput = document.createElement("input");
-        if (currentIndex.answer == "email") {
-          qInput.type = "email";
+        //create subQ
+        if (currentIndex.subQ != null) {
+          subQ.innerHTML = currentIndex.subQ;
+        } else {
+          subQ.innerHTML = null;
         }
-        if (profile[currentIndex.answer] != null) {
-          qInput.value = profile[currentIndex.answer];
-        }
-        qInput.onkeyup = function (e) {
-          profile[currentIndex.answer] = e.target.value;
-          checkForSubmit();
-        };
-        quizBlock.appendChild(qInput);
-      }
-      //post radio/check list
-      else {
-        let qInput = document.createElement("div");
-        qInput.id = "radioInputs";
-        currentIndex.options.map((v) => {
-          let optionWrap = document.createElement("div");
-          optionWrap.classList.add("opWrap");
-          //change option text if boolean
-          if (typeof v === "boolean") {
-            v ? (optionWrap.innerHTML = "Yes") : (optionWrap.innerHTML = "No");
-          } else {
-            optionWrap.innerHTML = v;
-          }
-          //check if it's been filled in already
-          if (currentIndex.multipleAnsAllow == false) {
-            if (profile[currentIndex.answer] == v) {
-              optionWrap.classList.add("selected");
-            }
-          } else {
-            if (profile[currentIndex.answer].indexOf(v) > -1) {
-              optionWrap.classList.add("selected");
-            }
-          }
 
-          optionWrap.onclick = () => {
-            if (currentIndex.multipleAnsAllow == false) {
-              Array.from(document.querySelectorAll(".selected")).forEach((el) =>
-                el.classList.remove("selected")
-              );
-              profile[currentIndex.answer] = v.toString();
-              optionWrap.classList.add("selected");
+        ///////////////////////
+        // DIFFERENT INPUT TYPES
+        /////////////////////////
+        //post input
+        if (currentIndex.options.length == 0) {
+          let qInput = document.createElement("input");
+          if (currentIndex.answer == "email") {
+            qInput.type = "email";
+          }
+          if (profile[currentIndex.answer] != null) {
+            qInput.value = profile[currentIndex.answer];
+          }
+          qInput.onkeyup = function (e) {
+            profile[currentIndex.answer] = e.target.value;
+            checkForSubmit();
+          };
+          quizBlock.appendChild(qInput);
+        }
+        //post radio/check list
+        else {
+          let qInput = document.createElement("div");
+          qInput.id = "radioInputs";
+          currentIndex.options.map((v) => {
+            let optionWrap = document.createElement("div");
+            optionWrap.classList.add("opWrap");
+            //change option text if boolean
+            if (typeof v === "boolean") {
+              v
+                ? (optionWrap.innerHTML = "Yes")
+                : (optionWrap.innerHTML = "No");
             } else {
-              if (optionWrap.classList.contains("selected") == false) {
-                profile[currentIndex.answer].push(v.toString());
+              optionWrap.innerHTML = v;
+            }
+            //check if it's been filled in already
+            if (currentIndex.multipleAnsAllow == false) {
+              if (profile[currentIndex.answer] == v) {
                 optionWrap.classList.add("selected");
-              } else {
-                optionWrap.classList.remove("selected");
-                var index = profile[currentIndex.answer].indexOf(v.toString());
-                if (index !== -1) {
-                  profile[currentIndex.answer].splice(index, 1);
-                }
+              }
+            } else {
+              if (profile[currentIndex.answer].indexOf(v) > -1) {
+                optionWrap.classList.add("selected");
               }
             }
 
-            checkForSubmit();
-          };
-          qInput.appendChild(optionWrap);
-        });
+            optionWrap.onclick = () => {
+              if (currentIndex.multipleAnsAllow == false) {
+                Array.from(document.querySelectorAll(".selected")).forEach(
+                  (el) => el.classList.remove("selected")
+                );
+                profile[currentIndex.answer] = v.toString();
+                optionWrap.classList.add("selected");
+              } else {
+                if (optionWrap.classList.contains("selected") == false) {
+                  profile[currentIndex.answer].push(v.toString());
+                  optionWrap.classList.add("selected");
+                } else {
+                  optionWrap.classList.remove("selected");
+                  var index = profile[currentIndex.answer].indexOf(
+                    v.toString()
+                  );
+                  if (index !== -1) {
+                    profile[currentIndex.answer].splice(index, 1);
+                  }
+                }
+              }
 
-        /////////////////////////////////////////////////
-        /////
-        //Other Option
-        ///
-        if (currentIndex.otherOption == true) {
-          //used to submit info on keyup and onclick
-          function checkOtherInput() {
-            if (document.getElementById("otherInput").value.length > 0) {
-              profile[`${currentIndex.answer}Other`] =
-                document.getElementById("otherInput").value;
-            } else {
-              profile[`${currentIndex.answer}Other`] = null;
+              checkForSubmit();
+            };
+            qInput.appendChild(optionWrap);
+          });
+
+          /////////////////////////////////////////////////
+          /////
+          //Other Option
+          ///
+          if (currentIndex.otherOption == true) {
+            //used to submit info on keyup and onclick
+            function checkOtherInput() {
+              if (document.getElementById("otherInput").value.length > 0) {
+                profile[`${currentIndex.answer}Other`] =
+                  document.getElementById("otherInput").value;
+              } else {
+                profile[`${currentIndex.answer}Other`] = null;
+              }
             }
-          }
-          let otherInput = document.createElement("input");
-          //creating the element
-          let optionWrap = document.createElement("div");
-          optionWrap.classList.add("opWrap");
+            let otherInput = document.createElement("input");
+            //creating the element
+            let optionWrap = document.createElement("div");
+            optionWrap.classList.add("opWrap");
 
-          //on click
-          optionWrap.onclick = function (e) {
-            if (optionWrap.classList.contains("selected")) {
-              optionWrap.classList.remove("selected");
-              profile[`${currentIndex.answer}Other`] = null;
-            } else {
-              optionWrap.classList.add("selected");
-              otherInput.focus();
+            //on click
+            optionWrap.onclick = function (e) {
+              if (optionWrap.classList.contains("selected")) {
+                optionWrap.classList.remove("selected");
+                profile[`${currentIndex.answer}Other`] = null;
+              } else {
+                optionWrap.classList.add("selected");
+                otherInput.focus();
+                checkOtherInput();
+              }
+            };
+
+            let rLabel = document.createElement("span");
+            rLabel.innerHTML = "Other: ";
+            otherInput.id = "otherInput";
+            //on keyup
+            qInput.onkeyup = () => {
               checkOtherInput();
+            };
+
+            if (profile[`${currentIndex.answer}Other`] != null) {
+              optionWrap.classList.add("selected");
+              otherInput.value = profile[`${currentIndex.answer}Other`];
             }
-          };
-
-          let rLabel = document.createElement("span");
-          rLabel.innerHTML = "Other: ";
-          otherInput.id = "otherInput";
-          //on keyup
-          qInput.onkeyup = () => {
-            checkOtherInput();
-          };
-
-          if (profile[`${currentIndex.answer}Other`] != null) {
-            optionWrap.classList.add("selected");
-            otherInput.value = profile[`${currentIndex.answer}Other`];
+            optionWrap.appendChild(rLabel);
+            optionWrap.appendChild(otherInput);
+            qInput.appendChild(optionWrap);
           }
-          optionWrap.appendChild(rLabel);
-          optionWrap.appendChild(otherInput);
-          qInput.appendChild(optionWrap);
+          quizBlock.appendChild(qInput);
         }
-        quizBlock.appendChild(qInput);
-      }
-      //////////////////////////////////////
+        //////////////////////////////////////
 
-      //create next / submit
-      btnWrap.innerHTML = null;
-      let backBtn = document.createElement("button");
-      submitBtn.id = "nextBtn";
-      if (currentQ < questions.length - 1) {
-        submitBtn.innerHTML = "next";
-        submitBtn.onclick = submitQ;
-        submitBtn.type = "submit";
+        //create next / submit
+        btnWrap.innerHTML = null;
+        let backBtn = document.createElement("button");
+        submitBtn.id = "nextBtn";
+        if (currentQ < questions.length - 1) {
+          submitBtn.innerHTML = "next";
+          submitBtn.onclick = submitQ;
+          submitBtn.type = "submit";
+        } else {
+          submitBtn.innerHTML = "next";
+          submitBtn.type = "submit";
+          submitBtn.onclick = displayPriorityChart;
+        }
+        if (currentQ > 0) {
+          backBtn.innerHTML = "back";
+          backBtn.onclick = backQ;
+          backBtn.type = "button";
+          btnWrap.appendChild(backBtn);
+        }
+        btnWrap.appendChild(submitBtn);
+        void quizBlock.offsetWidth;
+        quizBlock.classList.add("fadein");
+        checkForSubmit();
       } else {
+        //styling for tip
+        qHead.innerHTML = null;
+        subQ.innerHTML = null;
+        let tipHere = document.createElement("div");
+        tipHere.id = "tip";
+        let refinedTip = currentIndex.tip
+        // if(refinedTip.indexOf('<v>') > -1){
+        //   let variabletoswap = refinedTip.slice(refinedTip.indexOf('<v>','</v>'))
+        //   let cleanedVariable = variabletoswap.replace('<v>','')
+        //   cleanedVariable = cleanedVariable.replace('</v>','')
+        //   refinedTip = refinedTip.replace(variabletoswap,profile[cleanedVariable])
+        // }
+        tipHere.innerHTML = refinedTip;
+        quizBlock.appendChild(tipHere);
+
+        //btns for tip
+        btnWrap.innerHTML = null;
+        let backBtn = document.createElement("button");
+        submitBtn.id = "nextBtn";
         submitBtn.innerHTML = "next";
+        submitBtn.onclick = () => {
+          currentQ++;
+          progressBar.value = currentQ;
+          postQ(true);
+        };
         submitBtn.type = "submit";
-        submitBtn.onclick = displayPriorityChart;
-      }
-      if (currentQ > 0) {
         backBtn.innerHTML = "back";
-        backBtn.onclick = backQ;
+        backBtn.onclick = () => {
+          currentQ = currentQ - 1;
+          progressBar.value = currentQ;
+          postQ(false);
+        };
         backBtn.type = "button";
         btnWrap.appendChild(backBtn);
+        btnWrap.appendChild(submitBtn);
+        void quizBlock.offsetWidth;
+        quizBlock.classList.add("fadein");
       }
-      btnWrap.appendChild(submitBtn);
-      void quizBlock.offsetWidth;
-      quizBlock.classList.add("fadein");
-      checkForSubmit();
     } else {
       let currentIndex = questions[currentQ];
       profile[currentIndex.answer] = "n/a";
@@ -631,7 +671,7 @@ function displayPriorityChart() {
 function displayResults() {
   quizElement.innerHTML = null;
   let resultsBlock = document.createElement("div");
-  resultsBlock.id = "resultsBlock"
+  resultsBlock.id = "resultsBlock";
   let resultHeader = document.createElement("h1");
   resultHeader.innerHTML = `${profile.name}'s Healing Journey`;
   resultsBlock.appendChild(resultHeader);

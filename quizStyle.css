@@ -37,6 +37,13 @@
 #quiz #quizBlock::-webkit-scrollbar-track {
   background: #222329;
 }
+#quiz #quizBlock #tip {
+  max-width: 24em;
+  margin: 0 auto;
+  font-family: "Playfair Display";
+  font-size: 1.25em;
+  text-align: left;
+}
 #quiz #quizBlock input {
   padding: 0.5em;
   width: 22em;
@@ -121,12 +128,19 @@
   width: 10em;
   display: inline-block;
   margin: 1em 0.25em 0 0.25em;
-  transition: color 0.15s, background-color 0.15s;
+  transition: color 0.15s, background-color 0.15s, opacity 0.15s;
   border-radius: 0.5em;
 }
 #quiz button:hover {
   color: white;
   background-color: #222329;
+}
+#quiz button:disabled {
+  opacity: 0.5;
+  color: black;
+}
+#quiz button:disabled:hover {
+  background-color: #AFD6C1;
 }
 #quiz #goalBlock h2 {
   margin: 0.5em 0 0.5em;
@@ -165,7 +179,7 @@
   }
 }
 .fadein {
-  animation: fadein 0.5s forwards;
+  animation: fadein 1s forwards;
 }
 
 /*# sourceMappingURL=quizStyle.css.map */

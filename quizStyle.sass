@@ -33,6 +33,12 @@ $elHeight: 440px
             border: solid $thatYellow 1px
         &::-webkit-scrollbar-track
             background: $thatBlack
+        #tip
+            max-width: 24em
+            margin: 0 auto
+            font-family: 'Playfair Display'
+            font-size: 1.25em
+            text-align: left
         input
             padding: .5em
             width: 22em
@@ -78,6 +84,7 @@ $elHeight: 440px
             &:hover
                 color: white
                 background-color: $thatBlack
+                    
     h1
         font-weight: 800
         text-transform: capitalize
@@ -103,11 +110,16 @@ $elHeight: 440px
         width: 10em
         display: inline-block
         margin: 1em .25em 0 .25em
-        transition: color .15s, background-color .15s
+        transition: color .15s, background-color .15s, opacity .15s
         border-radius: .5em
         &:hover
             color: white
             background-color: $thatBlack
+        &:disabled
+            opacity: .5
+            color: black
+            &:hover
+                background-color: $thatYellow
     #goalBlock
         h2
             margin: .5em 0 .5em
@@ -137,4 +149,4 @@ $elHeight: 440px
     to
         opacity: 1
 .fadein
-    animation: fadein .5s forwards
+    animation: fadein 1s forwards
