@@ -629,23 +629,38 @@ function displayPriorityChart() {
 // RESULTS
 /////////////////////////////
 function displayResults() {
+  quizElement.innerHTML = null;
   let resultsBlock = document.createElement("div");
-  console.log(`${profile.name}'s Healing Journey`);
-  //detox
-  if (profile.sweat == false) {
-    console.log(
-      "Often overlooked, the body’s detoxification process is vital to keep us feeling our best. If you’re unclear on what detoxification is, perfect examples are sweat and sleep. When you sweat youe body is expelling toxins. When you sleep the space between your cells increases, thus increasing the flow of toxins being flushed out. The primary function of your liver, kidneys, and lungs is detoxification, if they’re bogged down, you’re not expelling toxicity out of your body efficiently. "
-    );
+  resultsBlock.id = "resultsBlock"
+  let resultHeader = document.createElement("h1");
+  resultHeader.innerHTML = `${profile.name}'s Healing Journey`;
+  resultsBlock.appendChild(resultHeader);
+  let fillerH2 = document.createElement("h2");
+  resultsBlock.appendChild(fillerH2);
+  let resultInfo = document.createElement("div");
+  //local
+  let localP = document.createElement("p");
+  if (profile.nearBelmar === "false" || profile.nearBelmar === "n/a") {
+    localP.innerHTML =
+      "At Integrative Wellness Group, we treat patients near and far. While telehealth is technically the term, we elevate the experience with personal touchpoints, virtual appointments, optional technology & treatment delivery, and much more.";
   } else {
-    console.log(
-      `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.`
-    );
+    localP.innerHTML =
+      "Located in Belmar, New Jersey, Integrative Wellness Group has a beautiful state of the art facility equipped with technology, chiropractic treatment, a full detoxification spa (infrared sauna, ionic foot bath, yoni steam, cupping), Demartini mental health treatment, and more. The feelings of tranquility are enhanced by the panoramic view of Belmar waterfront. If you’re local to the area, we would love to welcome you into our office to experience hands-on care & healing treatments on your journey.";
   }
-  if (profile.supplements) {
-    console.log(
-      `At Integrative Wellness Group, we pride ourselves on testing (not guessing). Through IRT (Integrative Response Testing), our team is able to ___ determine what supplements, services, and therapies will benefit you best at every stage of your wellness journey.`
-    );
+  resultInfo.appendChild(localP);
+  //detox
+  let sweatP = document.createElement("p");
+  if (profile.sweat === "false") {
+    sweatP.innerHTML =
+      "Often overlooked, the body’s detoxification process is vital to keep us feeling our best. If you’re unclear on what detoxification is, perfect examples are sweat and sleep. When you sweat youe body is expelling toxins. When you sleep the space between your cells increases, thus increasing the flow of toxins being flushed out. The primary function of your liver, kidneys, and lungs is detoxification, if they’re bogged down, you’re not expelling toxicity out of your body efficiently.";
+  } else {
+    sweatP.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.`;
   }
-  console.log("-");
+  resultInfo.appendChild(sweatP);
+
+  //pump it out
+  resultsBlock.appendChild(resultInfo);
+  resultsBlock.classList.add("fadein");
+  quizElement.appendChild(resultsBlock);
   console.log(profile);
 }
