@@ -37,15 +37,6 @@ const questions = [
     relyAnswer: null,
   },
   {
-    question: "TIP",
-    tip: "hello to you",
-    answer: "age",
-    multipleAnsAllow: false,
-    otherOption: false,
-    relyOnThisBeingTrue: null,
-    relyAnswer: null,
-  },
-  {
     question: "Select your age range",
     subQ: null,
     answer: "age",
