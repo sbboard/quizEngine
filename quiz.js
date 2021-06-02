@@ -284,6 +284,7 @@ function startQuiz() {
       }
     }
     let currentIndex = questions[currentQ];
+    //check if it depends on another question to display
     if (
       currentIndex.relyOnThisBeingTrue == null ||
       profile[currentIndex.relyOnThisBeingTrue] === "true" ||
@@ -292,7 +293,7 @@ function startQuiz() {
       //clear block
       quizBlock.innerHTML = null;
       quizBlock.classList.remove("fadein");
-
+      //check if it's NOT a tip
       if (currentIndex.question != "TIP") {
         //create question
         qHead.innerHTML = currentIndex.question;
@@ -450,43 +451,49 @@ function startQuiz() {
         quizBlock.classList.add("fadein");
         checkForSubmit();
       } else {
-        //styling for tip
-        qHead.innerHTML = null;
-        subQ.innerHTML = null;
-        let tipHere = document.createElement("div");
-        tipHere.id = "tip";
-        let refinedTip = currentIndex.tip
-        // if(refinedTip.indexOf('<v>') > -1){
-        //   let variabletoswap = refinedTip.slice(refinedTip.indexOf('<v>','</v>'))
-        //   let cleanedVariable = variabletoswap.replace('<v>','')
-        //   cleanedVariable = cleanedVariable.replace('</v>','')
-        //   refinedTip = refinedTip.replace(variabletoswap,profile[cleanedVariable])
-        // }
-        tipHere.innerHTML = refinedTip;
-        quizBlock.appendChild(tipHere);
+        if (isForward) {
+          //styling for tip
+          qHead.innerHTML = null;
+          subQ.innerHTML = null;
+          let tipHere = document.createElement("div");
+          tipHere.id = "tip";
+          let refinedTip = currentIndex.tip;
+          // if(refinedTip.indexOf('<v>') > -1){
+          //   let variabletoswap = refinedTip.slice(refinedTip.indexOf('<v>','</v>'))
+          //   let cleanedVariable = variabletoswap.replace('<v>','')
+          //   cleanedVariable = cleanedVariable.replace('</v>','')
+          //   refinedTip = refinedTip.replace(variabletoswap,profile[cleanedVariable])
+          // }
+          tipHere.innerHTML = refinedTip;
+          quizBlock.appendChild(tipHere);
 
-        //btns for tip
-        btnWrap.innerHTML = null;
-        let backBtn = document.createElement("button");
-        submitBtn.id = "nextBtn";
-        submitBtn.innerHTML = "next";
-        submitBtn.onclick = () => {
-          currentQ++;
-          progressBar.value = currentQ;
-          postQ(true);
-        };
-        submitBtn.type = "submit";
-        backBtn.innerHTML = "back";
-        backBtn.onclick = () => {
-          currentQ = currentQ - 1;
-          progressBar.value = currentQ;
-          postQ(false);
-        };
-        backBtn.type = "button";
-        btnWrap.appendChild(backBtn);
-        btnWrap.appendChild(submitBtn);
-        void quizBlock.offsetWidth;
-        quizBlock.classList.add("fadein");
+          //btns for tip
+          btnWrap.innerHTML = null;
+          let backBtn = document.createElement("button");
+          submitBtn.id = "nextBtn";
+          submitBtn.innerHTML = "next";
+          submitBtn.onclick = () => {
+            currentQ++;
+            progressBar.value = currentQ;
+            postQ(true);
+          };
+          submitBtn.type = "submit";
+          backBtn.innerHTML = "back";
+          backBtn.onclick = () => {
+            currentQ = currentQ - 1;
+            progressBar.value = currentQ;
+            postQ(false);
+          };
+          backBtn.type = "button";
+          btnWrap.appendChild(backBtn);
+          btnWrap.appendChild(submitBtn);
+          void quizBlock.offsetWidth;
+          quizBlock.classList.add("fadein");
+        } else {
+          let currentIndex = questions[currentQ];
+          profile[currentIndex.answer] = "n/a";
+          submitQ(isForward);
+        }
       }
     } else {
       let currentIndex = questions[currentQ];
