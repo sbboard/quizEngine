@@ -253,7 +253,7 @@ function startQuiz() {
   let progressBar = document.createElement("progress");
   progressBar.id = "quizProg";
   progressBar.value = currentQ;
-  progressBar.max = questions.length + 1;
+  progressBar.max = questions.length;
   let qHead = document.createElement("h1");
   quizElement.appendChild(qHead);
   let subQ = document.createElement("h2");
