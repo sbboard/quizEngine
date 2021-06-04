@@ -1,8 +1,18 @@
+html {
+  height: 100%;
+}
+html body {
+  height: 100%;
+}
+
 #quizParent {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url(https://integrativewellnessgroup.com/wp-content/uploads/2020/04/shutterstock_1661454901-scaled.jpg);
+  background-size: cover;
+  background-position: center;
 }
 #quizParent #quiz {
   display: block;
