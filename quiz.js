@@ -524,12 +524,19 @@ function startQuiz() {
           btnWrap.innerHTML = null;
           let backBtn = document.createElement("button");
           submitBtn.id = "nextBtn";
-          submitBtn.innerHTML = "next";
-          submitBtn.onclick = () => {
-            currentQ++;
-            progressBar.value = currentQ;
-            postQ(true);
-          };
+          if (currentQ < questions.length - 1) {
+            submitBtn.innerHTML = "next";
+            submitBtn.onclick = () => {
+              currentQ++;
+              progressBar.value = currentQ;
+              postQ(true);
+            };
+            submitBtn.type = "submit";
+          } else {
+            submitBtn.innerHTML = "next";
+            submitBtn.type = "submit";
+            submitBtn.onclick = displayPriorityChart;
+          }
           submitBtn.type = "submit";
           backBtn.innerHTML = "back";
           backBtn.onclick = () => {
