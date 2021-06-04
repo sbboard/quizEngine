@@ -43,6 +43,11 @@
 #quiz #quizBlock::-webkit-scrollbar-track {
   background: #222329;
 }
+#quiz #quizBlock #map {
+  margin-top: 1em;
+  width: 45%;
+  border-radius: 1em;
+}
 #quiz #quizBlock #tip {
   max-width: 24em;
   margin: 0 auto;

@@ -430,6 +430,15 @@ function startQuiz() {
         }
         //////////////////////////////////////
 
+        //post map of belmar
+        if (currentIndex.answer == "nearBelmar") {
+          let mapImage = document.createElement("img");
+          mapImage.src = "./quizAssets/map.jpg";
+          mapImage.alt = "Map of Belmar New Jersey";
+          mapImage.id = "map"
+          quizBlock.appendChild(mapImage);
+        }
+
         //create next / submit
         btnWrap.innerHTML = null;
         let backBtn = document.createElement("button");
