@@ -264,12 +264,13 @@ const questions = [
       "Socially... but not often",
       "No, I prefer 0-proof",
     ],
-    relyOnThisBeingTrue: null,
-    relyAnswer: null,
+    relyOnThisBeingTrue: "age",
+    relyAnswer: ["19-30", "31-45", "46-65", "65+"],
   },
   {
     question: "TIP",
-    relyOnThisBeingTrue: null,
+    relyOnThisBeingTrue: "age",
+    relyAnswer: ["19-30", "31-45", "46-65", "65+"],
     tip: `...Your liver is the filtration system that purifies your blood, removes toxins and produces bile?`,
   },
   {
@@ -329,10 +330,12 @@ function startQuiz() {
     }
     let currentIndex = questions[currentQ];
     //check if it depends on another question to display
+    console.log(currentIndex.relyAnswer,profile[currentIndex.relyOnThisBeingTrue])
     if (
       currentIndex.relyOnThisBeingTrue == null ||
       profile[currentIndex.relyOnThisBeingTrue] === "true" ||
-      profile[currentIndex.relyOnThisBeingTrue] === currentIndex.relyAnswer
+      profile[currentIndex.relyOnThisBeingTrue] === currentIndex.relyAnswer ||
+      (Array.isArray(currentIndex.relyAnswer) && currentIndex.relyAnswer.indexOf(profile[currentIndex.relyOnThisBeingTrue]) > -1)
     ) {
       //clear block
       quizBlock.innerHTML = null;
@@ -511,12 +514,6 @@ function startQuiz() {
           let tipHere = document.createElement("div");
           tipHere.id = "tip";
           let refinedTip = currentIndex.tip;
-          // if(refinedTip.indexOf('<v>') > -1){
-          //   let variabletoswap = refinedTip.slice(refinedTip.indexOf('<v>','</v>'))
-          //   let cleanedVariable = variabletoswap.replace('<v>','')
-          //   cleanedVariable = cleanedVariable.replace('</v>','')
-          //   refinedTip = refinedTip.replace(variabletoswap,profile[cleanedVariable])
-          // }
           tipHere.innerHTML = refinedTip;
           quizBlock.appendChild(tipHere);
 
