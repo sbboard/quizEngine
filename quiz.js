@@ -21,6 +21,7 @@ let profile = {
   dailyBowel: null,
   smoke: null,
   pregnant: null,
+  pregnantOption: null,
   drink: null,
   supplements: null,
   goals: { top: null, mid: null, low: null },
@@ -63,6 +64,17 @@ const questions = [
     relyAnswer: null,
   },
   {
+    question: "PROMPT",
+    subQ: null,
+    relyOnThisBeingTrue: "gender",
+    relyAnswer: "Female",
+    answer: "pregnantOption",
+    options: [
+      "Continue to Pregnancy, Postpartum & Fertility Goals",
+      "Skip & Continue with Quiz",
+    ],
+  },
+  {
     question: "Do you have upcoming pregnancy goals?",
     subQ: null,
     answer: "pregnant",
@@ -74,13 +86,13 @@ const questions = [
       "Postpartum",
       "None of the above",
     ],
-    relyOnThisBeingTrue: "gender",
-    relyAnswer: "Female",
+    relyOnThisBeingTrue: "pregnantOption",
+    relyAnswer: null,
   },
   {
     question: "TIP",
-    relyOnThisBeingTrue: "gender",
-    relyAnswer: "Female",
+    relyOnThisBeingTrue: "pregnantOption",
+    relyAnswer: null,
     tip: `...Your uterus stretches up to 500 times its original size?`,
   },
   {
@@ -330,18 +342,20 @@ function startQuiz() {
     }
     let currentIndex = questions[currentQ];
     //check if it depends on another question to display
-    console.log(currentIndex.relyAnswer,profile[currentIndex.relyOnThisBeingTrue])
     if (
       currentIndex.relyOnThisBeingTrue == null ||
       profile[currentIndex.relyOnThisBeingTrue] === "true" ||
       profile[currentIndex.relyOnThisBeingTrue] === currentIndex.relyAnswer ||
-      (Array.isArray(currentIndex.relyAnswer) && currentIndex.relyAnswer.indexOf(profile[currentIndex.relyOnThisBeingTrue]) > -1)
+      (Array.isArray(currentIndex.relyAnswer) &&
+        currentIndex.relyAnswer.indexOf(
+          profile[currentIndex.relyOnThisBeingTrue]
+        ) > -1)
     ) {
       //clear block
       quizBlock.innerHTML = null;
       quizBlock.classList.remove("fadein");
-      //check if it's NOT a tip
-      if (currentIndex.question != "TIP") {
+      //check if it's NOT a tip or prompt
+      if (currentIndex.question != "TIP" && currentIndex.question != "PROMPT") {
         //create question
         qHead.innerHTML = currentIndex.question;
 
@@ -506,6 +520,44 @@ function startQuiz() {
         void quizBlock.offsetWidth;
         quizBlock.classList.add("fadein");
         checkForSubmit();
+      } else if (currentIndex.question == "PROMPT") {
+        if (isForward) {
+          qHead.innerHTML = null;
+          subQ.innerHTML = null;
+
+          btnWrap.innerHTML = null;
+          let backBtn = document.createElement("button");
+          backBtn.id = "promptOne";
+          backBtn.innerHTML = currentIndex.options[0];
+          backBtn.onclick = () => {
+            profile[currentIndex.answer] = "true"
+            submitBtn.onclick = submitQ(isForward);
+            quizBlock.classList.remove("hidden")
+            btnWrap.classList.remove("mainView")
+          };
+          backBtn.type = "button";
+
+          submitBtn.id = "promptTwo";
+          submitBtn.innerHTML = currentIndex.options[1];
+          submitBtn.onclick = () => {
+            profile[currentIndex.answer] = "false"
+            submitBtn.onclick = submitQ(isForward);
+            quizBlock.classList.remove("hidden")
+            btnWrap.classList.remove("mainView")
+          };
+          submitBtn.type = "submit";
+
+          btnWrap.appendChild(backBtn);
+          btnWrap.appendChild(submitBtn);
+          void quizBlock.offsetWidth;
+          quizBlock.classList.add("hidden")
+          btnWrap.classList.add("mainView")
+          btnWrap.classList.add("fadein");
+        } else {
+          let currentIndex = questions[currentQ];
+          profile[currentIndex.answer] = "n/a";
+          submitQ(isForward);
+        }
       } else {
         if (isForward) {
           //styling for tip
@@ -528,10 +580,8 @@ function startQuiz() {
               progressBar.value = currentQ;
               postQ(true);
             };
-            submitBtn.type = "submit";
           } else {
             submitBtn.innerHTML = "next";
-            submitBtn.type = "submit";
             submitBtn.onclick = displayPriorityChart;
           }
           submitBtn.type = "submit";

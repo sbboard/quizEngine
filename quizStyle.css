@@ -49,6 +49,9 @@ html body {
   height: calc(440px - 6em);
   overflow-y: auto;
 }
+#quizParent #quiz #quizBlock.hidden {
+  display: none !important;
+}
 #quizParent #quiz #quizBlock::-webkit-scrollbar {
   width: 1em;
 }
@@ -145,6 +148,14 @@ html body {
 }
 #quizParent #quiz #btnWrap {
   display: block;
+}
+#quizParent #quiz #btnWrap.mainView {
+  height: calc(440px - 6em);
+  display: inline-flex;
+}
+#quizParent #quiz #btnWrap.mainView button {
+  width: 13em;
+  height: 6em;
 }
 #quizParent #quiz button {
   background-color: #AFD6C1;
