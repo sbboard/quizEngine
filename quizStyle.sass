@@ -1,157 +1,161 @@
 $thatYellow: #AFD6C1 //it's actually green now so
 $thatBlack: #222329
 $elHeight: 440px
-
-#quiz
-    display: block
-    color: $thatBlack
-    text-align: center
-    max-width: 750px
-    margin: 2.25em auto
-    height: calc(600px - 4.5em)
-    font-family: 'Lato', sans-serif
-    #introCopy
+#quizParent
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    #quiz
         display: block
-        width: 67%
-        margin: 2em auto 1em auto
-        text-align: left
-    progress#quizProg
-        background-color: #000
-        width: 20.5em
-        margin-top: 1em
-        border-radius: .5em
-        overflow: hidden
-        &::-webkit-progress-value
-            transition: width 0.5s ease-out
-            background: $thatYellow
-        &::-webkit-progress-bar
-            background-color: $thatBlack
-    #quizBlock
-        margin: 0 auto
-        opacity: 0
-        height: calc(440px - 6em)
-        overflow-y: auto
-        &::-webkit-scrollbar
-            width: 1em
-        &::-webkit-scrollbar-thumb
-            background: $thatYellow
-            border: solid $thatYellow 1px
-        &::-webkit-scrollbar-track
-            background: $thatBlack
-        #map
-            margin-top: 1em
-            width: 45%
-            border-radius: 1em
-        #tip
-            max-width: 24em
-            margin: 0 auto
-            font-family: 'Playfair Display'
-            font-size: 1.25em
+        color: $thatBlack
+        text-align: center
+        max-width: 750px
+        margin: 2.25em auto
+        height: calc(600px - 4.5em)
+        font-family: 'Lato', sans-serif
+        #introCopy
+            display: block
+            width: 67%
+            margin: 2em auto 1em auto
             text-align: left
-        input
-            padding: .5em
-            width: 22em
-            &#otherInput
-                width: initial
-                padding: 0
-                border: 0
-                border-bottom: 1px solid $thatBlack
-                background-color: initial
-                color: inherit
-                pointer-events: none
-                text-align: center
-                &:focus
+        progress#quizProg
+            background-color: #000
+            width: 20.5em
+            margin-top: 1em
+            border-radius: .5em
+            overflow: hidden
+            &::-webkit-progress-value
+                transition: width 0.5s ease-out
+                background: $thatYellow
+            &::-webkit-progress-bar
+                background-color: $thatBlack
+        #quizBlock
+            margin: 0 auto
+            opacity: 0
+            height: calc(440px - 6em)
+            overflow-y: auto
+            &::-webkit-scrollbar
+                width: 1em
+            &::-webkit-scrollbar-thumb
+                background: $thatYellow
+                border: solid $thatYellow 1px
+            &::-webkit-scrollbar-track
+                background: $thatBlack
+            #map
+                margin-top: 1em
+                width: 45%
+                border-radius: 1em
+            #tip
+                max-width: 24em
+                margin: 0 auto
+                font-family: 'Playfair Display'
+                font-size: 1.25em
+                text-align: left
+            input
+                padding: .5em
+                width: 22em
+                &#otherInput
+                    width: initial
+                    padding: 0
                     border: 0
                     border-bottom: 1px solid $thatBlack
-                    outline: none !important
-                    
-        input[type="radio"]
-            width: initial
-        input[type="checkbox"]
-            width: initial
-        label
-            display: inline
-            &::before
-                content: " "
-        .opWrap
-            text-align: center
-            width: 21em
-            padding: .5em
-            cursor: pointer
-            margin: .5em auto
-            transition: background-color .15s, color .15s
-            text-transform: capitalize
-            border: 1px solid $thatBlack
-            border-radius: .5em
-            &:last-of-type
-                margin: .5em auto 0 auto
-            &.selected
-                background-color: $thatYellow
-                border: 1px solid $thatYellow
-                &:hover
+                    background-color: initial
+                    color: inherit
+                    pointer-events: none
+                    text-align: center
+                    &:focus
+                        border: 0
+                        border-bottom: 1px solid $thatBlack
+                        outline: none !important
+                        
+            input[type="radio"]
+                width: initial
+            input[type="checkbox"]
+                width: initial
+            label
+                display: inline
+                &::before
+                    content: " "
+            .opWrap
+                text-align: center
+                width: 21em
+                padding: .5em
+                cursor: pointer
+                margin: .5em auto
+                transition: background-color .15s, color .15s
+                text-transform: capitalize
+                border: 1px solid $thatBlack
+                border-radius: .5em
+                &:last-of-type
+                    margin: .5em auto 0 auto
+                &.selected
                     background-color: $thatYellow
+                    border: 1px solid $thatYellow
+                    &:hover
+                        background-color: $thatYellow
+                &:hover
+                    color: white
+                    background-color: $thatBlack
+                        
+        h1
+            font-weight: 800
+            text-transform: capitalize
+            height: 1em
+            margin-bottom: 0
+            color: $thatBlack
+            font-family: 'Playfair Display', serif
+        h2
+            font-family: 'Playfair Display', serif
+            margin-top: .5em
+            height: 1em
+            font-weight: 400
+            text-transform: capitalize
+            color: $thatBlack
+        #btnWrap
+            display: block
+        button
+            background-color: $thatYellow
+            color: $thatBlack
+            border: 0
+            padding: 0.75em
+            text-transform: capitalize
+            width: 10em
+            display: inline-block
+            margin: 1em .25em 0 .25em
+            transition: color .15s, background-color .15s, opacity .15s
+            border-radius: .5em
             &:hover
                 color: white
                 background-color: $thatBlack
-                    
-    h1
-        font-weight: 800
-        text-transform: capitalize
-        height: 1em
-        margin-bottom: 0
-        color: $thatBlack
-        font-family: 'Playfair Display', serif
-    h2
-        font-family: 'Playfair Display', serif
-        margin-top: .5em
-        height: 1em
-        font-weight: 400
-        text-transform: capitalize
-        color: $thatBlack
-    #btnWrap
-        display: block
-    button
-        background-color: $thatYellow
-        color: $thatBlack
-        border: 0
-        padding: 0.75em
-        text-transform: capitalize
-        width: 10em
-        display: inline-block
-        margin: 1em .25em 0 .25em
-        transition: color .15s, background-color .15s, opacity .15s
-        border-radius: .5em
-        &:hover
-            color: white
-            background-color: $thatBlack
-        &:disabled
-            opacity: .5
-            color: black
-            &:hover
-                background-color: $thatYellow
-    #goalBlock
-        h2
-            margin: .5em 0 .5em
-        #goalTable
-            .tableRow
-                border-top: 1px solid $thatBlack
-                margin: 0 auto
-                width: 500px
-                label
-                    width: 14em
+            &:disabled
+                opacity: .5
+                color: black
+                &:hover
+                    background-color: $thatYellow
+        #goalBlock
+            h2
+                margin: .5em 0 .5em
+            #goalTable
+                .tableRow
+                    border-top: 1px solid $thatBlack
+                    margin: 0 auto
+                    width: 500px
+                    label
+                        width: 14em
+                        display: inline-block
+                .topRow
+                    border-top: 0
+                span, input
+                    width: 1em
+                    font-size: 1em
+                    height: 1em
                     display: inline-block
-            .topRow
-                border-top: 0
-            span, input
-                width: 1em
-                font-size: 1em
-                height: 1em
-                display: inline-block
-                text-align: center
-                margin: .25em
-    #resultsBlock
-        max-width: 40em
-        margin: 0 auto
+                    text-align: center
+                    margin: .25em
+        #resultsBlock
+            max-width: 40em
+            margin: 0 auto
 @keyframes fadein
     from
         opacity: 0

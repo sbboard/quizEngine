@@ -48,6 +48,11 @@ const questions = [
     relyAnswer: null,
   },
   {
+    question: "TIP",
+    relyOnThisBeingTrue: null,
+    tip: `...The fastest growing nail is on the middle finger?`,
+  },
+  {
     question: "Gender",
     subQ: null,
     answer: "gender",
@@ -71,6 +76,12 @@ const questions = [
     ],
     relyOnThisBeingTrue: "gender",
     relyAnswer: "Female",
+  },
+  {
+    question: "TIP",
+    relyOnThisBeingTrue: "gender",
+    relyAnswer: "Female",
+    tip: `...Your uterus stretches up to 500 times its original size?`,
   },
   {
     question: "What's your Level of commitment?",
@@ -110,7 +121,7 @@ const questions = [
     relyAnswer: null,
   },
   {
-    question: "Have you previously been to a function medicine practitioner?",
+    question: "Have you previously been to a functional medicine practitioner?",
     subQ: null,
     answer: "previous",
     multipleAnsAllow: false,
@@ -118,6 +129,11 @@ const questions = [
     options: yesNo,
     relyOnThisBeingTrue: null,
     relyAnswer: null,
+  },
+  {
+    question: "TIP",
+    relyOnThisBeingTrue: null,
+    tip: `...That at IWG we use a hair sample to understand your body’s genetic makeup?`,
   },
   {
     question: "Enter your email so we can send you results:",
@@ -167,6 +183,11 @@ const questions = [
     relyAnswer: null,
   },
   {
+    question: "TIP",
+    relyOnThisBeingTrue: null,
+    tip: `...Vitamin C enhances the absorption of iron, that’s why you should always add citrus to your leafy greens and animal proteins? Pro tip: enjoy dark chocolate oranges for dessert!`,
+  },
+  {
     question:
       "How often do you incorporate exercise, activity or movement into your week?",
     subQ: null,
@@ -183,6 +204,11 @@ const questions = [
     relyAnswer: null,
   },
   {
+    question: "TIP",
+    relyOnThisBeingTrue: null,
+    tip: `...That as little as one exercise session can improve your mood, memory and focus?`,
+  },
+  {
     question: "What intensity level is your exercise?",
     subQ: null,
     answer: "exIntense",
@@ -195,6 +221,11 @@ const questions = [
     ],
     relyOnThisBeingTrue: null,
     relyAnswer: null,
+  },
+  {
+    question: "TIP",
+    relyOnThisBeingTrue: null,
+    tip: `...Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry which can increase recovery time?`,
   },
   {
     question:
@@ -220,7 +251,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    tip: `Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry. With repeated scheduled treatments, the temporary extra high oxygen levels encourage normal tissue oxygen levels, even after the therapy is completed.`,
+    tip: `...Sweat is odorless and colorless but when it reacts with bacteria on your skin it creates the odor and color known as B.O.?`,
   },
   {
     question: "Do you drink? If so, how often?",
@@ -237,6 +268,11 @@ const questions = [
     relyAnswer: null,
   },
   {
+    question: "TIP",
+    relyOnThisBeingTrue: null,
+    tip: `...Your liver is the filtration system that purifies your blood, removes toxins and produces bile?`,
+  },
+  {
     question: "Do you take any supplements?",
     subQ: null,
     answer: "supplements",
@@ -245,6 +281,11 @@ const questions = [
     options: yesNo,
     relyOnThisBeingTrue: null,
     relyAnswer: null,
+  },
+  {
+    question: "TIP",
+    relyOnThisBeingTrue: null,
+    tip: `...Turmeric’s main compound curmunin is “activated” by black pepper’s piperine providing anti inflammatory benefits?`,
   },
 ];
 
@@ -435,7 +476,7 @@ function startQuiz() {
           let mapImage = document.createElement("img");
           mapImage.src = "./quizAssets/map.jpg";
           mapImage.alt = "Map of Belmar New Jersey";
-          mapImage.id = "map"
+          mapImage.id = "map";
           quizBlock.appendChild(mapImage);
         }
 
@@ -465,7 +506,7 @@ function startQuiz() {
       } else {
         if (isForward) {
           //styling for tip
-          qHead.innerHTML = null;
+          qHead.innerHTML = "Did you know…";
           subQ.innerHTML = null;
           let tipHere = document.createElement("div");
           tipHere.id = "tip";
