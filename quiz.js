@@ -386,6 +386,10 @@ function startQuiz() {
           if (currentIndex.answer == "email") {
             qInput.type = "email";
           }
+          else{
+            qInput.type = "text"
+          }
+          
           if (profile[currentIndex.answer] != null) {
             qInput.value = profile[currentIndex.answer];
           }
@@ -602,7 +606,6 @@ function startQuiz() {
           };
         } else {
           submitBtn.innerHTML = "next";
-          qHead.classList.remove("tiphead");
           submitBtn.onclick = displayPriorityChart;
         }
         submitBtn.type = "submit";
@@ -785,8 +788,11 @@ function displayPriorityChart() {
   endBtn.onclick = displayResults;
   endBtn.innerHTML = "finish";
   endBtn.id = "nextBtn";
+  let newBtnWrap = document.createElement("div")
+  newBtnWrap.id = "btnWrap"
 
-  goalBlock.appendChild(endBtn);
+  newBtnWrap.appendChild(endBtn);
+  goalBlock.appendChild(newBtnWrap);
   goalBlock.classList.add("fadein");
 
   quizElement.appendChild(goalBlock);

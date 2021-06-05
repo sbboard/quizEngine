@@ -8,30 +8,33 @@ html
         height: 100%
 #quizParent
     height: 100%
-    display: flex
+    font-size: 1.125em
+    padding: 4em 0 6em 0
     justify-content: center
     align-items: center
     background-image: url(https://integrativewellnessgroup.com/wp-content/uploads/2020/04/shutterstock_1661454901-scaled.jpg)
     background-size: cover
     background-position: center
-    min-height: calc(600px - 2.5em)
     position: relative
     #quiz
         display: block
         color: $thatBlack
+        margin: 0 auto
         text-align: center
         max-width: 750px
-        margin: 2.25em auto 8em auto
+        height: 100%
         font-family: 'Lato', sans-serif
-        #introCopy
+        .introCopy
             display: block
-            width: 67%
+            width: 80%
             margin: 2em auto 1em auto
             text-align: left
+            strong
+                font-weight: 600
         progress#quizProg
             background-color: #000
             width: 20.5em
-            border-radius: .5em
+            border-radius: 2em
             overflow: hidden
             background-color: #000
             margin: 1em auto
@@ -47,8 +50,8 @@ html
         #quizBlock
             margin: 0 auto
             opacity: 0
-            height: 100%
             overflow-y: auto
+            max-height: calc(100% - 9em)
             &.hidden
                 display: none !important
             &::-webkit-scrollbar
@@ -60,25 +63,31 @@ html
                 background: $thatBlack
             #map
                 margin-top: 1em
-                width: 45%
+                width: 21em
                 border-radius: 1em
             #tip
                 max-width: 24em
-                margin: 0 auto
+                margin: 0em auto 3em auto
                 font-family: 'Playfair Display'
                 font-size: 1.25em
                 text-align: left
             input
                 padding: .5em
                 width: 22em
+                padding: 0.5em
+                font-size: inherit !important
+                width: 22em
+                height: inherit
+                letter-spacing: normal !important
                 &#otherInput
-                    width: initial
+                    width: 9em
                     padding: 0
                     border: 0
                     border-bottom: 1px solid $thatBlack
                     background-color: initial
                     color: inherit
                     pointer-events: none
+                    height: auto
                     text-align: center
                     &:focus
                         border: 0
@@ -102,12 +111,13 @@ html
                 transition: background-color .15s, color .15s
                 text-transform: capitalize
                 border: 1px solid $thatBlack
-                border-radius: .5em
+                border-radius: 2em
                 position: relative
                 &.checklist
                     padding: .5em .5em .5em 4em
                     display: inline-block
                     margin: 0.5em
+                    width: 47%
                     height: 4em
                     text-align: left
                     vertical-align: middle
@@ -123,7 +133,7 @@ html
                             position: absolute
                             left: 1.5rem
                             color: $thatYellow
-                            border-radius: .25rem
+                            border-radius: 2rem
                             transition: border .15s
                             background-color: white
                             border: 1px solid $thatBlack
@@ -149,12 +159,16 @@ html
         h1
             font-weight: 800
             text-transform: capitalize
-            height: 1em
+            max-width: 18em
             margin-bottom: 0
             color: $thatBlack
+            margin: 0 auto
             font-family: 'Playfair Display', serif
+            font-size: 2em
             &.tiphead
                 text-align: left
+            &.startScreen
+                max-width: 14em
         h2
             font-family: 'Playfair Display', serif
             margin-top: .5em
@@ -173,8 +187,8 @@ html
                 display: inline-flex
                 position: inherit
                 button
-                    width: 13em
-                    height: 6em
+                    width: 14em
+                    height: 5em
         button
             background-color: $thatYellow
             color: $thatBlack
@@ -185,7 +199,7 @@ html
             display: inline-block
             margin: 1em .25em 0 .25em
             transition: color .15s, background-color .15s, opacity .15s
-            border-radius: .5em
+            border-radius: 2em
             &:hover
                 color: white
                 background-color: $thatBlack
@@ -195,6 +209,10 @@ html
                 &:hover
                     background-color: $thatYellow
         #goalBlock
+            margin: 0 auto
+            opacity: 0
+            overflow-y: auto
+            max-height: calc(100% - 9em)
             h2
                 margin: .5em 0 .5em
             #goalTable
@@ -202,7 +220,8 @@ html
                     margin: 0 auto
                     width: 500px
                     label
-                        width: 14em
+                        text-align: left
+                        width: 22em
                         display: inline-block
                 .topRow
                     border-top: 0

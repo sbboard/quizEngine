@@ -8,33 +8,37 @@ html body {
 
 #quizParent {
   height: 100%;
-  display: flex;
+  font-size: 1.125em;
+  padding: 4em 0 6em 0;
   justify-content: center;
   align-items: center;
   background-image: url(https://integrativewellnessgroup.com/wp-content/uploads/2020/04/shutterstock_1661454901-scaled.jpg);
   background-size: cover;
   background-position: center;
-  min-height: calc(600px - 2.5em);
   position: relative;
 }
 #quizParent #quiz {
   display: block;
   color: #222329;
+  margin: 0 auto;
   text-align: center;
   max-width: 750px;
-  margin: 2.25em auto 8em auto;
+  height: 100%;
   font-family: "Lato", sans-serif;
 }
-#quizParent #quiz #introCopy {
+#quizParent #quiz .introCopy {
   display: block;
-  width: 67%;
+  width: 80%;
   margin: 2em auto 1em auto;
   text-align: left;
+}
+#quizParent #quiz .introCopy strong {
+  font-weight: 600;
 }
 #quizParent #quiz progress#quizProg {
   background-color: #000;
   width: 20.5em;
-  border-radius: 0.5em;
+  border-radius: 2em;
   overflow: hidden;
   background-color: #000;
   margin: 1em auto;
@@ -53,8 +57,8 @@ html body {
 #quizParent #quiz #quizBlock {
   margin: 0 auto;
   opacity: 0;
-  height: 100%;
   overflow-y: auto;
+  max-height: calc(100% - 9em);
 }
 #quizParent #quiz #quizBlock.hidden {
   display: none !important;
@@ -71,12 +75,12 @@ html body {
 }
 #quizParent #quiz #quizBlock #map {
   margin-top: 1em;
-  width: 45%;
+  width: 21em;
   border-radius: 1em;
 }
 #quizParent #quiz #quizBlock #tip {
   max-width: 24em;
-  margin: 0 auto;
+  margin: 0em auto 3em auto;
   font-family: "Playfair Display";
   font-size: 1.25em;
   text-align: left;
@@ -84,15 +88,21 @@ html body {
 #quizParent #quiz #quizBlock input {
   padding: 0.5em;
   width: 22em;
+  padding: 0.5em;
+  font-size: inherit !important;
+  width: 22em;
+  height: inherit;
+  letter-spacing: normal !important;
 }
 #quizParent #quiz #quizBlock input#otherInput {
-  width: initial;
+  width: 9em;
   padding: 0;
   border: 0;
   border-bottom: 1px solid #222329;
   background-color: initial;
   color: inherit;
   pointer-events: none;
+  height: auto;
   text-align: center;
 }
 #quizParent #quiz #quizBlock input#otherInput:focus {
@@ -121,13 +131,14 @@ html body {
   transition: background-color 0.15s, color 0.15s;
   text-transform: capitalize;
   border: 1px solid #222329;
-  border-radius: 0.5em;
+  border-radius: 2em;
   position: relative;
 }
 #quizParent #quiz #quizBlock .opWrap.checklist {
   padding: 0.5em 0.5em 0.5em 4em;
   display: inline-block;
   margin: 0.5em;
+  width: 47%;
   height: 4em;
   text-align: left;
   vertical-align: middle;
@@ -145,7 +156,7 @@ html body {
   position: absolute;
   left: 1.5rem;
   color: #AFD6C1;
-  border-radius: 0.25rem;
+  border-radius: 2rem;
   transition: border 0.15s;
   background-color: white;
   border: 1px solid #222329;
@@ -175,13 +186,18 @@ html body {
 #quizParent #quiz h1 {
   font-weight: 800;
   text-transform: capitalize;
-  height: 1em;
+  max-width: 18em;
   margin-bottom: 0;
   color: #222329;
+  margin: 0 auto;
   font-family: "Playfair Display", serif;
+  font-size: 2em;
 }
 #quizParent #quiz h1.tiphead {
   text-align: left;
+}
+#quizParent #quiz h1.startScreen {
+  max-width: 14em;
 }
 #quizParent #quiz h2 {
   font-family: "Playfair Display", serif;
@@ -204,8 +220,8 @@ html body {
   position: inherit;
 }
 #quizParent #quiz #btnWrap.mainView button {
-  width: 13em;
-  height: 6em;
+  width: 14em;
+  height: 5em;
 }
 #quizParent #quiz button {
   background-color: #AFD6C1;
@@ -217,7 +233,7 @@ html body {
   display: inline-block;
   margin: 1em 0.25em 0 0.25em;
   transition: color 0.15s, background-color 0.15s, opacity 0.15s;
-  border-radius: 0.5em;
+  border-radius: 2em;
 }
 #quizParent #quiz button:hover {
   color: white;
@@ -230,6 +246,12 @@ html body {
 #quizParent #quiz button:disabled:hover {
   background-color: #AFD6C1;
 }
+#quizParent #quiz #goalBlock {
+  margin: 0 auto;
+  opacity: 0;
+  overflow-y: auto;
+  max-height: calc(100% - 9em);
+}
 #quizParent #quiz #goalBlock h2 {
   margin: 0.5em 0 0.5em;
 }
@@ -238,7 +260,8 @@ html body {
   width: 500px;
 }
 #quizParent #quiz #goalBlock #goalTable .tableRow label {
-  width: 14em;
+  text-align: left;
+  width: 22em;
   display: inline-block;
 }
 #quizParent #quiz #goalBlock #goalTable .topRow {
