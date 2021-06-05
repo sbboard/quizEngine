@@ -137,8 +137,8 @@ html body {
 #quizParent #quiz #quizBlock .opWrap.checklist {
   padding: 0.5em 0.5em 0.5em 4em;
   display: inline-block;
-  margin: 0.5em;
-  width: 47%;
+  margin: 0.25em;
+  width: 48%;
   height: 4em;
   text-align: left;
   vertical-align: middle;
@@ -218,6 +218,7 @@ html body {
 #quizParent #quiz #btnWrap.mainView {
   display: inline-flex;
   position: inherit;
+  margin-top: 4em;
 }
 #quizParent #quiz #btnWrap.mainView button {
   width: 14em;
@@ -276,8 +277,20 @@ html body {
   margin: 0.25em;
 }
 #quizParent #quiz #resultsBlock {
-  max-width: 40em;
   margin: 0 auto;
+  opacity: 0;
+}
+#quizParent #quiz #resultsBlock button {
+  width: 25em;
+  padding: 1em;
+  border-radius: 2em;
+}
+#quizParent #quiz #resultsBlock h1 {
+  margin: 1em 0 0.5em 0;
+  text-align: left;
+}
+#quizParent #quiz #resultsBlock p {
+  text-align: left;
 }
 
 @keyframes fadein {
