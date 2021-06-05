@@ -39,6 +39,29 @@ const questions = [
     relyAnswer: null,
   },
   {
+    question: "Check off all you’ve been diagnosed with or are dealing with:",
+    subQ: "(select all that apply)",
+    answer: "diagnose",
+    multipleAnsAllow: true,
+    otherOption: true,
+    options: [
+      "Cancer",
+      "Lyme",
+      "Gut Issues (IBS, Celiac, Crohn's, etc.)",
+      "Neurological (ALS, MS, ADD, PTSD, etc.)",
+      "Skin Issues (Cystic Acne, Psoriasis, Thinning Skin, Sun Damage etc.)",
+      "Mystery Illness",
+      "Chronic Pain",
+      "Hormonal (PCOS, Cycle Issues, Endometriosis, etc.)",
+      "Breast Tissue or Lymphatic Abnormality",
+      "Mental Health (Depression, Anxiety, OCD, etc.)",
+      "Surgery Within Past 1 Year",
+      "None",
+    ],
+    relyOnThisBeingTrue: null,
+    relyAnswer: null,
+  },
+  {
     question: "Select your age range:",
     subQ: null,
     answer: "age",
@@ -391,14 +414,16 @@ function startQuiz() {
           currentIndex.options.map((v) => {
             let optionWrap = document.createElement("div");
             optionWrap.classList.add("opWrap");
+            let spanWrap = document.createElement("span")
             //change option text if boolean
             if (typeof v === "boolean") {
               v
-                ? (optionWrap.innerHTML = "Yes")
-                : (optionWrap.innerHTML = "No");
+                ? (spanWrap.innerHTML = "Yes")
+                : (spanWrap.innerHTML = "No");
             } else {
-              optionWrap.innerHTML = v;
+              spanWrap.innerHTML = v;
             }
+            optionWrap.appendChild(spanWrap)
             //check if it's been filled in already
             if (currentIndex.multipleAnsAllow == false) {
               if (profile[currentIndex.answer] == v) {
@@ -408,6 +433,10 @@ function startQuiz() {
               if (profile[currentIndex.answer].indexOf(v) > -1) {
                 optionWrap.classList.add("selected");
               }
+            }
+
+            if (currentIndex.multipleAnsAllow == true) {
+              optionWrap.classList.add("checklist");
             }
 
             optionWrap.onclick = () => {
@@ -455,6 +484,9 @@ function startQuiz() {
             //creating the element
             let optionWrap = document.createElement("div");
             optionWrap.classList.add("opWrap");
+            if (currentIndex.multipleAnsAllow == true) {
+              optionWrap.classList.add("checklist");
+            }
 
             //on click
             optionWrap.onclick = function (e) {
@@ -530,28 +562,28 @@ function startQuiz() {
           backBtn.id = "promptOne";
           backBtn.innerHTML = currentIndex.options[0];
           backBtn.onclick = () => {
-            profile[currentIndex.answer] = "true"
+            profile[currentIndex.answer] = "true";
             submitBtn.onclick = submitQ(isForward);
-            quizBlock.classList.remove("hidden")
-            btnWrap.classList.remove("mainView")
+            quizBlock.classList.remove("hidden");
+            btnWrap.classList.remove("mainView");
           };
           backBtn.type = "button";
 
           submitBtn.id = "promptTwo";
           submitBtn.innerHTML = currentIndex.options[1];
           submitBtn.onclick = () => {
-            profile[currentIndex.answer] = "false"
+            profile[currentIndex.answer] = "false";
             submitBtn.onclick = submitQ(isForward);
-            quizBlock.classList.remove("hidden")
-            btnWrap.classList.remove("mainView")
+            quizBlock.classList.remove("hidden");
+            btnWrap.classList.remove("mainView");
           };
           submitBtn.type = "submit";
 
           btnWrap.appendChild(backBtn);
           btnWrap.appendChild(submitBtn);
           void quizBlock.offsetWidth;
-          quizBlock.classList.add("hidden")
-          btnWrap.classList.add("mainView")
+          quizBlock.classList.add("hidden");
+          btnWrap.classList.add("mainView");
           btnWrap.classList.add("fadein");
         } else {
           let currentIndex = questions[currentQ];
@@ -562,6 +594,7 @@ function startQuiz() {
         if (isForward) {
           //styling for tip
           qHead.innerHTML = "Did you know…";
+          qHead.classList.add("tiphead");
           subQ.innerHTML = null;
           let tipHere = document.createElement("div");
           tipHere.id = "tip";
@@ -579,9 +612,11 @@ function startQuiz() {
               currentQ++;
               progressBar.value = currentQ;
               postQ(true);
+              qHead.classList.remove("tiphead");
             };
           } else {
             submitBtn.innerHTML = "next";
+            qHead.classList.remove("tiphead");
             submitBtn.onclick = displayPriorityChart;
           }
           submitBtn.type = "submit";
@@ -590,6 +625,7 @@ function startQuiz() {
             currentQ = currentQ - 1;
             progressBar.value = currentQ;
             postQ(false);
+            qHead.classList.remove("tiphead");
           };
           backBtn.type = "button";
           btnWrap.appendChild(backBtn);
