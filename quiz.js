@@ -310,7 +310,7 @@ function startQuiz() {
   let progressBar = document.createElement("progress");
   progressBar.id = "quizProg";
   //amount of QUESTIONS previous to this one
-  progressBar.value = 0
+  progressBar.value = 0;
   function updateProgressbar() {
     progressBar.value = questions.filter(
       (obj, index) =>
@@ -385,11 +385,10 @@ function startQuiz() {
           let qInput = document.createElement("input");
           if (currentIndex.answer == "email") {
             qInput.type = "email";
+          } else {
+            qInput.type = "text";
           }
-          else{
-            qInput.type = "text"
-          }
-          
+
           if (profile[currentIndex.answer] != null) {
             qInput.value = profile[currentIndex.answer];
           }
@@ -600,7 +599,7 @@ function startQuiz() {
           submitBtn.innerHTML = "next";
           submitBtn.onclick = () => {
             currentQ++;
-            updateProgressbar()
+            updateProgressbar();
             postQ(true);
             qHead.classList.remove("tiphead");
           };
@@ -612,7 +611,7 @@ function startQuiz() {
         backBtn.innerHTML = "back";
         backBtn.onclick = () => {
           currentQ = currentQ - 1;
-          updateProgressbar()
+          updateProgressbar();
           postQ(false);
           qHead.classList.remove("tiphead");
         };
@@ -653,11 +652,11 @@ function startQuiz() {
       ) {
         if (isForward) {
           currentQ++;
-          updateProgressbar()
+          updateProgressbar();
           postQ(true);
         } else {
           currentQ = currentQ - 1;
-          updateProgressbar()
+          updateProgressbar();
           postQ(false);
         }
       }
@@ -666,7 +665,7 @@ function startQuiz() {
 
   function backQ() {
     currentQ = currentQ - 1;
-    updateProgressbar()
+    updateProgressbar();
     postQ(false);
   }
 
@@ -788,8 +787,8 @@ function displayPriorityChart() {
   endBtn.onclick = displayResults;
   endBtn.innerHTML = "finish";
   endBtn.id = "nextBtn";
-  let newBtnWrap = document.createElement("div")
-  newBtnWrap.id = "btnWrap"
+  let newBtnWrap = document.createElement("div");
+  newBtnWrap.id = "btnWrap";
 
   newBtnWrap.appendChild(endBtn);
   goalBlock.appendChild(newBtnWrap);
@@ -802,38 +801,65 @@ function displayPriorityChart() {
 // RESULTS
 /////////////////////////////
 function displayResults() {
+  function distanceBlurb() {
+    let blurb = document.createElement("div");
+    return blurb;
+  }
+  function detoxBlurb() {
+    let blurb = document.createElement("div");
+    return blurb;
+  }
+  function supplementBlurb() {
+    let blurb = document.createElement("div");
+    return blurb;
+  }
+  function additionalOptions() {
+    let blurb = document.createElement("div");
+    return blurb;
+  }
+  function programOptions() {
+    let blurb = document.createElement("div");
+    return blurb;
+  }
+
   quizElement.innerHTML = null;
   let resultsBlock = document.createElement("div");
   resultsBlock.id = "resultsBlock";
   let resultHeader = document.createElement("h1");
   resultHeader.innerHTML = `${profile.name}'s Healing Journey`;
   resultsBlock.appendChild(resultHeader);
-  let fillerH2 = document.createElement("h2");
-  resultsBlock.appendChild(fillerH2);
+
   let resultInfo = document.createElement("div");
-  //local
-  let localP = document.createElement("p");
-  if (profile.nearBelmar === "false" || profile.nearBelmar === "n/a") {
-    localP.innerHTML =
-      "At Integrative Wellness Group, we treat patients near and far. While telehealth is technically the term, we elevate the experience with personal touchpoints, virtual appointments, optional technology & treatment delivery, and much more.";
-  } else {
-    localP.innerHTML =
-      "Located in Belmar, New Jersey, Integrative Wellness Group has a beautiful state of the art facility equipped with technology, chiropractic treatment, a full detoxification spa (infrared sauna, ionic foot bath, yoni steam, cupping), Demartini mental health treatment, and more. The feelings of tranquility are enhanced by the panoramic view of Belmar waterfront. If you’re local to the area, we would love to welcome you into our office to experience hands-on care & healing treatments on your journey.";
-  }
-  resultInfo.appendChild(localP);
-  //detox
-  let sweatP = document.createElement("p");
+
+  //intro
+  let intro = document.createElement("div");
+  let introHead = document.createElement("h2");
+  introHead.innerHTML = "Overview of IWG";
+  intro.appendChild(introHead);
+  let introText = document.createElement("p");
+  introText.innerHTML = `At Integrative Wellness Group, you, the patient, come first. Our therapies, testing, 
+        and treatment are customized to assess and heal your body. Our practitioners spend time 
+        getting to know you and your wellness journey so we can empower you to take back control of your health.`;
+  intro.appendChild(introText);
+  resultInfo.appendChild(intro);
+  resultInfo.appendChild(distanceBlurb());
   if (profile.sweat === "false") {
-    sweatP.innerHTML =
-      "Often overlooked, the body’s detoxification process is vital to keep us feeling our best. If you’re unclear on what detoxification is, perfect examples are sweat and sleep. When you sweat youe body is expelling toxins. When you sleep the space between your cells increases, thus increasing the flow of toxins being flushed out. The primary function of your liver, kidneys, and lungs is detoxification, if they’re bogged down, you’re not expelling toxicity out of your body efficiently.";
-  } else {
-    sweatP.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.`;
+    resultInfo.appendChild(detoxBlurb());
   }
-  resultInfo.appendChild(sweatP);
+  if (profile.supplements === "true") {
+    resultInfo.appendChild(supplementBlurb());
+  }
+  resultInfo.appendChild(additionalOptions());
+  resultInfo.appendChild(programOptions());
+
+  let finalBtn = document.createElement("button");
+  finalBtn.innerHTML =
+    "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches";
+
 
   //pump it out
   resultsBlock.appendChild(resultInfo);
+  resultsBlock.appendChild(finalBtn);
   resultsBlock.classList.add("fadein");
   quizElement.appendChild(resultsBlock);
-  console.log(profile);
 }
