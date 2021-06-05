@@ -125,7 +125,7 @@ html body {
   position: relative;
 }
 #quizParent #quiz #quizBlock .opWrap.checklist {
-  padding: 0.5em 0.5em 0.5em 5em;
+  padding: 0.5em 0.5em 0.5em 4em;
   display: inline-block;
   margin: 0.5em;
   height: 4em;
@@ -200,8 +200,8 @@ html body {
   right: 0;
 }
 #quizParent #quiz #btnWrap.mainView {
-  height: calc(440px - 6em);
   display: inline-flex;
+  position: inherit;
 }
 #quizParent #quiz #btnWrap.mainView button {
   width: 13em;

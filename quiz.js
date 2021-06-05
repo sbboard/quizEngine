@@ -39,29 +39,6 @@ const questions = [
     relyAnswer: null,
   },
   {
-    question: "Check off all you’ve been diagnosed with or are dealing with:",
-    subQ: "(select all that apply)",
-    answer: "diagnose",
-    multipleAnsAllow: true,
-    otherOption: true,
-    options: [
-      "Cancer",
-      "Lyme",
-      "Gut Issues (IBS, Celiac, Crohn's, etc.)",
-      "Neurological (ALS, MS, ADD, PTSD, etc.)",
-      "Skin Issues (Cystic Acne, Psoriasis, Thinning Skin, Sun Damage etc.)",
-      "Mystery Illness",
-      "Chronic Pain",
-      "Hormonal (PCOS, Cycle Issues, Endometriosis, etc.)",
-      "Breast Tissue or Lymphatic Abnormality",
-      "Mental Health (Depression, Anxiety, OCD, etc.)",
-      "Surgery Within Past 1 Year",
-      "None",
-    ],
-    relyOnThisBeingTrue: null,
-    relyAnswer: null,
-  },
-  {
     question: "Select your age range:",
     subQ: null,
     answer: "age",
@@ -332,8 +309,19 @@ function startQuiz() {
   quizElement.innerHTML = null;
   let progressBar = document.createElement("progress");
   progressBar.id = "quizProg";
-  progressBar.value = currentQ;
-  progressBar.max = questions.length;
+  //amount of QUESTIONS previous to this one
+  progressBar.value = 0
+  function updateProgressbar() {
+    progressBar.value = questions.filter(
+      (obj, index) =>
+        obj.question != "TIP" && obj.question != "PROMPT" && index < currentQ
+    ).length;
+  }
+  //every question that's not a tip or prompt
+  progressBar.max = questions.filter(
+    (obj) => obj.question != "TIP" && obj.question != "PROMPT"
+  ).length;
+  console.log(questions.length, progressBar.max);
   let qHead = document.createElement("h1");
   quizElement.appendChild(qHead);
   let subQ = document.createElement("h2");
@@ -414,16 +402,14 @@ function startQuiz() {
           currentIndex.options.map((v) => {
             let optionWrap = document.createElement("div");
             optionWrap.classList.add("opWrap");
-            let spanWrap = document.createElement("span")
+            let spanWrap = document.createElement("span");
             //change option text if boolean
             if (typeof v === "boolean") {
-              v
-                ? (spanWrap.innerHTML = "Yes")
-                : (spanWrap.innerHTML = "No");
+              v ? (spanWrap.innerHTML = "Yes") : (spanWrap.innerHTML = "No");
             } else {
               spanWrap.innerHTML = v;
             }
-            optionWrap.appendChild(spanWrap)
+            optionWrap.appendChild(spanWrap);
             //check if it's been filled in already
             if (currentIndex.multipleAnsAllow == false) {
               if (profile[currentIndex.answer] == v) {
@@ -591,52 +577,52 @@ function startQuiz() {
           submitQ(isForward);
         }
       } else {
-        if (isForward) {
-          //styling for tip
-          qHead.innerHTML = "Did you know…";
-          qHead.classList.add("tiphead");
-          subQ.innerHTML = null;
-          let tipHere = document.createElement("div");
-          tipHere.id = "tip";
-          let refinedTip = currentIndex.tip;
-          tipHere.innerHTML = refinedTip;
-          quizBlock.appendChild(tipHere);
+        // if (isForward) {
+        //styling for tip
+        qHead.innerHTML = "Did you know…";
+        qHead.classList.add("tiphead");
+        subQ.innerHTML = null;
+        let tipHere = document.createElement("div");
+        tipHere.id = "tip";
+        let refinedTip = currentIndex.tip;
+        tipHere.innerHTML = refinedTip;
+        quizBlock.appendChild(tipHere);
 
-          //btns for tip
-          btnWrap.innerHTML = null;
-          let backBtn = document.createElement("button");
-          submitBtn.id = "nextBtn";
-          if (currentQ < questions.length - 1) {
-            submitBtn.innerHTML = "next";
-            submitBtn.onclick = () => {
-              currentQ++;
-              progressBar.value = currentQ;
-              postQ(true);
-              qHead.classList.remove("tiphead");
-            };
-          } else {
-            submitBtn.innerHTML = "next";
-            qHead.classList.remove("tiphead");
-            submitBtn.onclick = displayPriorityChart;
-          }
-          submitBtn.type = "submit";
-          backBtn.innerHTML = "back";
-          backBtn.onclick = () => {
-            currentQ = currentQ - 1;
-            progressBar.value = currentQ;
-            postQ(false);
+        //btns for tip
+        btnWrap.innerHTML = null;
+        let backBtn = document.createElement("button");
+        submitBtn.id = "nextBtn";
+        if (currentQ < questions.length - 1) {
+          submitBtn.innerHTML = "next";
+          submitBtn.onclick = () => {
+            currentQ++;
+            updateProgressbar()
+            postQ(true);
             qHead.classList.remove("tiphead");
           };
-          backBtn.type = "button";
-          btnWrap.appendChild(backBtn);
-          btnWrap.appendChild(submitBtn);
-          void quizBlock.offsetWidth;
-          quizBlock.classList.add("fadein");
         } else {
-          let currentIndex = questions[currentQ];
-          profile[currentIndex.answer] = "n/a";
-          submitQ(isForward);
+          submitBtn.innerHTML = "next";
+          qHead.classList.remove("tiphead");
+          submitBtn.onclick = displayPriorityChart;
         }
+        submitBtn.type = "submit";
+        backBtn.innerHTML = "back";
+        backBtn.onclick = () => {
+          currentQ = currentQ - 1;
+          updateProgressbar()
+          postQ(false);
+          qHead.classList.remove("tiphead");
+        };
+        backBtn.type = "button";
+        btnWrap.appendChild(backBtn);
+        btnWrap.appendChild(submitBtn);
+        void quizBlock.offsetWidth;
+        quizBlock.classList.add("fadein");
+        // } else {
+        //   let currentIndex = questions[currentQ];
+        //   profile[currentIndex.answer] = "n/a";
+        //   submitQ(isForward);
+        // }
       }
     } else {
       let currentIndex = questions[currentQ];
@@ -664,11 +650,11 @@ function startQuiz() {
       ) {
         if (isForward) {
           currentQ++;
-          progressBar.value = currentQ;
+          updateProgressbar()
           postQ(true);
         } else {
           currentQ = currentQ - 1;
-          progressBar.value = currentQ;
+          updateProgressbar()
           postQ(false);
         }
       }
@@ -677,7 +663,7 @@ function startQuiz() {
 
   function backQ() {
     currentQ = currentQ - 1;
-    progressBar.value = currentQ;
+    updateProgressbar()
     postQ(false);
   }
 
