@@ -512,7 +512,7 @@ function startQuiz() {
         //post map of belmar
         if (currentIndex.answer == "nearBelmar") {
           let mapImage = document.createElement("img");
-          mapImage.src = "./quizAssets/map.jpg";
+          mapImage.src = "./quizAssets/map-2.png";
           mapImage.alt = "Map of Belmar New Jersey";
           mapImage.id = "map";
           quizBlock.appendChild(mapImage);
@@ -803,22 +803,164 @@ function displayPriorityChart() {
 function displayResults() {
   function distanceBlurb() {
     let blurb = document.createElement("div");
+    let sectionHead = document.createElement("h2");
+    let sectionText = document.createElement("p");
+    if (profile.nearBelmar === "true") {
+      sectionHead.innerHTML = "In-Person Care";
+      sectionText.innerHTML =
+        "Located in Belmar, New Jersey, Integrative Wellness Group has a beautiful state of the art facility equipped with technology, chiropractic treatment, a full detoxification spa (infrared sauna, ionic foot bath, yoni steam, cupping), and more. The feelings of tranquility are enhanced by the panoramic view of Belmar waterfront. If you’re local to the area, we would love to welcome you into our office to experience hands-on care & healing treatments on your journey.";
+    } else {
+      sectionHead.innerHTML = "Long Distance Care";
+      sectionText.innerHTML =
+        "We treat patients near and far. While telehealth is technically the term, we elevate the experience with personal touchpoints, virtual appointments, optional technology & treatment delivery, and much more.";
+    }
+    blurb.appendChild(sectionHead);
+    blurb.appendChild(sectionText);
     return blurb;
   }
   function detoxBlurb() {
     let blurb = document.createElement("div");
+    let sectionHead = document.createElement("h2");
+    let sectionText = document.createElement("p");
+    sectionHead.innerHTML = "Detoxification";
+    sectionText.innerHTML =
+      "Often overlooked, the body’s detoxification process is vital to keep us feeling our best. If you’re unclear on what detoxification is, perfect examples are sweat and sleep. When you sweat your body is expelling toxins. When you sleep the space between your cells increases, thus increasing the flow of toxins being flushed out. The primary function of your liver, kidneys, and lungs is detoxification, if they’re bogged down, you’re not expelling toxicity out of your body efficiently. We incorporate detoxification therapies into many patient’s healing protocols so they can experience almost-immediate relief and their bodies can begin to run more efficiently.";
+    blurb.appendChild(sectionHead);
+    blurb.appendChild(sectionText);
     return blurb;
   }
   function supplementBlurb() {
     let blurb = document.createElement("div");
+    let sectionHead = document.createElement("h2");
+    let sectionText = document.createElement("p");
+    sectionHead.innerHTML = "Integrative Response Testing";
+    sectionText.innerHTML =
+      "At Integrative Wellness Group, we pride ourselves on testing (not guessing). Through IRT (Integrative Response Testing), our team is able to determine which supplements, services, and therapies will benefit you best at every stage of your wellness journey. Most patients are surprised that every supplement they consume should be personally tested for them… and a person’s supplement recommendations change over time as their bodies evolve and heal.";
+    blurb.appendChild(sectionHead);
+    blurb.appendChild(sectionText);
     return blurb;
   }
   function additionalOptions() {
     let blurb = document.createElement("div");
+    //Hyperbaric Chamber
+    if (
+      profile.exIntense.includes("Intense") ||
+      profile.diagnose.indexOf("Surgery Within Past 1 Year") > -1
+    ) {
+      let subSection = document.createElement("div");
+      let sectionHead = document.createElement("h2");
+      let sectionText = document.createElement("p");
+      sectionHead.innerHTML = "Hyperbaric Chamber";
+      sectionText.innerHTML = `The hyperbaric chamber is an enclosed pressurized pod where atmospheric pressure is raised 2-3 times regular air pressure. This therapy is recommended for those who would benefit from increased oxygen in blood which improves recovery time, speeds up wound healing, and decreases swelling.<br/><br/>
+      To book your Hyperbaric Chamber Session, <a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber">click here</a>
+      <i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+      subSection.appendChild(sectionHead);
+      subSection.appendChild(sectionText);
+      blurb.appendChild(subSection);
+    }
+    //Chiropractic Care
+    if (
+      profile.nearBelmar === "true" &&
+      (profile.exIntense != "Low (walking, yoga)" ||
+        profile.diagnose.indexOf("Chronic Pain") > -1 ||
+        profile.diagnose.indexOf("Surgery Within Past 1 Year") > -1 ||
+        profile.pregnant == "Postpartum" ||
+        goals.top == "Overall Health & Prevention" ||
+        goals.mid == "Overall Health & Prevention" ||
+        goals.low == "Overall Health & Prevention")
+    ) {
+      let subSection = document.createElement("div");
+      let sectionHead = document.createElement("h2");
+      let sectionText = document.createElement("p");
+      sectionHead.innerHTML = "Chiropractic Care";
+      sectionText.innerHTML =
+        "Chiropractic care with IWG is a full-body approach to decreasing pain and increasing function by realigning the joints of the spine and extremities (knees, shoulders, feet). Our chiropractors also eliminate tension with muscle release therapy and work to restore proper function with rehabilitation and cold laser therapy. We recommend this therapy for anyone looking to improve their overall wellness as well as those experiencing chronic or prolonged pain.";
+      subSection.appendChild(sectionHead);
+      subSection.appendChild(sectionText);
+      blurb.appendChild(subSection);
+    }
+
+    //Demartini Method
+    if (
+      profile.diagnose.indexOf(
+        "Mental Health (Depression, Anxiety, OCD, etc.)"
+      ) > -1 ||
+      profile.interest == "Yes"
+    ) {
+      let subSection = document.createElement("div");
+      let sectionHead = document.createElement("h2");
+      let sectionText = document.createElement("p");
+      sectionHead.innerHTML = "The Demartini Method";
+      sectionText.innerHTML = "The Demartini Method Info WIP";
+      subSection.appendChild(sectionHead);
+      subSection.appendChild(sectionText);
+      blurb.appendChild(subSection);
+    }
+
     return blurb;
   }
   function programOptions() {
+    let alreadyAssigned = false;
     let blurb = document.createElement("div");
+    //Pediatric
+    if (profile.age == "0-13") {
+      alreadyAssigned = true;
+      let subSection = document.createElement("div");
+      let sectionHead = document.createElement("h2");
+      let sectionText = document.createElement("p");
+      sectionHead.innerHTML = "<strong>Program Recommendation:</strong> Pediatrics";
+      sectionText.innerHTML = "Pediatrics text WIP";
+      subSection.appendChild(sectionHead);
+      subSection.appendChild(sectionText);
+      blurb.appendChild(subSection);
+    }
+
+    //Pregnancy & Fertility
+    else if (
+      (profile.pregnant != "None of the above" && profile.pregnant != "n/a") ||
+      profile.diagnose.indexOf(
+        "Hormonal (PCOS, Cycle Issues, Endometriosis, etc.)"
+      ) > -1
+    ) {
+      alreadyAssigned = true;
+      let subSection = document.createElement("div");
+      let sectionHead = document.createElement("h2");
+      let sectionText = document.createElement("p");
+      sectionHead.innerHTML = "<strong>Program Recommendation:</strong> Prenatal & Pregnancy";
+      sectionText.innerHTML = "text WIP";
+      subSection.appendChild(sectionHead);
+      subSection.appendChild(sectionText);
+      blurb.appendChild(subSection);
+    }
+
+    //Integrative Intensive
+    if (
+      profile.diagnose.length > 3 ||
+      profile.diagnose.indexOf("Cancer") > -1 ||
+      profile.diagnose.indexOf("Mystery Illness") > -1
+    ) {
+      alreadyAssigned = true;
+      let subSection = document.createElement("div");
+      let sectionHead = document.createElement("h2");
+      let sectionText = document.createElement("p");
+      sectionHead.innerHTML = "<strong>Program Recommendation:</strong> Integrative Intensive";
+      sectionText.innerHTML = "text WIP";
+      subSection.appendChild(sectionHead);
+      subSection.appendChild(sectionText);
+      blurb.appendChild(subSection);
+    }
+
+    //Functional Medicine
+    if (alreadyAssigned == false) {
+      let subSection = document.createElement("div");
+      let sectionHead = document.createElement("h2");
+      let sectionText = document.createElement("p");
+      sectionHead.innerHTML = "<strong>Program Recommendation:</strong> Functional Medicine";
+      sectionText.innerHTML = "text WIP";
+      subSection.appendChild(sectionHead);
+      subSection.appendChild(sectionText);
+      blurb.appendChild(subSection);
+    }
     return blurb;
   }
 
@@ -830,6 +972,7 @@ function displayResults() {
   resultsBlock.appendChild(resultHeader);
 
   let resultInfo = document.createElement("div");
+  resultInfo.id = "resultInfo"
 
   //intro
   let intro = document.createElement("div");
@@ -837,9 +980,7 @@ function displayResults() {
   introHead.innerHTML = "Overview of IWG";
   intro.appendChild(introHead);
   let introText = document.createElement("p");
-  introText.innerHTML = `At Integrative Wellness Group, you, the patient, come first. Our therapies, testing, 
-        and treatment are customized to assess and heal your body. Our practitioners spend time 
-        getting to know you and your wellness journey so we can empower you to take back control of your health.`;
+  introText.innerHTML = `At Integrative Wellness Group, you, the patient, come first. Our therapies, testing, and treatment are customized to assess and heal your body. Our practitioners spend time getting to know you and your wellness journey so we can empower you to take back control of your health.`;
   intro.appendChild(introText);
   resultInfo.appendChild(intro);
   resultInfo.appendChild(distanceBlurb());
@@ -855,7 +996,6 @@ function displayResults() {
   let finalBtn = document.createElement("button");
   finalBtn.innerHTML =
     "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches";
-
 
   //pump it out
   resultsBlock.appendChild(resultInfo);

@@ -7,11 +7,12 @@ html body {
 }
 
 #quizParent {
-  height: 100%;
+  min-height: 100%;
   font-size: 1.125em;
-  padding: 4em 0 6em 0;
+  padding: 4em 1em 6em 1em;
   justify-content: center;
   align-items: center;
+  background: fixed;
   background-image: url(https://integrativewellnessgroup.com/wp-content/uploads/2020/04/shutterstock_1661454901-scaled.jpg);
   background-size: cover;
   background-position: center;
@@ -46,6 +47,7 @@ html body {
   left: 0;
   position: absolute;
   bottom: 0;
+  max-width: calc(100% - 2em);
 }
 #quizParent #quiz progress#quizProg::-webkit-progress-value {
   transition: width 0.5s ease-out;
@@ -75,8 +77,9 @@ html body {
 }
 #quizParent #quiz #quizBlock #map {
   margin-top: 1em;
-  width: 21em;
+  width: 27em;
   border-radius: 1em;
+  max-width: 100%;
 }
 #quizParent #quiz #quizBlock #tip {
   max-width: 24em;
@@ -95,7 +98,7 @@ html body {
   letter-spacing: normal !important;
 }
 #quizParent #quiz #quizBlock input#otherInput {
-  width: 9em;
+  width: inherit;
   padding: 0;
   border: 0;
   border-bottom: 1px solid #222329;
@@ -136,10 +139,10 @@ html body {
 }
 #quizParent #quiz #quizBlock .opWrap.checklist {
   padding: 0.5em 0.5em 0.5em 4em;
-  display: inline-block;
+  display: inline-flex;
   margin: 0.25em;
-  width: 48%;
-  height: 4em;
+  width: calc(50% - .5em);
+  min-height: 4em;
   text-align: left;
   vertical-align: middle;
   line-height: 1;
@@ -147,7 +150,6 @@ html body {
 #quizParent #quiz #quizBlock .opWrap.checklist span {
   display: inline-flex;
   align-items: center;
-  height: 100%;
 }
 #quizParent #quiz #quizBlock .opWrap.checklist span::before {
   content: "";
@@ -258,11 +260,11 @@ html body {
 }
 #quizParent #quiz #goalBlock #goalTable .tableRow {
   margin: 0 auto;
-  width: 500px;
+  width: 100%;
 }
 #quizParent #quiz #goalBlock #goalTable .tableRow label {
   text-align: left;
-  width: 22em;
+  width: 75%;
   display: inline-block;
 }
 #quizParent #quiz #goalBlock #goalTable .topRow {
@@ -279,18 +281,38 @@ html body {
 #quizParent #quiz #resultsBlock {
   margin: 0 auto;
   opacity: 0;
+  height: 100%;
+  padding-bottom: 7em;
 }
 #quizParent #quiz #resultsBlock button {
   width: 25em;
   padding: 1em;
   border-radius: 2em;
+  margin: 1em auto;
+  max-width: calc(100% - 2em);
+  right: 0;
+  left: 0;
+  bottom: 0;
+  position: absolute;
 }
 #quizParent #quiz #resultsBlock h1 {
-  margin: 1em 0 0.5em 0;
-  text-align: left;
+  margin: 0 auto 1em auto;
+  text-align: center;
 }
 #quizParent #quiz #resultsBlock p {
   text-align: left;
+}
+#quizParent #quiz #resultsBlock p i {
+  display: block;
+  font-style: italic;
+}
+#quizParent #quiz #resultsBlock h2 {
+  margin: 1em 0 0.5em;
+  text-align: left;
+  height: inherit;
+}
+#quizParent #quiz #resultsBlock h2 strong {
+  font-weight: 600;
 }
 
 @keyframes fadein {
