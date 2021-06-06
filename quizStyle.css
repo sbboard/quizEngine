@@ -9,7 +9,7 @@ html body {
 #quizParent {
   min-height: 100%;
   font-size: 1.125em;
-  padding: 4em 1em 6em 1em;
+  padding: 2em 1em 7em 1em;
   justify-content: center;
   align-items: center;
   background: fixed;
@@ -91,6 +91,7 @@ html body {
 #quizParent #quiz #quizBlock input {
   padding: 0.5em;
   width: 22em;
+  max-width: 100%;
   padding: 0.5em;
   font-size: inherit !important;
   width: 22em;
@@ -99,6 +100,7 @@ html body {
 }
 #quizParent #quiz #quizBlock input#otherInput {
   width: inherit;
+  max-width: 70%;
   padding: 0;
   border: 0;
   border-bottom: 1px solid #222329;
@@ -127,6 +129,7 @@ html body {
 }
 #quizParent #quiz #quizBlock .opWrap {
   text-align: center;
+  max-width: 100%;
   width: 21em;
   padding: 0.5em;
   cursor: pointer;
@@ -136,12 +139,14 @@ html body {
   border: 1px solid #222329;
   border-radius: 2em;
   position: relative;
+  background-color: #F3F4F6;
 }
 #quizParent #quiz #quizBlock .opWrap.checklist {
-  padding: 0.5em 0.5em 0.5em 4em;
+  padding: 0.5em 0.5em 0.5em 3.25em;
   display: inline-flex;
   margin: 0.25em;
   width: calc(50% - .5em);
+  overflow: hidden;
   min-height: 4em;
   text-align: left;
   vertical-align: middle;
@@ -162,6 +167,9 @@ html body {
   transition: border 0.15s;
   background-color: white;
   border: 1px solid #222329;
+}
+#quizParent #quiz #quizBlock .opWrap.checklist.otherOption {
+  width: 100%;
 }
 #quizParent #quiz #quizBlock .opWrap:last-of-type {
   margin: 0.5em auto 0 auto;
@@ -213,6 +221,7 @@ html body {
   display: block;
   margin-top: auto;
   position: absolute;
+  justify-content: center;
   bottom: 3em;
   left: 0;
   right: 0;
@@ -221,16 +230,18 @@ html body {
   display: inline-flex;
   position: inherit;
   margin-top: 4em;
+  width: 100%;
 }
 #quizParent #quiz #btnWrap.mainView button {
   width: 14em;
-  height: 5em;
+  min-height: 5em;
 }
 #quizParent #quiz button {
   background-color: #AFD6C1;
   color: #222329;
   border: 0;
   padding: 0.75em;
+  max-width: calc(50% - .5em);
   text-transform: capitalize;
   width: 10em;
   display: inline-block;
@@ -275,6 +286,7 @@ html body {
   font-size: 1em;
   height: 1em;
   display: inline-block;
+  max-width: 5%;
   text-align: center;
   margin: 0.25em;
 }

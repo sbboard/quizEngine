@@ -473,6 +473,7 @@ function startQuiz() {
             //creating the element
             let optionWrap = document.createElement("div");
             optionWrap.classList.add("opWrap");
+            optionWrap.classList.add("otherOption");
             if (currentIndex.multipleAnsAllow == true) {
               optionWrap.classList.add("checklist");
             }
