@@ -7,11 +7,12 @@ html
     body
         height: 100%
 #quizParent
-    height: 100%
+    min-height: 100%
     font-size: 1.125em
     padding: 4em 0 6em 0
     justify-content: center
     align-items: center
+    background: fixed
     background-image: url(https://integrativewellnessgroup.com/wp-content/uploads/2020/04/shutterstock_1661454901-scaled.jpg)
     background-size: cover
     background-position: center
@@ -63,7 +64,7 @@ html
                 background: $thatBlack
             #map
                 margin-top: 1em
-                width: 21em
+                width: 27em
                 border-radius: 1em
             #tip
                 max-width: 24em
@@ -236,15 +237,25 @@ html
         #resultsBlock
             margin: 0 auto
             opacity: 0
+            height: 100%
             button    
                 width: 25em
                 padding: 1em
                 border-radius: 2em
+                margin: 1em auto
             h1
-                margin: 1em 0 .5em 0
-                text-align: left
+                margin: 0 auto 1em auto
+                text-align: center
             p
                 text-align: left
+                i
+                    display: block
+                    font-style: italic
+            h2
+                margin: 1em 0 .5em
+                text-align: left
+                strong
+                    font-weight: 600
 @keyframes fadein
     from
         opacity: 0
