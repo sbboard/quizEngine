@@ -866,9 +866,9 @@ function displayResults() {
         profile.diagnose.indexOf("Chronic Pain") > -1 ||
         profile.diagnose.indexOf("Surgery Within Past 1 Year") > -1 ||
         profile.pregnant == "Postpartum" ||
-        goals.top == "Overall Health & Prevention" ||
-        goals.mid == "Overall Health & Prevention" ||
-        goals.low == "Overall Health & Prevention")
+        profile.goals.top == "Overall Health & Prevention" ||
+        profile.goals.mid == "Overall Health & Prevention" ||
+        profile.goals.low == "Overall Health & Prevention")
     ) {
       let subSection = document.createElement("div");
       let sectionHead = document.createElement("h2");
