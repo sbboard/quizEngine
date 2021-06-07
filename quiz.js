@@ -806,6 +806,8 @@ function displayResults() {
     let blurb = document.createElement("div");
     let sectionHead = document.createElement("h2");
     let sectionText = document.createElement("p");
+
+    blurb.classList.add("infoBlocks");
     if (profile.nearBelmar === "true") {
       sectionHead.innerHTML = "In-Person Care";
       sectionText.innerHTML =
@@ -821,6 +823,7 @@ function displayResults() {
   }
   function detoxBlurb() {
     let blurb = document.createElement("div");
+    blurb.classList.add("infoBlocks");
     let sectionHead = document.createElement("h2");
     let sectionText = document.createElement("p");
     sectionHead.innerHTML = "Detoxification";
@@ -832,6 +835,7 @@ function displayResults() {
   }
   function supplementBlurb() {
     let blurb = document.createElement("div");
+    blurb.classList.add("infoBlocks");
     let sectionHead = document.createElement("h2");
     let sectionText = document.createElement("p");
     sectionHead.innerHTML = "Integrative Response Testing";
@@ -843,6 +847,7 @@ function displayResults() {
   }
   function additionalOptions() {
     let blurb = document.createElement("div");
+    blurb.classList.add("infoBlocks");
     //Hyperbaric Chamber
     if (
       profile.exIntense.includes("Intense") ||
@@ -903,13 +908,14 @@ function displayResults() {
   function programOptions() {
     let alreadyAssigned = false;
     let blurb = document.createElement("div");
+    blurb.classList.add("infoBlocks");
     //Pediatric
     if (profile.age == "0-13") {
       alreadyAssigned = true;
       let subSection = document.createElement("div");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
-      sectionHead.innerHTML = "<strong>Program Recommendation:</strong> Pediatrics";
+      sectionHead.innerHTML = "Program Recommendation: <span>Pediatric</span>s";
       sectionText.innerHTML = "Pediatrics text WIP";
       subSection.appendChild(sectionHead);
       subSection.appendChild(sectionText);
@@ -927,7 +933,8 @@ function displayResults() {
       let subSection = document.createElement("div");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
-      sectionHead.innerHTML = "<strong>Program Recommendation:</strong> Prenatal & Pregnancy";
+      sectionHead.innerHTML =
+        "Program Recommendation: <span>Prenatal & Pregnancy</span>";
       sectionText.innerHTML = "text WIP";
       subSection.appendChild(sectionHead);
       subSection.appendChild(sectionText);
@@ -944,7 +951,8 @@ function displayResults() {
       let subSection = document.createElement("div");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
-      sectionHead.innerHTML = "<strong>Program Recommendation:</strong> Integrative Intensive";
+      sectionHead.innerHTML =
+        "Program Recommendation: <span>Integrative Intensive</span>";
       sectionText.innerHTML = "text WIP";
       subSection.appendChild(sectionHead);
       subSection.appendChild(sectionText);
@@ -956,7 +964,8 @@ function displayResults() {
       let subSection = document.createElement("div");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
-      sectionHead.innerHTML = "<strong>Program Recommendation:</strong> Functional Medicine";
+      sectionHead.innerHTML =
+        "Program Recommendation: <span>Functional Medicine</span>";
       sectionText.innerHTML = "text WIP";
       subSection.appendChild(sectionHead);
       subSection.appendChild(sectionText);
@@ -973,11 +982,12 @@ function displayResults() {
   resultsBlock.appendChild(resultHeader);
 
   let resultInfo = document.createElement("div");
-  resultInfo.id = "resultInfo"
+  resultInfo.id = "resultInfo";
 
   //intro
   let intro = document.createElement("div");
   let introHead = document.createElement("h2");
+  intro.classList.add("infoBlocks");
   introHead.innerHTML = "Overview of IWG";
   intro.appendChild(introHead);
   let introText = document.createElement("p");
