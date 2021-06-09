@@ -9,23 +9,54 @@ html body {
 #quizParent {
   min-height: 100%;
   font-size: 1.125em;
-  padding: 2em 1em 7em 1em;
   justify-content: center;
   align-items: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  top: 0;
+  left: 0;
   background: fixed;
-  background-image: url(https://integrativewellnessgroup.com/wp-content/uploads/2020/04/shutterstock_1661454901-scaled.jpg);
+  background-image: url("/quizAssets/bg3.jpg");
   background-size: cover;
   background-position: center;
-  position: relative;
+}
+#quizParent.startUp #quiz {
+  opacity: 1;
+}
+#quizParent.startUp #quiz h1 {
+  max-width: 14em;
+}
+#quizParent progress#quizProg {
+  background-color: #000;
+  width: 100%;
+  overflow: hidden;
+  background-color: #000;
+  right: 0;
+  left: 0;
+  position: absolute;
+  bottom: 0;
+}
+#quizParent progress#quizProg::-webkit-progress-value {
+  transition: width 600s linear;
+  background: #AFD6C1;
+}
+#quizParent progress#quizProg::-webkit-progress-bar {
+  background-color: #222329;
 }
 #quizParent #quiz {
   display: block;
   color: #222329;
-  margin: 0 auto;
+  padding: 2em;
   text-align: center;
-  max-width: 750px;
-  height: 100%;
+  margin: 1em;
+  opacity: 0;
   font-family: "Lato", sans-serif;
+  max-width: calc(750px + 2em);
+  border-radius: 1em;
+  background-color: #F3F4F6;
+  box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.5);
 }
 #quizParent #quiz .introCopy {
   display: block;
@@ -36,29 +67,8 @@ html body {
 #quizParent #quiz .introCopy strong {
   font-weight: 600;
 }
-#quizParent #quiz progress#quizProg {
-  background-color: #000;
-  width: 20.5em;
-  border-radius: 2em;
-  overflow: hidden;
-  background-color: #000;
-  margin: 1em auto;
-  right: 0;
-  left: 0;
-  position: absolute;
-  bottom: 0;
-  max-width: calc(100% - 2em);
-}
-#quizParent #quiz progress#quizProg::-webkit-progress-value {
-  transition: width 0.5s ease-out;
-  background: #AFD6C1;
-}
-#quizParent #quiz progress#quizProg::-webkit-progress-bar {
-  background-color: #222329;
-}
 #quizParent #quiz #quizBlock {
   margin: 0 auto;
-  opacity: 0;
   overflow-y: auto;
   max-height: calc(100% - 9em);
 }
@@ -221,17 +231,14 @@ html body {
 }
 #quizParent #quiz #btnWrap {
   display: block;
-  margin-top: auto;
-  position: absolute;
   justify-content: center;
-  bottom: 3em;
+  bottom: 4em;
   left: 0;
   right: 0;
 }
 #quizParent #quiz #btnWrap.mainView {
   display: inline-flex;
   position: inherit;
-  margin-top: 4em;
   width: 100%;
 }
 #quizParent #quiz #btnWrap.mainView button {
@@ -266,7 +273,6 @@ html body {
 }
 #quizParent #quiz #goalBlock {
   margin: 0 auto;
-  opacity: 0;
   overflow-y: auto;
   max-height: calc(100% - 9em);
 }
@@ -296,7 +302,6 @@ html body {
 }
 #quizParent #quiz #resultsBlock {
   margin: 0 auto;
-  opacity: 0;
   height: 100%;
   padding-bottom: 1em;
 }
@@ -348,16 +353,60 @@ html body {
   color: white;
 }
 
-@keyframes fadein {
+@keyframes slidein {
   from {
     opacity: 0;
+    transform: translateX(100px);
   }
   to {
     opacity: 1;
+    transform: translateX(0px);
   }
 }
-.fadein {
-  animation: fadein 1s forwards;
+@keyframes slideout {
+  from {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+@keyframes slideoutBW {
+  from {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+}
+@keyframes slideinBW {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+.slidein {
+  animation: slidein 250ms forwards;
+}
+
+.slideout {
+  animation: slideout 250ms forwards;
+}
+
+.slideinBW {
+  animation: slideinBW 250ms forwards;
+}
+
+.slideoutBW {
+  animation: slideoutBW 250ms forwards;
 }
 
 /*# sourceMappingURL=quizStyle.css.map */

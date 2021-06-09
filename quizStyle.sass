@@ -1,7 +1,7 @@
 $thatYellow: #AFD6C1 //it's actually green now so
 $thatBlack: #222329
 $thatWhite: #F3F4F6
-$elHeight: 440px
+$glowSize: 40px
 
 html
     height: 100%
@@ -10,22 +10,49 @@ html
 #quizParent
     min-height: 100%
     font-size: 1.125em
-    padding: 2em 1em 7em 1em
     justify-content: center
     align-items: center
+    position: relative
+    width: 100%
+    overflow: hidden
+    display: flex
+    top: 0
+    left: 0
     background: fixed
-    background-image: url(https://integrativewellnessgroup.com/wp-content/uploads/2020/04/shutterstock_1661454901-scaled.jpg)
+    background-image: url('/quizAssets/bg3.jpg')
     background-size: cover
     background-position: center
-    position: relative
+    &.startUp
+        #quiz
+            opacity: 1
+            h1
+                max-width: 14em
+    progress#quizProg
+        background-color: #000
+        width: 100%
+        overflow: hidden
+        background-color: #000
+        right: 0
+        left: 0
+        position: absolute
+        bottom: 0
+        &::-webkit-progress-value
+            transition: width 600s linear
+            background: $thatYellow
+        &::-webkit-progress-bar
+            background-color: $thatBlack
     #quiz
         display: block
         color: $thatBlack
-        margin: 0 auto
+        padding: 2em
         text-align: center
-        max-width: 750px
-        height: 100%
+        margin: 1em
+        opacity: 0
         font-family: 'Lato', sans-serif
+        max-width: calc(750px + 2em)
+        border-radius: 1em
+        background-color: $thatWhite
+        box-shadow: 0px 1px 20px 0px rgb(0 0 0 / 50%)
         .introCopy
             display: block
             width: 80%
@@ -33,26 +60,8 @@ html
             text-align: left
             strong
                 font-weight: 600
-        progress#quizProg
-            background-color: #000
-            width: 20.5em
-            border-radius: 2em
-            overflow: hidden
-            background-color: #000
-            margin: 1em auto
-            right: 0
-            left: 0
-            position: absolute
-            bottom: 0
-            max-width: calc(100% - 2em)
-            &::-webkit-progress-value
-                transition: width 0.5s ease-out
-                background: $thatYellow
-            &::-webkit-progress-bar
-                background-color: $thatBlack
         #quizBlock
             margin: 0 auto
-            opacity: 0
             overflow-y: auto
             max-height: calc(100% - 9em)
             &.hidden
@@ -190,16 +199,13 @@ html
             color: $thatBlack
         #btnWrap
             display: block
-            margin-top: auto
-            position: absolute
             justify-content: center
-            bottom: 3em
+            bottom: 4em
             left: 0
             right: 0
             &.mainView
                 display: inline-flex
                 position: inherit
-                margin-top: 4em
                 width: 100%
                 button
                     width: 14em
@@ -228,7 +234,6 @@ html
                     background-color: $thatYellow
         #goalBlock
             margin: 0 auto
-            opacity: 0
             overflow-y: auto
             max-height: calc(100% - 9em)
             h2
@@ -253,7 +258,6 @@ html
                     margin: .25em
         #resultsBlock
             margin: 0 auto
-            opacity: 0
             height: 100%
             padding-bottom: 1em
             button    
@@ -293,10 +297,39 @@ html
                         color: white
                         &:hover
                             color: white
-@keyframes fadein
+@keyframes slidein
     from
         opacity: 0
+        transform: translateX(100px)
     to
         opacity: 1
-.fadein
-    animation: fadein 1s forwards
+        transform: translateX(0px)
+@keyframes slideout
+    from
+        opacity: 1
+        transform: translateX(0px)
+    to
+        opacity: 0
+        transform: translateX(-100px)
+@keyframes slideoutBW
+    from
+        opacity: 1
+        transform: translateX(0px)
+    to
+        opacity: 0
+        transform: translateX(100px)
+@keyframes slideinBW
+    from
+        opacity: 0
+        transform: translateX(-100px)
+    to
+        opacity: 1
+        transform: translateX(0px)
+.slidein
+    animation: slidein 250ms forwards
+.slideout
+    animation: slideout 250ms forwards
+.slideinBW
+    animation: slideinBW 250ms forwards
+.slideoutBW
+    animation: slideoutBW 250ms forwards

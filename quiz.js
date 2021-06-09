@@ -306,11 +306,10 @@ const quizElement = document.getElementById("quiz");
 let currentQ = 0;
 
 function startQuiz() {
-  quizElement.innerHTML = null;
   let progressBar = document.createElement("progress");
   progressBar.id = "quizProg";
-  //amount of QUESTIONS previous to this one
   progressBar.value = 0;
+
   function updateProgressbar() {
     progressBar.value = questions.filter(
       (obj, index) =>
@@ -321,11 +320,8 @@ function startQuiz() {
   progressBar.max = questions.filter(
     (obj) => obj.question != "TIP" && obj.question != "PROMPT"
   ).length;
-  console.log(questions.length, progressBar.max);
   let qHead = document.createElement("h1");
-  quizElement.appendChild(qHead);
   let subQ = document.createElement("h2");
-  quizElement.appendChild(subQ);
   let btnWrap = document.createElement("div");
   btnWrap.id = "btnWrap";
 
@@ -337,301 +333,312 @@ function startQuiz() {
       }
     }
   }
-  document.addEventListener("keyup", handleKeyPress);
 
   function postQ(isForward) {
-    let submitBtn = document.createElement("button");
-    function checkForSubmit() {
-      if (
-        profile[currentIndex.answer] != null &&
-        profile[currentIndex.answer].length > 0
-      ) {
-        submitBtn.disabled = false;
-      } else {
-        submitBtn.disabled = true;
-      }
+    if (isForward) {
+      slideElement();
+    } else {
+      slideElementBW();
     }
-    let currentIndex = questions[currentQ];
-    //check if it depends on another question to display
-    if (
-      currentIndex.relyOnThisBeingTrue == null ||
-      profile[currentIndex.relyOnThisBeingTrue] === "true" ||
-      profile[currentIndex.relyOnThisBeingTrue] === currentIndex.relyAnswer ||
-      (Array.isArray(currentIndex.relyAnswer) &&
-        currentIndex.relyAnswer.indexOf(
-          profile[currentIndex.relyOnThisBeingTrue]
-        ) > -1)
-    ) {
-      //clear block
-      quizBlock.innerHTML = null;
-      quizBlock.classList.remove("fadein");
-      //check if it's NOT a tip or prompt
-      if (currentIndex.question != "TIP" && currentIndex.question != "PROMPT") {
-        //create question
-        qHead.innerHTML = currentIndex.question;
-
-        //create subQ
-        if (currentIndex.subQ != null) {
-          subQ.innerHTML = currentIndex.subQ;
+    setTimeout(() => {
+      let submitBtn = document.createElement("button");
+      function checkForSubmit() {
+        if (
+          profile[currentIndex.answer] != null &&
+          profile[currentIndex.answer].length > 0
+        ) {
+          submitBtn.disabled = false;
         } else {
-          subQ.innerHTML = null;
+          submitBtn.disabled = true;
         }
+      }
+      let currentIndex = questions[currentQ];
+      //check if it depends on another question to display
+      if (
+        currentIndex.relyOnThisBeingTrue == null ||
+        profile[currentIndex.relyOnThisBeingTrue] === "true" ||
+        profile[currentIndex.relyOnThisBeingTrue] === currentIndex.relyAnswer ||
+        (Array.isArray(currentIndex.relyAnswer) &&
+          currentIndex.relyAnswer.indexOf(
+            profile[currentIndex.relyOnThisBeingTrue]
+          ) > -1)
+      ) {
+        //clear block
+        quizBlock.innerHTML = null;
+        //check if it's NOT a tip or prompt
+        if (
+          currentIndex.question != "TIP" &&
+          currentIndex.question != "PROMPT"
+        ) {
+          //create question
+          qHead.innerHTML = currentIndex.question;
 
-        ///////////////////////
-        // DIFFERENT INPUT TYPES
-        /////////////////////////
-        //post input
-        if (currentIndex.options.length == 0) {
-          let qInput = document.createElement("input");
-          if (currentIndex.answer == "email") {
-            qInput.type = "email";
+          //create subQ
+          if (currentIndex.subQ != null) {
+            subQ.innerHTML = currentIndex.subQ;
           } else {
-            qInput.type = "text";
+            subQ.innerHTML = null;
           }
 
-          if (profile[currentIndex.answer] != null) {
-            qInput.value = profile[currentIndex.answer];
+          ///////////////////////
+          // DIFFERENT INPUT TYPES
+          /////////////////////////
+          //post input
+          if (currentIndex.options.length == 0) {
+            let qInput = document.createElement("input");
+            if (currentIndex.answer == "email") {
+              qInput.type = "email";
+            } else {
+              qInput.type = "text";
+            }
+
+            if (profile[currentIndex.answer] != null) {
+              qInput.value = profile[currentIndex.answer];
+            }
+            qInput.onkeyup = function (e) {
+              profile[currentIndex.answer] = e.target.value;
+              checkForSubmit();
+            };
+            quizBlock.appendChild(qInput);
           }
-          qInput.onkeyup = function (e) {
-            profile[currentIndex.answer] = e.target.value;
-            checkForSubmit();
-          };
-          quizBlock.appendChild(qInput);
-        }
-        //post radio/check list
-        else {
-          let qInput = document.createElement("div");
-          qInput.id = "radioInputs";
-          currentIndex.options.map((v) => {
-            let optionWrap = document.createElement("div");
-            optionWrap.classList.add("opWrap");
-            let spanWrap = document.createElement("span");
-            //change option text if boolean
-            if (typeof v === "boolean") {
-              v ? (spanWrap.innerHTML = "Yes") : (spanWrap.innerHTML = "No");
-            } else {
-              spanWrap.innerHTML = v;
-            }
-            optionWrap.appendChild(spanWrap);
-            //check if it's been filled in already
-            if (currentIndex.multipleAnsAllow == false) {
-              if (profile[currentIndex.answer] == v) {
-                optionWrap.classList.add("selected");
-              }
-            } else {
-              if (profile[currentIndex.answer].indexOf(v) > -1) {
-                optionWrap.classList.add("selected");
-              }
-            }
-
-            if (currentIndex.multipleAnsAllow == true) {
-              optionWrap.classList.add("checklist");
-            }
-
-            optionWrap.onclick = () => {
-              if (currentIndex.multipleAnsAllow == false) {
-                Array.from(document.querySelectorAll(".selected")).forEach(
-                  (el) => el.classList.remove("selected")
-                );
-                profile[currentIndex.answer] = v.toString();
-                optionWrap.classList.add("selected");
+          //post radio/check list
+          else {
+            let qInput = document.createElement("div");
+            qInput.id = "radioInputs";
+            currentIndex.options.map((v) => {
+              let optionWrap = document.createElement("div");
+              optionWrap.classList.add("opWrap");
+              let spanWrap = document.createElement("span");
+              //change option text if boolean
+              if (typeof v === "boolean") {
+                v ? (spanWrap.innerHTML = "Yes") : (spanWrap.innerHTML = "No");
               } else {
-                if (optionWrap.classList.contains("selected") == false) {
-                  profile[currentIndex.answer].push(v.toString());
+                spanWrap.innerHTML = v;
+              }
+              optionWrap.appendChild(spanWrap);
+              //check if it's been filled in already
+              if (currentIndex.multipleAnsAllow == false) {
+                if (profile[currentIndex.answer] == v) {
                   optionWrap.classList.add("selected");
-                } else {
-                  optionWrap.classList.remove("selected");
-                  var index = profile[currentIndex.answer].indexOf(
-                    v.toString()
-                  );
-                  if (index !== -1) {
-                    profile[currentIndex.answer].splice(index, 1);
-                  }
+                }
+              } else {
+                if (profile[currentIndex.answer].indexOf(v) > -1) {
+                  optionWrap.classList.add("selected");
                 }
               }
 
-              checkForSubmit();
-            };
-            qInput.appendChild(optionWrap);
-          });
-
-          /////////////////////////////////////////////////
-          /////
-          //Other Option
-          ///
-          if (currentIndex.otherOption == true) {
-            //used to submit info on keyup and onclick
-            function checkOtherInput() {
-              if (document.getElementById("otherInput").value.length > 0) {
-                profile[`${currentIndex.answer}Other`] =
-                  document.getElementById("otherInput").value;
-              } else {
-                profile[`${currentIndex.answer}Other`] = null;
+              if (currentIndex.multipleAnsAllow == true) {
+                optionWrap.classList.add("checklist");
               }
-            }
-            let otherInput = document.createElement("input");
-            //creating the element
-            let optionWrap = document.createElement("div");
-            optionWrap.classList.add("opWrap");
-            optionWrap.classList.add("otherOption");
-            if (currentIndex.multipleAnsAllow == true) {
-              optionWrap.classList.add("checklist");
-            }
 
-            //on click
-            optionWrap.onclick = function (e) {
-              if (optionWrap.classList.contains("selected")) {
-                optionWrap.classList.remove("selected");
-                profile[`${currentIndex.answer}Other`] = null;
-              } else {
-                optionWrap.classList.add("selected");
-                otherInput.focus();
+              optionWrap.onclick = () => {
+                if (currentIndex.multipleAnsAllow == false) {
+                  Array.from(document.querySelectorAll(".selected")).forEach(
+                    (el) => el.classList.remove("selected")
+                  );
+                  profile[currentIndex.answer] = v.toString();
+                  optionWrap.classList.add("selected");
+                } else {
+                  if (optionWrap.classList.contains("selected") == false) {
+                    profile[currentIndex.answer].push(v.toString());
+                    optionWrap.classList.add("selected");
+                  } else {
+                    optionWrap.classList.remove("selected");
+                    var index = profile[currentIndex.answer].indexOf(
+                      v.toString()
+                    );
+                    if (index !== -1) {
+                      profile[currentIndex.answer].splice(index, 1);
+                    }
+                  }
+                }
+
+                checkForSubmit();
+              };
+              qInput.appendChild(optionWrap);
+            });
+
+            /////////////////////////////////////////////////
+            /////
+            //Other Option
+            ///
+            if (currentIndex.otherOption == true) {
+              //used to submit info on keyup and onclick
+              function checkOtherInput() {
+                if (document.getElementById("otherInput").value.length > 0) {
+                  profile[`${currentIndex.answer}Other`] =
+                    document.getElementById("otherInput").value;
+                } else {
+                  profile[`${currentIndex.answer}Other`] = null;
+                }
+              }
+              let otherInput = document.createElement("input");
+              //creating the element
+              let optionWrap = document.createElement("div");
+              optionWrap.classList.add("opWrap");
+              optionWrap.classList.add("otherOption");
+              if (currentIndex.multipleAnsAllow == true) {
+                optionWrap.classList.add("checklist");
+              }
+
+              //on click
+              optionWrap.onclick = function (e) {
+                if (optionWrap.classList.contains("selected")) {
+                  optionWrap.classList.remove("selected");
+                  profile[`${currentIndex.answer}Other`] = null;
+                } else {
+                  optionWrap.classList.add("selected");
+                  otherInput.focus();
+                  checkOtherInput();
+                }
+              };
+
+              let rLabel = document.createElement("span");
+              rLabel.innerHTML = "Other: ";
+              otherInput.id = "otherInput";
+              //on keyup
+              qInput.onkeyup = () => {
                 checkOtherInput();
+              };
+
+              if (profile[`${currentIndex.answer}Other`] != null) {
+                optionWrap.classList.add("selected");
+                otherInput.value = profile[`${currentIndex.answer}Other`];
               }
-            };
-
-            let rLabel = document.createElement("span");
-            rLabel.innerHTML = "Other: ";
-            otherInput.id = "otherInput";
-            //on keyup
-            qInput.onkeyup = () => {
-              checkOtherInput();
-            };
-
-            if (profile[`${currentIndex.answer}Other`] != null) {
-              optionWrap.classList.add("selected");
-              otherInput.value = profile[`${currentIndex.answer}Other`];
+              optionWrap.appendChild(rLabel);
+              optionWrap.appendChild(otherInput);
+              qInput.appendChild(optionWrap);
             }
-            optionWrap.appendChild(rLabel);
-            optionWrap.appendChild(otherInput);
-            qInput.appendChild(optionWrap);
+            quizBlock.appendChild(qInput);
           }
-          quizBlock.appendChild(qInput);
-        }
-        //////////////////////////////////////
+          //////////////////////////////////////
 
-        //post map of belmar
-        if (currentIndex.answer == "nearBelmar") {
-          let mapImage = document.createElement("img");
-          mapImage.src = "./quizAssets/map-2.png";
-          mapImage.alt = "Map of Belmar New Jersey";
-          mapImage.id = "map";
-          quizBlock.appendChild(mapImage);
-        }
+          //post map of belmar
+          if (currentIndex.answer == "nearBelmar") {
+            let mapImage = document.createElement("img");
+            mapImage.src = "./quizAssets/map-2.png";
+            mapImage.alt = "Map of Belmar New Jersey";
+            mapImage.id = "map";
+            quizBlock.appendChild(mapImage);
+          }
 
-        //create next / submit
-        btnWrap.innerHTML = null;
-        let backBtn = document.createElement("button");
-        submitBtn.id = "nextBtn";
-        if (currentQ < questions.length - 1) {
-          submitBtn.innerHTML = "next";
-          submitBtn.onclick = submitQ;
-          submitBtn.type = "submit";
-        } else {
-          submitBtn.innerHTML = "next";
-          submitBtn.type = "submit";
-          submitBtn.onclick = displayPriorityChart;
-        }
-        if (currentQ > 0) {
-          backBtn.innerHTML = "back";
-          backBtn.onclick = backQ;
-          backBtn.type = "button";
-          btnWrap.appendChild(backBtn);
-        }
-        btnWrap.appendChild(submitBtn);
-        void quizBlock.offsetWidth;
-        quizBlock.classList.add("fadein");
-        checkForSubmit();
-      } else if (currentIndex.question == "PROMPT") {
-        if (isForward) {
-          qHead.innerHTML = null;
-          subQ.innerHTML = null;
-
+          //create next / submit
           btnWrap.innerHTML = null;
           let backBtn = document.createElement("button");
-          backBtn.id = "promptOne";
-          backBtn.innerHTML = currentIndex.options[0];
+          submitBtn.id = "nextBtn";
+          if (currentQ < questions.length - 1) {
+            submitBtn.innerHTML = "next";
+            submitBtn.onclick = submitQ;
+            submitBtn.type = "submit";
+          } else {
+            submitBtn.innerHTML = "next";
+            submitBtn.type = "submit";
+            submitBtn.onclick = displayPriorityChart;
+          }
+          if (currentQ > 0) {
+            backBtn.innerHTML = "back";
+            backBtn.onclick = backQ;
+            backBtn.type = "button";
+            btnWrap.appendChild(backBtn);
+          }
+          btnWrap.appendChild(submitBtn);
+          checkForSubmit();
+        } else if (currentIndex.question == "PROMPT") {
+          if (isForward) {
+            qHead.innerHTML = null;
+            subQ.innerHTML = null;
+
+            btnWrap.innerHTML = null;
+            let backBtn = document.createElement("button");
+            backBtn.id = "promptOne";
+            backBtn.innerHTML = currentIndex.options[0];
+            backBtn.onclick = () => {
+              profile[currentIndex.answer] = "true";
+              submitBtn.onclick = submitQ(isForward);
+
+              setTimeout(() => {
+                quizBlock.classList.remove("hidden");
+                btnWrap.classList.remove("mainView");
+              }, 300);
+            };
+            backBtn.type = "button";
+
+            submitBtn.id = "promptTwo";
+            submitBtn.innerHTML = currentIndex.options[1];
+            submitBtn.onclick = () => {
+              profile[currentIndex.answer] = "false";
+              submitBtn.onclick = submitQ(isForward);
+              setTimeout(() => {
+                quizBlock.classList.remove("hidden");
+                btnWrap.classList.remove("mainView");
+              }, 300);
+            };
+            submitBtn.type = "submit";
+
+            btnWrap.appendChild(backBtn);
+            btnWrap.appendChild(submitBtn);
+            void quizBlock.offsetWidth;
+            quizBlock.classList.add("hidden");
+            btnWrap.classList.add("mainView");
+          } else {
+            let currentIndex = questions[currentQ];
+            profile[currentIndex.answer] = "n/a";
+            submitQ(isForward);
+          }
+        } else {
+          // if (isForward) {
+          //styling for tip
+          qHead.innerHTML = "Did you know…";
+          qHead.classList.add("tiphead");
+          subQ.innerHTML = null;
+          let tipHere = document.createElement("div");
+          tipHere.id = "tip";
+          let refinedTip = currentIndex.tip;
+          tipHere.innerHTML = refinedTip;
+          quizBlock.appendChild(tipHere);
+
+          //btns for tip
+          btnWrap.innerHTML = null;
+          let backBtn = document.createElement("button");
+          submitBtn.id = "nextBtn";
+          if (currentQ < questions.length - 1) {
+            submitBtn.innerHTML = "next";
+            submitBtn.onclick = () => {
+              currentQ++;
+              updateProgressbar();
+              postQ(true);
+              setTimeout(() => {
+                qHead.classList.remove("tiphead");
+              }, 300);
+            };
+          } else {
+            submitBtn.innerHTML = "next";
+            submitBtn.onclick = displayPriorityChart;
+          }
+          submitBtn.type = "submit";
+          backBtn.innerHTML = "back";
           backBtn.onclick = () => {
-            profile[currentIndex.answer] = "true";
-            submitBtn.onclick = submitQ(isForward);
-            quizBlock.classList.remove("hidden");
-            btnWrap.classList.remove("mainView");
+            currentQ = currentQ - 1;
+            updateProgressbar();
+            postQ(false);
+            qHead.classList.remove("tiphead");
           };
           backBtn.type = "button";
-
-          submitBtn.id = "promptTwo";
-          submitBtn.innerHTML = currentIndex.options[1];
-          submitBtn.onclick = () => {
-            profile[currentIndex.answer] = "false";
-            submitBtn.onclick = submitQ(isForward);
-            quizBlock.classList.remove("hidden");
-            btnWrap.classList.remove("mainView");
-          };
-          submitBtn.type = "submit";
-
           btnWrap.appendChild(backBtn);
           btnWrap.appendChild(submitBtn);
           void quizBlock.offsetWidth;
-          quizBlock.classList.add("hidden");
-          btnWrap.classList.add("mainView");
-          btnWrap.classList.add("fadein");
-        } else {
-          let currentIndex = questions[currentQ];
-          profile[currentIndex.answer] = "n/a";
-          submitQ(isForward);
+          // } else {
+          //   let currentIndex = questions[currentQ];
+          //   profile[currentIndex.answer] = "n/a";
+          //   submitQ(isForward);
+          // }
         }
       } else {
-        // if (isForward) {
-        //styling for tip
-        qHead.innerHTML = "Did you know…";
-        qHead.classList.add("tiphead");
-        subQ.innerHTML = null;
-        let tipHere = document.createElement("div");
-        tipHere.id = "tip";
-        let refinedTip = currentIndex.tip;
-        tipHere.innerHTML = refinedTip;
-        quizBlock.appendChild(tipHere);
-
-        //btns for tip
-        btnWrap.innerHTML = null;
-        let backBtn = document.createElement("button");
-        submitBtn.id = "nextBtn";
-        if (currentQ < questions.length - 1) {
-          submitBtn.innerHTML = "next";
-          submitBtn.onclick = () => {
-            currentQ++;
-            updateProgressbar();
-            postQ(true);
-            qHead.classList.remove("tiphead");
-          };
-        } else {
-          submitBtn.innerHTML = "next";
-          submitBtn.onclick = displayPriorityChart;
-        }
-        submitBtn.type = "submit";
-        backBtn.innerHTML = "back";
-        backBtn.onclick = () => {
-          currentQ = currentQ - 1;
-          updateProgressbar();
-          postQ(false);
-          qHead.classList.remove("tiphead");
-        };
-        backBtn.type = "button";
-        btnWrap.appendChild(backBtn);
-        btnWrap.appendChild(submitBtn);
-        void quizBlock.offsetWidth;
-        quizBlock.classList.add("fadein");
-        // } else {
-        //   let currentIndex = questions[currentQ];
-        //   profile[currentIndex.answer] = "n/a";
-        //   submitQ(isForward);
-        // }
+        let currentIndex = questions[currentQ];
+        profile[currentIndex.answer] = "n/a";
+        submitQ(isForward);
       }
-    } else {
-      let currentIndex = questions[currentQ];
-      profile[currentIndex.answer] = "n/a";
-      submitQ(isForward);
-    }
+    }, 300);
   }
 
   function submitQ(isForward) {
@@ -675,9 +682,17 @@ function startQuiz() {
     return false;
   };
   quizBlock.id = "quizBlock";
-  quizElement.appendChild(quizBlock);
-  quizElement.appendChild(btnWrap);
-  quizElement.appendChild(progressBar);
+
+  setTimeout(() => {
+    quizElement.innerHTML = null;
+    document.getElementById("quizParent").classList.remove("startUp");
+    document.addEventListener("keyup", handleKeyPress);
+    quizElement.appendChild(qHead);
+    quizElement.appendChild(subQ);
+    quizElement.appendChild(quizBlock);
+    quizElement.appendChild(btnWrap);
+    document.getElementById("quizParent").appendChild(progressBar);
+  }, 300);
   postQ(true);
 }
 
@@ -793,7 +808,6 @@ function displayPriorityChart() {
 
   newBtnWrap.appendChild(endBtn);
   goalBlock.appendChild(newBtnWrap);
-  goalBlock.classList.add("fadein");
 
   quizElement.appendChild(goalBlock);
 }
@@ -1011,6 +1025,25 @@ function displayResults() {
   //pump it out
   resultsBlock.appendChild(resultInfo);
   resultsBlock.appendChild(finalBtn);
-  resultsBlock.classList.add("fadein");
   quizElement.appendChild(resultsBlock);
+}
+
+function slideElement() {
+  quizElement.classList.remove("slidein");
+  quizElement.classList.remove("slideinBW");
+  quizElement.classList.add("slideout");
+  setTimeout(() => {
+    quizElement.classList.remove("slideout");
+    quizElement.classList.add("slidein");
+  }, 300);
+}
+
+function slideElementBW() {
+  quizElement.classList.remove("slidein");
+  quizElement.classList.remove("slideinBW");
+  quizElement.classList.add("slideoutBW");
+  setTimeout(() => {
+    quizElement.classList.remove("slideoutBW");
+    quizElement.classList.add("slideinBW");
+  }, 300);
 }
