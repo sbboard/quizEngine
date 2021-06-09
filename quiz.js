@@ -33,6 +33,7 @@ const questions = [
     subQ: null,
     answer: "name",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: [],
     relyOnThisBeingTrue: null,
@@ -43,6 +44,7 @@ const questions = [
     subQ: null,
     answer: "age",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: ["0-13", "14-18", "19-30", "31-45", "46-65", "65+"],
     relyOnThisBeingTrue: null,
@@ -50,12 +52,14 @@ const questions = [
   },
   {
     question: "TIP",
+    img: "placeholder.jpg",
     relyOnThisBeingTrue: null,
     tip: `...The fastest growing nail is on the middle finger?`,
   },
   {
     question: "Gender",
     subQ: null,
+    img: null,
     answer: "gender",
     multipleAnsAllow: false,
     otherOption: false,
@@ -68,6 +72,7 @@ const questions = [
     subQ: null,
     relyOnThisBeingTrue: "gender",
     relyAnswer: "Female",
+    img: null,
     answer: "pregnantOption",
     options: [
       "Continue to Pregnancy, Postpartum & Fertility Goals",
@@ -79,6 +84,7 @@ const questions = [
     subQ: null,
     answer: "pregnant",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: [
       "Hope to be pregnant within 1-2 years",
@@ -93,6 +99,7 @@ const questions = [
     question: "TIP",
     relyOnThisBeingTrue: "pregnantOption",
     relyAnswer: null,
+    img: null,
     tip: `...Your uterus stretches up to 500 times its original size?`,
   },
   {
@@ -101,6 +108,7 @@ const questions = [
     answer: "commit",
     multipleAnsAllow: false,
     otherOption: false,
+    img: null,
     options: [
       "Looking to gather more information",
       "Already interested",
@@ -114,6 +122,7 @@ const questions = [
     subQ: "(select all that apply)",
     answer: "diagnose",
     multipleAnsAllow: true,
+    img: null,
     otherOption: true,
     options: [
       "Cancer",
@@ -137,6 +146,7 @@ const questions = [
     subQ: null,
     answer: "previous",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
@@ -145,6 +155,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
+    img: null,
     tip: `...That at IWG we use a hair sample to understand your body’s genetic makeup?`,
   },
   {
@@ -154,6 +165,7 @@ const questions = [
     multipleAnsAllow: false,
     otherOption: false,
     options: [],
+    img: null,
     relyOnThisBeingTrue: null,
     relyAnswer: null,
   },
@@ -163,6 +175,7 @@ const questions = [
     answer: "inUS",
     multipleAnsAllow: false,
     otherOption: false,
+    img: null,
     options: yesNo,
     relyOnThisBeingTrue: null,
     relyAnswer: null,
@@ -173,6 +186,7 @@ const questions = [
     answer: "nearBelmar",
     multipleAnsAllow: false,
     otherOption: false,
+    img: "map-2.png",
     options: yesNo,
     relyOnThisBeingTrue: "inUS",
     relyAnswer: null,
@@ -182,6 +196,7 @@ const questions = [
     subQ: "(select all that apply)",
     answer: "diet",
     multipleAnsAllow: true,
+    img: null,
     otherOption: true,
     options: [
       "Vegan - Gotta love veggies!",
@@ -197,6 +212,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
+    img: null,
     tip: `...Vitamin C enhances the absorption of iron, that’s why you should always add citrus to your leafy greens and animal proteins? Pro tip: enjoy dark chocolate oranges for dessert!`,
   },
   {
@@ -205,6 +221,7 @@ const questions = [
     subQ: null,
     answer: "exercise",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: [
       "0 Room for improvement",
@@ -218,6 +235,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
+    img: null,
     tip: `...That as little as one exercise session can improve your mood, memory and focus?`,
   },
   {
@@ -225,6 +243,7 @@ const questions = [
     subQ: null,
     answer: "exIntense",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: [
       "Low (walking, yoga)",
@@ -236,6 +255,7 @@ const questions = [
   },
   {
     question: "TIP",
+    img: null,
     relyOnThisBeingTrue: null,
     tip: `...Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry which can increase recovery time?`,
   },
@@ -245,6 +265,7 @@ const questions = [
     subQ: null,
     answer: "interest",
     multipleAnsAllow: false,
+    img: null,
     options: ["Yes", "Hmm not sure"],
     relyOnThisBeingTrue: null,
     relyAnswer: null,
@@ -255,6 +276,7 @@ const questions = [
     subQ: null,
     answer: "sweat",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: ["yes", "No (If you glisten, mark no)"],
     relyOnThisBeingTrue: null,
@@ -263,6 +285,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
+    img: null,
     tip: `...Sweat is odorless and colorless but when it reacts with bacteria on your skin it creates the odor and color known as B.O.?`,
   },
   {
@@ -270,6 +293,7 @@ const questions = [
     subQ: null,
     answer: "drink",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: [
       "Yes, I enjoy a few fun drinks! 🍹",
@@ -282,6 +306,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: "age",
+    img: null,
     relyAnswer: ["19-30", "31-45", "46-65", "65+"],
     tip: `...Your liver is the filtration system that purifies your blood, removes toxins and produces bile?`,
   },
@@ -290,6 +315,7 @@ const questions = [
     subQ: null,
     answer: "supplements",
     multipleAnsAllow: false,
+    img: null,
     otherOption: false,
     options: yesNo,
     relyOnThisBeingTrue: null,
@@ -298,6 +324,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
+    img: null,
     tip: `...Turmeric’s main compound curmunin is “activated” by black pepper’s piperine providing anti inflammatory benefits?`,
   },
 ];
@@ -306,8 +333,8 @@ const quizElement = document.getElementById("quiz");
 let currentQ = 0;
 
 function startQuiz() {
-  let progressBar = document.getElementById("quizProg")
-  progressBar.value = 0
+  let progressBar = document.getElementById("quizProg");
+  progressBar.value = 0;
 
   function updateProgressbar() {
     progressBar.value = questions.filter(
@@ -513,10 +540,9 @@ function startQuiz() {
           //////////////////////////////////////
 
           //post map of belmar
-          if (currentIndex.answer == "nearBelmar") {
+          if (currentIndex.img != null) {
             let mapImage = document.createElement("img");
-            mapImage.src = "./quizAssets/map-2.png";
-            mapImage.alt = "Map of Belmar New Jersey";
+            mapImage.src = `./quizAssets/${currentIndex.img}`;
             mapImage.id = "map";
             quizBlock.appendChild(mapImage);
           }
@@ -546,6 +572,7 @@ function startQuiz() {
           if (isForward) {
             qHead.innerHTML = null;
             subQ.innerHTML = null;
+            quizElement.classList.add("promptMode");
 
             btnWrap.innerHTML = null;
             let backBtn = document.createElement("button");
@@ -558,6 +585,7 @@ function startQuiz() {
               setTimeout(() => {
                 quizBlock.classList.remove("hidden");
                 btnWrap.classList.remove("mainView");
+                quizElement.classList.remove("promptMode");
               }, 300);
             };
             backBtn.type = "button";
@@ -570,6 +598,7 @@ function startQuiz() {
               setTimeout(() => {
                 quizBlock.classList.remove("hidden");
                 btnWrap.classList.remove("mainView");
+                quizElement.classList.remove("promptMode");
               }, 300);
             };
             submitBtn.type = "submit";
@@ -589,7 +618,14 @@ function startQuiz() {
           //styling for tip
           qHead.innerHTML = "Did you know…";
           qHead.classList.add("tiphead");
+          subQ.classList.add("tipsubhead");
           subQ.innerHTML = null;
+          if (currentIndex.img != null) {
+            let mapImage = document.createElement("img");
+            mapImage.src = `./quizAssets/${currentIndex.img}`;
+            mapImage.id = "map";
+            quizBlock.appendChild(mapImage);
+          }
           let tipHere = document.createElement("div");
           tipHere.id = "tip";
           let refinedTip = currentIndex.tip;
@@ -608,6 +644,7 @@ function startQuiz() {
               postQ(true);
               setTimeout(() => {
                 qHead.classList.remove("tiphead");
+                subQ.classList.remove("tipsubhead");
               }, 300);
             };
           } else {
@@ -621,6 +658,7 @@ function startQuiz() {
             updateProgressbar();
             postQ(false);
             qHead.classList.remove("tiphead");
+            subQ.classList.remove("tipsubhead");
           };
           backBtn.type = "button";
           btnWrap.appendChild(backBtn);
@@ -700,6 +738,7 @@ function startQuiz() {
 //////////////////////////
 
 function displayPriorityChart() {
+  slideElement();
   const goalSelection = [
     "Digestion",
     "Sleep",
@@ -714,7 +753,6 @@ function displayPriorityChart() {
     "Overall Health & Prevention",
   ];
   const goalRange = 3;
-  quizElement.innerHTML = null;
   let goalBlock = document.createElement("div");
   goalBlock.id = "goalBlock";
 
@@ -808,13 +846,17 @@ function displayPriorityChart() {
   newBtnWrap.appendChild(endBtn);
   goalBlock.appendChild(newBtnWrap);
 
-  quizElement.appendChild(goalBlock);
+  setTimeout(() => {
+    quizElement.innerHTML = null;
+    quizElement.appendChild(goalBlock);
+  }, 300);
 }
 
 //////////////////////////////
 // RESULTS
 /////////////////////////////
 function displayResults() {
+  slideElement();
   function distanceBlurb() {
     let blurb = document.createElement("div");
     let sectionHead = document.createElement("h2");
@@ -987,7 +1029,6 @@ function displayResults() {
     return blurb;
   }
 
-  quizElement.innerHTML = null;
   let resultsBlock = document.createElement("div");
   resultsBlock.id = "resultsBlock";
   let resultHeader = document.createElement("h1");
@@ -1024,7 +1065,10 @@ function displayResults() {
   //pump it out
   resultsBlock.appendChild(resultInfo);
   resultsBlock.appendChild(finalBtn);
-  quizElement.appendChild(resultsBlock);
+  setTimeout(() => {
+    quizElement.innerHTML = null;
+    quizElement.appendChild(resultsBlock);
+  }, 300);
 }
 
 function slideElement() {

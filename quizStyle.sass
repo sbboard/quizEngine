@@ -34,7 +34,7 @@ html
         background-color: #000
         right: 0
         left: 0
-        position: absolute
+        position: fixed
         bottom: 0
         &::-webkit-progress-value
             transition: width 600ms linear
@@ -46,13 +46,27 @@ html
         color: $thatBlack
         padding: 2em
         text-align: center
-        margin: 1em
+        margin: 1em 1em 2em 1em
+        width: calc(100% - 2em)
         opacity: 0
         font-family: 'Lato', sans-serif
         max-width: calc(750px + 2em)
         border-radius: 1em
         background-color: $thatWhite
-        box-shadow: 0px 1px 20px 0px rgb(0 0 0 / 50%)
+        box-shadow: 0px 1px 20px 0px rgb(0 0 0 / 50%)    
+        &.promptMode
+            width: fit-content
+            padding: 1em
+            background-color: initial
+            box-shadow: initial
+            #btnWrap
+                button
+                    box-shadow: 0px 1px 20px 0px rgb(0 0 0 / 50%)
+                    margin: 0 0.25em 0 0.25em
+            h1
+                display: none
+            h2
+                display: none
         .introCopy
             display: block
             width: 80%
@@ -74,16 +88,14 @@ html
             &::-webkit-scrollbar-track
                 background: $thatBlack
             #map
-                margin-top: 1em
-                width: 27em
+                margin: 1em auto
                 border-radius: 1em
                 max-width: 100%
             #tip
-                max-width: 24em
-                margin: 0em auto 3em auto
+                max-width: 100%
                 font-family: 'Playfair Display'
                 font-size: 1.25em
-                text-align: left
+                text-align: center
             input
                 padding: .5em
                 width: 22em
@@ -186,8 +198,6 @@ html
             margin: 0 auto
             font-family: 'Playfair Display', serif
             font-size: 2em
-            &.tiphead
-                text-align: left
             &.startScreen
                 max-width: 14em
         h2
@@ -197,6 +207,8 @@ html
             font-weight: 400
             text-transform: capitalize
             color: $thatBlack
+            &.tipsubhead
+                display: none
         #btnWrap
             display: block
             justify-content: center
@@ -259,17 +271,12 @@ html
         #resultsBlock
             margin: 0 auto
             height: 100%
-            padding-bottom: 1em
             button    
-                width: 25em
+                width: 100%
                 padding: 1em
                 border-radius: 1em
-                margin: 1em auto
-                max-width: calc(100% - 2em)
-                right: 0
-                left: 0
-                bottom: 0
-                position: absolute
+                margin: 0em auto
+                max-width: 100%
             h1
                 margin: 0 auto 1em auto
                 text-align: center
@@ -289,10 +296,9 @@ html
             .infoBlocks
                 padding: 1.5em
                 border-radius: 1em
-                &:nth-of-type(odd)
+                &:nth-of-type(1)
                     background-color: #FFCF6B
                     border-radius: 1em
-                    box-shadow: 0px 9px 17px 0px rgb(0 0 0 / 20%)
                     a
                         color: white
                         &:hover
