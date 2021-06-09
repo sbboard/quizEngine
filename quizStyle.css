@@ -39,7 +39,7 @@ html body {
   bottom: 0;
 }
 #quizParent progress#quizProg::-webkit-progress-value {
-  transition: width 600s linear;
+  transition: width 600ms linear;
   background: #AFD6C1;
 }
 #quizParent progress#quizProg::-webkit-progress-bar {

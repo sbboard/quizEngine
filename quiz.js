@@ -306,9 +306,8 @@ const quizElement = document.getElementById("quiz");
 let currentQ = 0;
 
 function startQuiz() {
-  let progressBar = document.createElement("progress");
-  progressBar.id = "quizProg";
-  progressBar.value = 0;
+  let progressBar = document.getElementById("quizProg")
+  progressBar.value = 0
 
   function updateProgressbar() {
     progressBar.value = questions.filter(
