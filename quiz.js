@@ -52,9 +52,9 @@ const questions = [
   },
   {
     question: "TIP",
-    img: "placeholder.jpg",
+    img: "age.png",
     relyOnThisBeingTrue: null,
-    tip: `...The fastest growing nail is on the middle finger?`,
+    tip: `...Psychologist Erik Erickson argues that the Western culture of shaming aging keeps us from living a whole joyful life?`,
   },
   {
     question: "Gender",
@@ -99,8 +99,8 @@ const questions = [
     question: "TIP",
     relyOnThisBeingTrue: "pregnantOption",
     relyAnswer: null,
-    img: null,
-    tip: `...Your uterus stretches up to 500 times its original size?`,
+    img: "preg.png",
+    tip: `...exposure to flavors in the womb can affect a baby’s food preference later in life?`,
   },
   {
     question: "What's your Level of commitment?",
@@ -155,8 +155,8 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: null,
-    tip: `...That at IWG we use a hair sample to understand your body’s genetic makeup?`,
+    img: "functional.png",
+    tip: `...that at IWG we use a hair sample to understand your body’s genetic makeup?`,
   },
   {
     question: "Enter your email so we can send you results:",
@@ -212,7 +212,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: null,
+    img: "diet.png",
     tip: `...Vitamin C enhances the absorption of iron, that’s why you should always add citrus to your leafy greens and animal proteins? Pro tip: enjoy dark chocolate oranges for dessert!`,
   },
   {
@@ -235,7 +235,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: null,
+    img: "incorp.png",
     tip: `...That as little as one exercise session can improve your mood, memory and focus?`,
   },
   {
@@ -255,7 +255,7 @@ const questions = [
   },
   {
     question: "TIP",
-    img: null,
+    img: "level.png",
     relyOnThisBeingTrue: null,
     tip: `...Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry which can increase recovery time?`,
   },
@@ -285,7 +285,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: null,
+    img: "sweat.png",
     tip: `...Sweat is odorless and colorless but when it reacts with bacteria on your skin it creates the odor and color known as B.O.?`,
   },
   {
@@ -306,7 +306,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: "age",
-    img: null,
+    img: "drink.png",
     relyAnswer: ["19-30", "31-45", "46-65", "65+"],
     tip: `...Your liver is the filtration system that purifies your blood, removes toxins and produces bile?`,
   },
@@ -324,7 +324,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: null,
+    img: "supp.png",
     tip: `...Turmeric’s main compound curmunin is “activated” by black pepper’s piperine providing anti inflammatory benefits?`,
   },
 ];
@@ -902,13 +902,13 @@ function displayResults() {
   }
   function additionalOptions() {
     let blurb = document.createElement("div");
-    blurb.classList.add("infoBlocks");
     //Hyperbaric Chamber
     if (
       profile.exIntense.includes("Intense") ||
       profile.diagnose.indexOf("Surgery Within Past 1 Year") > -1
     ) {
       let subSection = document.createElement("div");
+      subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
       sectionHead.innerHTML = "Hyperbaric Chamber";
@@ -932,6 +932,7 @@ function displayResults() {
     ) {
       let subSection = document.createElement("div");
       let sectionHead = document.createElement("h2");
+      subSection.classList.add("infoBlocks");
       let sectionText = document.createElement("p");
       sectionHead.innerHTML = "Chiropractic Care";
       sectionText.innerHTML =
@@ -949,6 +950,7 @@ function displayResults() {
       profile.interest == "Yes"
     ) {
       let subSection = document.createElement("div");
+      subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
       sectionHead.innerHTML = "The Demartini Method";
@@ -963,11 +965,11 @@ function displayResults() {
   function programOptions() {
     let alreadyAssigned = false;
     let blurb = document.createElement("div");
-    blurb.classList.add("infoBlocks");
     //Pediatric
     if (profile.age == "0-13") {
       alreadyAssigned = true;
       let subSection = document.createElement("div");
+      subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
       sectionHead.innerHTML = "Program Recommendation: <span>Pediatric</span>s";
@@ -986,6 +988,7 @@ function displayResults() {
     ) {
       alreadyAssigned = true;
       let subSection = document.createElement("div");
+      subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
       sectionHead.innerHTML =
@@ -1004,6 +1007,7 @@ function displayResults() {
     ) {
       alreadyAssigned = true;
       let subSection = document.createElement("div");
+      subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
       sectionHead.innerHTML =
@@ -1017,6 +1021,7 @@ function displayResults() {
     //Functional Medicine
     if (alreadyAssigned == false) {
       let subSection = document.createElement("div");
+      subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
       sectionHead.innerHTML =
