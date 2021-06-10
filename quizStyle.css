@@ -53,7 +53,8 @@ html body {
   margin: 1em 1em 2em 1em;
   opacity: 0;
   font-family: "Lato", sans-serif;
-  max-width: calc(750px + 2em);
+  width: fit-content;
+  max-width: calc(100% - 2em);
   border-radius: 1em;
   background-color: #F3F4F6;
   box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.5);
@@ -76,7 +77,8 @@ html body {
 }
 #quizParent #quiz .introCopy {
   display: block;
-  width: 80%;
+  width: 35em;
+  max-width: 100%;
   margin: 2em auto 1em auto;
   text-align: left;
 }
@@ -87,6 +89,7 @@ html body {
   margin: 0 auto;
   overflow-y: auto;
   max-height: calc(100% - 9em);
+  max-width: fit-content;
 }
 #quizParent #quiz #quizBlock.hidden {
   display: none !important;
@@ -176,6 +179,7 @@ html body {
   margin: 0.25em;
   border-radius: 1.25em;
   width: calc(50% - .5em);
+  min-width: 14em;
   overflow: hidden;
   min-height: 4em;
   text-align: left;
@@ -341,7 +345,7 @@ html body {
   text-decoration: none;
 }
 #quizParent #quiz #resultsBlock #finalBtn {
-  width: 100%;
+  width: 35em;
   margin-top: 2em;
   max-width: 100%;
   border-radius: 1em;
@@ -388,6 +392,8 @@ html body {
 }
 #quizParent #quiz #resultsBlock .infoBlocks {
   margin-top: 2em;
+  width: 45em;
+  max-width: 100%;
   padding: 0 1.5em 1em 1.5em;
   border-bottom: 1px solid #b0b2b9;
 }

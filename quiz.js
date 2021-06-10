@@ -52,7 +52,7 @@ const questions = [
   },
   {
     question: "TIP",
-    img: "age.png",
+    img: "age.jpg",
     relyOnThisBeingTrue: null,
     tip: `...Psychologist Erik Erickson argues that the Western culture of shaming aging keeps us from living a whole joyful life?`,
   },
@@ -99,7 +99,7 @@ const questions = [
     question: "TIP",
     relyOnThisBeingTrue: "pregnantOption",
     relyAnswer: null,
-    img: "preg.png",
+    img: "preg.jpg",
     tip: `...exposure to flavors in the womb can affect a baby’s food preference later in life?`,
   },
   {
@@ -155,7 +155,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "functional.png",
+    img: "functional.jpg",
     tip: `...that at IWG we use a hair sample to understand your body’s genetic makeup?`,
   },
   {
@@ -186,7 +186,7 @@ const questions = [
     answer: "nearBelmar",
     multipleAnsAllow: false,
     otherOption: false,
-    img: "map-2.png",
+    img: "map-2.jpg",
     options: yesNo,
     relyOnThisBeingTrue: "inUS",
     relyAnswer: null,
@@ -212,7 +212,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "diet.png",
+    img: "diet.jpg",
     tip: `...Vitamin C enhances the absorption of iron, that’s why you should always add citrus to your leafy greens and animal proteins? Pro tip: enjoy dark chocolate oranges for dessert!`,
   },
   {
@@ -235,7 +235,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "incorp.png",
+    img: "incorp.jpg",
     tip: `...That as little as one exercise session can improve your mood, memory and focus?`,
   },
   {
@@ -255,7 +255,7 @@ const questions = [
   },
   {
     question: "TIP",
-    img: "level.png",
+    img: "level.jpg",
     relyOnThisBeingTrue: null,
     tip: `...Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry which can increase recovery time?`,
   },
@@ -285,7 +285,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "sweat.png",
+    img: "sweat.jpg",
     tip: `...Sweat is odorless and colorless but when it reacts with bacteria on your skin it creates the odor and color known as B.O.?`,
   },
   {
@@ -306,7 +306,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: "age",
-    img: "drink.png",
+    img: "drink.jpg",
     relyAnswer: ["19-30", "31-45", "46-65", "65+"],
     tip: `...Your liver is the filtration system that purifies your blood, removes toxins and produces bile?`,
   },
@@ -324,7 +324,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "supp.png",
+    img: "supp.jpg",
     tip: `...Turmeric’s main compound curmunin is “activated” by black pepper’s piperine providing anti inflammatory benefits?`,
   },
 ];
