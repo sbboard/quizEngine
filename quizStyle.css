@@ -322,12 +322,14 @@ html body {
   margin: 0 auto;
   height: 100%;
 }
-#quizParent #quiz #resultsBlock button {
+#quizParent #quiz #resultsBlock a {
+  margin-top: 1em;
   width: 100%;
   padding: 1em;
   border-radius: 1em;
   margin: 0em auto;
   max-width: 100%;
+  display: block;
 }
 #quizParent #quiz #resultsBlock h1 {
   margin: 0 auto 1em auto;
@@ -337,9 +339,19 @@ html body {
   text-align: left;
   margin-bottom: 0;
 }
+#quizParent #quiz #resultsBlock p a {
+  max-width: 100%;
+  width: 10em;
+  margin-left: auto;
+  background-color: #AFD6C1;
+}
 #quizParent #quiz #resultsBlock p i {
   display: block;
   font-style: italic;
+  font-size: 0.75em;
+}
+#quizParent #quiz #resultsBlock p br {
+  display: inherit;
 }
 #quizParent #quiz #resultsBlock h2 {
   margin: 0em 0 0.5em;
@@ -351,17 +363,18 @@ html body {
   font-weight: 400;
 }
 #quizParent #quiz #resultsBlock .infoBlocks {
-  padding: 1.5em;
+  margin-top: 1em;
+  padding: 0 1.5em;
   border-radius: 1em;
 }
-#quizParent #quiz #resultsBlock .infoBlocks:nth-of-type(1) {
+#quizParent #quiz #resultsBlock .infoBlocks.intro {
   background-color: #FFCF6B;
   border-radius: 1em;
 }
-#quizParent #quiz #resultsBlock .infoBlocks:nth-of-type(1) a {
+#quizParent #quiz #resultsBlock .infoBlocks.intro a {
   color: white;
 }
-#quizParent #quiz #resultsBlock .infoBlocks:nth-of-type(1) a:hover {
+#quizParent #quiz #resultsBlock .infoBlocks.intro a:hover {
   color: white;
 }
 

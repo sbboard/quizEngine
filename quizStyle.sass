@@ -53,7 +53,7 @@ html
         max-width: calc(750px + 2em)
         border-radius: 1em
         background-color: $thatWhite
-        box-shadow: 0px 1px 20px 0px rgb(0 0 0 / 50%)    
+        box-shadow: 0px 1px 20px 0px rgb(0 0 0 / 50%)
         &.promptMode
             width: fit-content
             padding: 1em
@@ -125,7 +125,7 @@ html
                         border: 0
                         border-bottom: 1px solid $thatBlack
                         outline: none !important
-                        
+
             input[type="radio"]
                 width: initial
             input[type="checkbox"]
@@ -157,7 +157,7 @@ html
                     text-align: left
                     vertical-align: middle
                     line-height: 1
-                    span    
+                    span
                         display: inline-flex
                         align-items: center
                         &::before
@@ -177,7 +177,7 @@ html
                     margin: .5em auto 0 auto
                 &.selected
                     background-color: $thatYellow
-                    border: 1px solid $thatYellow 
+                    border: 1px solid $thatYellow
                     &.checklist
                         span
                             &::before
@@ -274,21 +274,31 @@ html
         #resultsBlock
             margin: 0 auto
             height: 100%
-            button    
+            a
+                margin-top: 1em
                 width: 100%
                 padding: 1em
                 border-radius: 1em
                 margin: 0em auto
                 max-width: 100%
+                display: block
             h1
                 margin: 0 auto 1em auto
                 text-align: center
             p
                 text-align: left
                 margin-bottom: 0
+                a
+                    max-width: 100%
+                    width: 10em
+                    margin-left: auto
+                    background-color: $thatYellow
                 i
                     display: block
                     font-style: italic
+                    font-size: 0.75em
+                br
+                    display: inherit
             h2
                 margin: 0em 0 .5em
                 text-align: left
@@ -297,9 +307,10 @@ html
                 span
                     font-weight: 400
             .infoBlocks
-                padding: 1.5em
+                margin-top: 1em
+                padding: 0 1.5em
                 border-radius: 1em
-                &:nth-of-type(1)
+                &.intro
                     background-color: #FFCF6B
                     border-radius: 1em
                     a
