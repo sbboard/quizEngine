@@ -906,11 +906,13 @@ function displayResults() {
     return blurb;
   }
   function additionalOptions() {
+    let somethingInThere = false;
     let blurb = document.createElement("div");
     //thermography
     if (
       profile.diagnose.indexOf("Breast Tissue or Lymphatic Abnormality") > -1
     ) {
+      somethingInThere = true;
       let subSection = document.createElement("div");
       subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
@@ -926,6 +928,7 @@ function displayResults() {
       profile.exIntense.includes("Intense") ||
       profile.diagnose.indexOf("Surgery Within Past 1 Year") > -1
     ) {
+      somethingInThere = true;
       let subSection = document.createElement("div");
       subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
@@ -947,6 +950,7 @@ function displayResults() {
         profile.goals.mid == "Overall Health & Prevention" ||
         profile.goals.low == "Overall Health & Prevention")
     ) {
+      somethingInThere = true;
       let subSection = document.createElement("div");
       let sectionHead = document.createElement("h2");
       subSection.classList.add("infoBlocks");
@@ -965,6 +969,7 @@ function displayResults() {
       ) > -1 ||
       profile.interest == "Yes"
     ) {
+      somethingInThere = true;
       let subSection = document.createElement("div");
       subSection.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
@@ -976,8 +981,11 @@ function displayResults() {
       subSection.appendChild(sectionText);
       blurb.appendChild(subSection);
     }
-
-    return blurb;
+    if (somethingInThere != false) {
+      return blurb;
+    } else {
+      return false;
+    }
   }
   function programOptions() {
     let alreadyAssigned = false;
@@ -1073,7 +1081,9 @@ function displayResults() {
   if (profile.supplements === "true") {
     resultInfo.appendChild(supplementBlurb());
   }
-  resultInfo.appendChild(additionalOptions());
+  if (additionalOptions()) {
+    resultInfo.appendChild(additionalOptions());
+  }
   resultInfo.appendChild(programOptions());
 
   let finalBtn = document.createElement("a");
