@@ -51,7 +51,6 @@ html body {
   padding: 2em;
   text-align: center;
   margin: 1em 1em 2em 1em;
-  width: calc(100% - 2em);
   opacity: 0;
   font-family: "Lato", sans-serif;
   max-width: calc(750px + 2em);
@@ -324,17 +323,33 @@ html body {
   height: 100%;
 }
 #quizParent #quiz #resultsBlock a {
-  margin-top: 1em;
+  background-color: #AFD6C1;
+  color: #222329;
+  border: 0;
+  padding: 0.75em;
+  max-width: calc(50% - .5em);
+  text-transform: capitalize;
+  width: 10em;
+  display: inline-block;
+  margin: 1em 0.25em 0 0.25em;
+  transition: color 0.15s, background-color 0.15s, opacity 0.15s;
+  border-radius: 2em;
+}
+#quizParent #quiz #resultsBlock a:hover, #quizParent #quiz #resultsBlock a:focus {
+  color: white;
+  background-color: #222329;
+  text-decoration: none;
+}
+#quizParent #quiz #resultsBlock #finalBtn {
   width: 100%;
-  padding: 1em;
-  border-radius: 1em;
-  margin: 0em auto;
+  margin-top: 2em;
   max-width: 100%;
-  display: block;
+  border-radius: 1em;
 }
 #quizParent #quiz #resultsBlock h1 {
   margin: 0 auto 1em auto;
   text-align: center;
+  font-weight: 600;
 }
 #quizParent #quiz #resultsBlock p {
   text-align: left;
@@ -345,8 +360,15 @@ html body {
   width: 10em;
   margin-left: auto;
   background-color: #AFD6C1;
+  color: #222329;
+  display: block;
+  font-size: 0.85em;
+  padding: 1em;
+  width: 20em;
+  text-align: center;
 }
 #quizParent #quiz #resultsBlock p i {
+  margin-top: 1em;
   display: block;
   font-style: italic;
   font-size: 0.75em;
@@ -356,6 +378,7 @@ html body {
 }
 #quizParent #quiz #resultsBlock h2 {
   margin: 0em 0 0.5em;
+  font-size: 1.5em;
   text-align: left;
   height: inherit;
   font-weight: 600;
@@ -364,13 +387,14 @@ html body {
   font-weight: 400;
 }
 #quizParent #quiz #resultsBlock .infoBlocks {
-  margin-top: 1em;
-  padding: 0 1.5em;
-  border-radius: 1em;
+  margin-top: 2em;
+  padding: 0 1.5em 1em 1.5em;
+  border-bottom: 1px solid #b0b2b9;
 }
 #quizParent #quiz #resultsBlock .infoBlocks.intro {
   background-color: #FFCF6B;
-  border-radius: 1em;
+  border-radius: 0.75em;
+  border-bottom: 0;
   padding: 1.5em;
 }
 #quizParent #quiz #resultsBlock .infoBlocks.intro a {

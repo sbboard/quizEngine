@@ -48,7 +48,6 @@ html
         padding: 2em
         text-align: center
         margin: 1em 1em 2em 1em
-        width: calc(100% - 2em)
         opacity: 0
         font-family: 'Lato', sans-serif
         max-width: calc(750px + 2em)
@@ -144,7 +143,7 @@ html
                 margin: .5em auto
                 transition: background-color .15s, color .15s
                 text-transform: capitalize
-                border: 1px solid  $borderColor
+                border: 1px solid $borderColor
                 border-radius: 2em
                 position: relative
                 background-color: $thatWhite
@@ -277,16 +276,30 @@ html
             margin: 0 auto
             height: 100%
             a
-                margin-top: 1em
+                background-color: $thatYellow
+                color: $thatBlack
+                border: 0
+                padding: 0.75em
+                max-width: calc(50% - .5em)
+                text-transform: capitalize
+                width: 10em
+                display: inline-block
+                margin: 1em .25em 0 .25em
+                transition: color .15s, background-color .15s, opacity .15s
+                border-radius: 2em
+                &:hover, &:focus
+                    color: white
+                    background-color: $thatBlack
+                    text-decoration: none
+            #finalBtn
                 width: 100%
-                padding: 1em
-                border-radius: 1em
-                margin: 0em auto
+                margin-top: 2em
                 max-width: 100%
-                display: block
+                border-radius: 1em
             h1
                 margin: 0 auto 1em auto
                 text-align: center
+                font-weight: 600
             p
                 text-align: left
                 margin-bottom: 0
@@ -295,7 +308,14 @@ html
                     width: 10em
                     margin-left: auto
                     background-color: $thatYellow
+                    color: $thatBlack
+                    display: block
+                    font-size: .85em
+                    padding: 1em
+                    width: 20em
+                    text-align: center
                 i
+                    margin-top: 1em
                     display: block
                     font-style: italic
                     font-size: 0.75em
@@ -303,18 +323,20 @@ html
                     display: inherit
             h2
                 margin: 0em 0 .5em
+                font-size: 1.5em
                 text-align: left
                 height: inherit
                 font-weight: 600
                 span
                     font-weight: 400
             .infoBlocks
-                margin-top: 1em
-                padding: 0 1.5em
-                border-radius: 1em
+                margin-top: 2em
+                padding: 0 1.5em 1em 1.5em
+                border-bottom: 1px solid $borderColor
                 &.intro
                     background-color: #FFCF6B
-                    border-radius: 1em
+                    border-radius: .75em
+                    border-bottom: 0
                     padding: 1.5em
                     a
                         color: white
