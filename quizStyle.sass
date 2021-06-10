@@ -2,6 +2,7 @@ $thatYellow: #AFD6C1 //it's actually green now so
 $thatBlack: #222329
 $thatWhite: #F3F4F6
 $glowSize: 40px
+$borderColor: #b0b2b9
 
 html
     height: 100%
@@ -143,7 +144,7 @@ html
                 margin: .5em auto
                 transition: background-color .15s, color .15s
                 text-transform: capitalize
-                border: 1px solid $thatBlack
+                border: 1px solid  $borderColor
                 border-radius: 2em
                 position: relative
                 background-color: $thatWhite
@@ -151,6 +152,7 @@ html
                     padding: 0.5em 0.5em 0.5em 3.25em
                     display: inline-flex
                     margin: 0.25em
+                    border-radius: 1.25em
                     width: calc(50% - .5em)
                     overflow: hidden
                     min-height: 4em
@@ -167,10 +169,10 @@ html
                             position: absolute
                             left: 1.5rem
                             color: $thatYellow
-                            border-radius: 2rem
+                            border-radius: .5rem
                             transition: border .15s
                             background-color: white
-                            border: 1px solid #9c9c9c
+                            border: 1px solid $borderColor
                     &.otherOption
                         width: 100%
                 &:last-of-type
@@ -313,6 +315,7 @@ html
                 &.intro
                     background-color: #FFCF6B
                     border-radius: 1em
+                    padding: 1.5em
                     a
                         color: white
                         &:hover

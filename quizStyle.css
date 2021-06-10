@@ -166,7 +166,7 @@ html body {
   margin: 0.5em auto;
   transition: background-color 0.15s, color 0.15s;
   text-transform: capitalize;
-  border: 1px solid #222329;
+  border: 1px solid #b0b2b9;
   border-radius: 2em;
   position: relative;
   background-color: #F3F4F6;
@@ -175,6 +175,7 @@ html body {
   padding: 0.5em 0.5em 0.5em 3.25em;
   display: inline-flex;
   margin: 0.25em;
+  border-radius: 1.25em;
   width: calc(50% - .5em);
   overflow: hidden;
   min-height: 4em;
@@ -193,10 +194,10 @@ html body {
   position: absolute;
   left: 1.5rem;
   color: #AFD6C1;
-  border-radius: 2rem;
+  border-radius: 0.5rem;
   transition: border 0.15s;
   background-color: white;
-  border: 1px solid #9c9c9c;
+  border: 1px solid #b0b2b9;
 }
 #quizParent #quiz #quizBlock .opWrap.checklist.otherOption {
   width: 100%;
@@ -370,6 +371,7 @@ html body {
 #quizParent #quiz #resultsBlock .infoBlocks.intro {
   background-color: #FFCF6B;
   border-radius: 1em;
+  padding: 1.5em;
 }
 #quizParent #quiz #resultsBlock .infoBlocks.intro a {
   color: white;
