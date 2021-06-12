@@ -376,6 +376,7 @@ html body {
   display: block;
   font-style: italic;
   font-size: 0.75em;
+  text-align: center;
 }
 #quizParent #quiz #resultsBlock p br {
   display: inherit;

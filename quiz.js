@@ -333,6 +333,7 @@ const quizElement = document.getElementById("quiz");
 let currentQ = 0;
 
 function startQuiz() {
+  preloadImgs();
   let progressBar = document.getElementById("quizProg");
   progressBar.value = 0;
 
@@ -1088,7 +1089,7 @@ function displayResults() {
 
   let finalBtn = document.createElement("a");
   finalBtn.href = "https://integrativewellnessgroup.com/start-your-journey/";
-  finalBtn.id = "finalBtn"
+  finalBtn.id = "finalBtn";
   finalBtn.innerHTML =
     "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches";
   //pump it out
@@ -1118,4 +1119,15 @@ function slideElementBW() {
     quizElement.classList.remove("slideoutBW");
     quizElement.classList.add("slideinBW");
   }, 300);
+}
+
+let preloadedImages = [];
+function preloadImgs() {
+  let imagesToLoad = questions.filter((v) => {
+    return v.img != null;
+  });
+  imagesToLoad.forEach((v, i) => {
+    preloadedImages[i] = new Image();
+    preloadedImages[i].src = `./quizAssets/${v.img}`;
+  });
 }
