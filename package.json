@@ -7,11 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server",
     "sass": "sass --watch quizStyle.sass:quizStyle.css",
-    "minify": "uglifyjs -c -m --keep-fnames -o quiz.min.js -- quiz.js"
+    "minify": "uglifyjs -c -m --keep-fnames -o quiz.min.js -- quiz.js",
+    "postcss": "postcss quizStyle.css --use autoprefixer -o quiz.css -w"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lite-server": "^2.6.1"
+    "lite-server": "^2.6.1",
+    "postcss": "^8.3.2",
+    "postcss-cli": "^8.3.1"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.2.6"
   }
 }
