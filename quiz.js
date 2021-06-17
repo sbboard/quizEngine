@@ -46,7 +46,7 @@ const questions = [
     multipleAnsAllow: false,
     img: null,
     otherOption: false,
-    options: ["0-13", "14-18", "19-30", "31-45", "46-65", "65+"],
+    options: ["0-13", "14-19", "20-29", "30-39", "40-49","50-59", "60+"],
     relyOnThisBeingTrue: null,
     relyAnswer: null,
   },
@@ -170,7 +170,7 @@ const questions = [
     relyAnswer: null,
   },
   {
-    question: "Do you reside within the US?",
+    question: "Do you live in the US?",
     subQ: null,
     answer: "inUS",
     multipleAnsAllow: false,
@@ -202,9 +202,9 @@ const questions = [
       "Vegan - Gotta love veggies!",
       "Vegetarian - Just the less strict version of a vegan",
       "Paleo - Just like our ancestors",
-      "Grain or Gluten-Free - Goodbye carbs",
+      "Grain or Gluten-Free - Cauliflower crust is my jam",
       "Intermittent Fasting - Who needs breakfast?",
-      "None",
+      "I eat it all!",
     ],
     relyOnThisBeingTrue: null,
     relyAnswer: null,
@@ -278,7 +278,7 @@ const questions = [
     multipleAnsAllow: false,
     img: null,
     otherOption: false,
-    options: ["yes", "No (If you glisten, mark no)"],
+    options: ["yes", "No (If You Only Glisten, Mark No)"],
     relyOnThisBeingTrue: null,
     relyAnswer: null,
   },
@@ -301,13 +301,13 @@ const questions = [
       "No, I prefer 0-proof",
     ],
     relyOnThisBeingTrue: "age",
-    relyAnswer: ["19-30", "31-45", "46-65", "65+"],
+    relyAnswer: ["20-29", "30-39", "40-49","50-59", "60+"],
   },
   {
     question: "TIP",
     relyOnThisBeingTrue: "age",
     img: "drink.jpg",
-    relyAnswer: ["19-30", "31-45", "46-65", "65+"],
+    relyAnswer: ["20-29", "30-39", "40-49","50-59", "60+"],
     tip: `...Your liver is the filtration system that purifies your blood, removes toxins and produces bile?`,
   },
   {
@@ -769,11 +769,11 @@ function displayPriorityChart() {
 
   //create header
   let headerEl = document.createElement("h1");
-  headerEl.innerHTML = `Choose up to ${goalRange} HEALTH GOALS`;
+  headerEl.innerHTML = `Choose up to ${goalRange} Health Goals`;
   goalBlock.appendChild(headerEl);
 
   let subHead = document.createElement("h2");
-  subHead.innerHTML = "prioritize importance with 1 = most important";
+  subHead.innerHTML = "Rank from most important (1) to least important (3)";
   goalBlock.appendChild(subHead);
 
   //create table
