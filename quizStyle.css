@@ -35,7 +35,7 @@ html body {
   background-color: #000;
   right: 0;
   left: 0;
-  position: fixed;
+  position: absolute;
   bottom: 0;
 }
 #quizParent progress#quizProg::-webkit-progress-value {
@@ -127,6 +127,7 @@ html body {
   width: 22em;
   height: inherit;
   letter-spacing: normal !important;
+  border-color: #AFD6C1;
 }
 #quizParent #quiz #quizBlock input#otherInput {
   width: calc(100% - 5em);
@@ -277,6 +278,9 @@ html body {
   max-width: calc(50% - .5em);
   text-transform: capitalize;
   width: 10em;
+  font-size: 1em;
+  line-height: inherit;
+  font-weight: 400;
   display: inline-block;
   margin: 1em 0.25em 0 0.25em;
   transition: color 0.15s, background-color 0.15s, opacity 0.15s;

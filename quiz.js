@@ -332,6 +332,16 @@ const questions = [
 const quizElement = document.getElementById("quiz");
 let currentQ = 0;
 
+document.addEventListener("DOMContentLoaded", changeHeight);
+
+function changeHeight() {
+  let footerHeight = document.getElementById("footer").offsetHeight;
+  let headerHeight = document.getElementById("top-bar-wrap").offsetHeight
+  document.getElementById(
+    "quizParent"
+  ).style.minHeight = `calc(100vh - ${headerHeight}px - ${footerHeight}px)`;
+}
+
 function startQuiz() {
   preloadImgs();
   let progressBar = document.getElementById("quizProg");

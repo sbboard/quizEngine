@@ -35,7 +35,7 @@ html
         background-color: #000
         right: 0
         left: 0
-        position: fixed
+        position: absolute
         bottom: 0
         &::-webkit-progress-value
             transition: width 600ms linear
@@ -111,6 +111,7 @@ html
                 width: 22em
                 height: inherit
                 letter-spacing: normal !important
+                border-color: $thatYellow
                 &#otherInput
                     width: calc(100% - 5em)
                     margin-left: 1em
@@ -240,6 +241,9 @@ html
             max-width: calc(50% - .5em)
             text-transform: capitalize
             width: 10em
+            font-size: 1em
+            line-height: inherit
+            font-weight: 400
             display: inline-block
             margin: 1em .25em 0 .25em
             transition: color .15s, background-color .15s, opacity .15s
