@@ -331,6 +331,11 @@ html body {
   margin: 0 auto;
   height: 100%;
 }
+#quizParent #quiz #resultsBlock #resultsHeaderImg {
+  mix-blend-mode: darken;
+  max-width: 100%;
+  max-height: 80vh;
+}
 #quizParent #quiz #resultsBlock a {
   background-color: #AFD6C1;
   color: #222329;

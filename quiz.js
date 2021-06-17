@@ -46,7 +46,7 @@ const questions = [
     multipleAnsAllow: false,
     img: null,
     otherOption: false,
-    options: ["0-13", "14-19", "20-29", "30-39", "40-49","50-59", "60+"],
+    options: ["0-13", "14-19", "20-29", "30-39", "40-49", "50-59", "60+"],
     relyOnThisBeingTrue: null,
     relyAnswer: null,
   },
@@ -301,13 +301,13 @@ const questions = [
       "No, I prefer 0-proof",
     ],
     relyOnThisBeingTrue: "age",
-    relyAnswer: ["20-29", "30-39", "40-49","50-59", "60+"],
+    relyAnswer: ["20-29", "30-39", "40-49", "50-59", "60+"],
   },
   {
     question: "TIP",
     relyOnThisBeingTrue: "age",
     img: "drink.jpg",
-    relyAnswer: ["20-29", "30-39", "40-49","50-59", "60+"],
+    relyAnswer: ["20-29", "30-39", "40-49", "50-59", "60+"],
     tip: `Your liver is your body’s filtration system… but just like the filter on your vacuum, your body’s filter needs to be cleaned so it can continue to perform its job and remove toxins over your lifetime.`,
   },
   {
@@ -336,7 +336,7 @@ document.addEventListener("DOMContentLoaded", changeHeight);
 
 function changeHeight() {
   let footerHeight = document.getElementById("footer").offsetHeight;
-  let headerHeight = document.getElementById("top-bar-wrap").offsetHeight
+  let headerHeight = document.getElementById("top-bar-wrap").offsetHeight;
   document.getElementById(
     "quizParent"
   ).style.minHeight = `calc(100vh - ${headerHeight}px - 1em`;
@@ -1069,6 +1069,9 @@ function displayResults() {
 
   let resultsBlock = document.createElement("div");
   resultsBlock.id = "resultsBlock";
+  let headerImage = document.createElement("img");
+  headerImage.id = "resultsHeaderImg";
+  headerImage.src = "/quizAssets/resultsHead.png";
   let resultHeader = document.createElement("h1");
   resultHeader.innerHTML = `${profile.name}'s Healing Journey`;
   resultsBlock.appendChild(resultHeader);
@@ -1077,16 +1080,18 @@ function displayResults() {
   resultInfo.id = "resultInfo";
 
   //intro
-  let intro = document.createElement("div");
-  let introHead = document.createElement("h2");
-  intro.classList.add("infoBlocks");
-  intro.classList.add("intro");
-  introHead.innerHTML = "IWG: <span>We don’t guess, we test.</span>";
-  intro.appendChild(introHead);
-  let introText = document.createElement("p");
-  introText.innerHTML = `At Integrative Wellness Group, you, the patient, come first. Our therapies, testing, and treatment are customized to assess and heal your body. Our practitioners spend time getting to know you and your wellness journey so we can empower you to take back control of your health.`;
-  intro.appendChild(introText);
-  resultInfo.appendChild(intro);
+  // let intro = document.createElement("div");
+  // let introHead = document.createElement("h2");
+  // intro.classList.add("infoBlocks");
+  // intro.classList.add("intro");
+  // introHead.innerHTML = "IWG: <span>We don’t guess, we test.</span>";
+  // intro.appendChild(introHead);
+  // let introText = document.createElement("p");
+  // introText.innerHTML = `At Integrative Wellness Group, you, the patient, come first. Our therapies, testing, and treatment are customized to assess and heal your body. Our practitioners spend time getting to know you and your wellness journey so we can empower you to take back control of your health.`;
+  // intro.appendChild(introText);
+  // resultInfo.appendChild(intro);
+  
+  resultsBlock.appendChild(headerImage);
   resultInfo.appendChild(distanceBlurb());
   resultInfo.appendChild(detoxBlurb());
   if (profile.supplements === "true") {
@@ -1099,7 +1104,7 @@ function displayResults() {
 
   let finalBtn = document.createElement("a");
   finalBtn.href = "https://integrativewellnessgroup.com/start-your-journey/";
-  finalBtn.target='_blank'
+  finalBtn.target = "_blank";
   finalBtn.id = "finalBtn";
   finalBtn.innerHTML =
     "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches.";
@@ -1141,4 +1146,7 @@ function preloadImgs() {
     preloadedImages[i] = new Image();
     preloadedImages[i].src = `./quizAssets/${v.img}`;
   });
+  let headerImg = new Image();
+  headerImg.src = `./quizAssets/resultsHead.png`;
+  preloadedImages.push(headerImg);
 }
