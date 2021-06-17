@@ -54,7 +54,7 @@ const questions = [
     question: "TIP",
     img: "age.jpg",
     relyOnThisBeingTrue: null,
-    tip: `...Psychologist Erik Erickson argues that the Western culture of shaming aging keeps us from living a whole joyful life?`,
+    tip: `Most people blame aging & genetics on their poor health but oftentimes there’s more to it.`,
   },
   {
     question: "Gender",
@@ -100,7 +100,7 @@ const questions = [
     relyOnThisBeingTrue: "pregnantOption",
     relyAnswer: null,
     img: "preg.jpg",
-    tip: `...exposure to flavors in the womb can affect a baby’s food preference later in life?`,
+    tip: `Exposure to flavors in the womb can affect a baby’s food preference later in life.`,
   },
   {
     question: "What's your Level of commitment?",
@@ -156,7 +156,7 @@ const questions = [
     question: "TIP",
     relyOnThisBeingTrue: null,
     img: "functional.jpg",
-    tip: `...that at IWG we use a hair sample to understand your body’s genetic makeup?`,
+    tip: `At IWG we use a hair sample to understand your body’s genetic makeup.`,
   },
   {
     question: "Enter your email so we can send you results:",
@@ -213,7 +213,7 @@ const questions = [
     question: "TIP",
     relyOnThisBeingTrue: null,
     img: "diet.jpg",
-    tip: `...Vitamin C enhances the absorption of iron, that’s why you should always add citrus to your leafy greens and animal proteins? Pro tip: enjoy dark chocolate oranges for dessert!`,
+    tip: `Vitamin C enhances the absorption of iron. Pro tip: enjoy dark chocolate (iron) oranges (vitamin C) for dessert!`,
   },
   {
     question:
@@ -236,7 +236,7 @@ const questions = [
     question: "TIP",
     relyOnThisBeingTrue: null,
     img: "incorp.jpg",
-    tip: `...That as little as one exercise session can improve your mood, memory and focus?`,
+    tip: `As little as one exercise session can improve your mood, memory and focus.`,
   },
   {
     question: "What intensity level is your exercise?",
@@ -257,7 +257,7 @@ const questions = [
     question: "TIP",
     img: "level.jpg",
     relyOnThisBeingTrue: null,
-    tip: `...Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry which can increase recovery time?`,
+    tip: `Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry which can increase recovery time.`,
   },
   {
     question:
@@ -286,7 +286,7 @@ const questions = [
     question: "TIP",
     relyOnThisBeingTrue: null,
     img: "sweat.jpg",
-    tip: `...Sweat is odorless and colorless but when it reacts with bacteria on your skin it creates the odor and color known as B.O.?`,
+    tip: `Sweating is great for your body, if you are only glistening, your detox pathways might be clogged.`,
   },
   {
     question: "Do you drink? If so, how often?",
@@ -308,7 +308,7 @@ const questions = [
     relyOnThisBeingTrue: "age",
     img: "drink.jpg",
     relyAnswer: ["20-29", "30-39", "40-49","50-59", "60+"],
-    tip: `...Your liver is the filtration system that purifies your blood, removes toxins and produces bile?`,
+    tip: `Your liver is your body’s filtration system… but just like the filter on your vacuum, your body’s filter needs to be cleaned so it can continue to perform its job and remove toxins over your lifetime.`,
   },
   {
     question: "Do you take any supplements?",
@@ -325,7 +325,7 @@ const questions = [
     question: "TIP",
     relyOnThisBeingTrue: null,
     img: "supp.jpg",
-    tip: `...Turmeric’s main compound curmunin is “activated” by black pepper’s piperine providing anti inflammatory benefits?`,
+    tip: `Turmeric is an herb that is known for its anti-inflammatory properties; it’s main component, curcumin, is “activated” by black pepper, so be sure to sprinkle some atop your golden latte! P.S. Inflammation is a double-edged sword…it helps fights infections but over the long term inflammation leads to damage of the arteries, organs, and joints and is linked to chronic disease.`,
   },
 ];
 
@@ -627,7 +627,7 @@ function startQuiz() {
         } else {
           // if (isForward) {
           //styling for tip
-          qHead.innerHTML = "Did you know…";
+          qHead.innerHTML = "Did You Know?";
           qHead.classList.add("tiphead");
           subQ.classList.add("tipsubhead");
           subQ.innerHTML = null;

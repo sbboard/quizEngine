@@ -108,8 +108,8 @@ html body {
 #quizParent #quiz #quizBlock #map {
   margin: 1em auto;
   border-radius: 1em;
-  max-width: 100%;
   max-height: 25em;
+  max-width: 70%;
 }
 #quizParent #quiz #quizBlock #tip {
   max-width: 100%;
