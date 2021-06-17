@@ -339,7 +339,7 @@ function changeHeight() {
   let headerHeight = document.getElementById("top-bar-wrap").offsetHeight
   document.getElementById(
     "quizParent"
-  ).style.minHeight = `calc(100vh - ${headerHeight}px - ${footerHeight}px)`;
+  ).style.minHeight = `calc(100vh - ${headerHeight}px - 1em`;
 }
 
 function startQuiz() {
