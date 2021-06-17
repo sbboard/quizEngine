@@ -896,7 +896,7 @@ function displayResults() {
 
     if (profile.sweat === "false") {
       sectionText.innerHTML =
-        "Often overlooked, the body’s detoxification process is vital to keep us feeling our best. If you’re unclear on what detoxification is, perfect examples are sweat and sleep. When you sweat your body is expelling toxins. When you sleep the space between your cells increases, thus increasing the flow of toxins being flushed out. The primary function of your liver, kidneys, and lungs is detoxification, if they’re bogged down, you’re not expelling toxicity out of your body efficiently. We incorporate detoxification therapies into many patient’s healing protocols so they can experience almost-immediate relief and their bodies can begin to run more efficiently.<a href='https://shop.integrativewellnessgroup.com/collections/spa-services' target='_blank'>To book your Spa Session, click here</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>";
+        "To maintain your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href='https://shop.integrativewellnessgroup.com/collections/spa-services' target='_blank'>To book your Spa Session, click here</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>";
     } else {
       sectionText.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href="https://shop.integrativewellnessgroup.com/collections/spa-services" target='_blank'>To book your Spa Session, click here</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
     }
@@ -1102,7 +1102,7 @@ function displayResults() {
   finalBtn.target='_blank'
   finalBtn.id = "finalBtn";
   finalBtn.innerHTML =
-    "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches";
+    "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches.";
   //pump it out
   resultsBlock.appendChild(resultInfo);
   resultsBlock.appendChild(finalBtn);
