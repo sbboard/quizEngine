@@ -871,7 +871,7 @@ function startQuiz() {
         quizElement.appendChild(quizBlock);
         quizElement.appendChild(btnWrap);
       }, 300);
-      backQ
+      backQ;
     };
 
     //create finisj button
@@ -1045,8 +1045,8 @@ function startQuiz() {
 
       //Pregnancy & Fertility
       else if (
-        (profile.pregnant != "None of the above" &&
-          profile.pregnant != "n/a") ||
+        profile.pregnant != "None of the above" &&
+        profile.pregnant != "n/a" &&
         profile.diagnose.indexOf(
           "Hormonal (PCOS, Cycle Issues, Endometriosis, etc.)"
         ) > -1
