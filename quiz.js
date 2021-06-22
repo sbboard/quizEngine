@@ -471,8 +471,9 @@ function startQuiz() {
               }
               optionWrap.appendChild(spanWrap);
               //check if it's been filled in already
-              if (currentIndex.multipleAnsAllow == false) {
-                if (profile[currentIndex.answer] == v) {
+              if (currentIndex.multipleAnsAllow === false) {
+                console.log(profile[currentIndex.answer],v,profile[currentIndex.answer] === v);
+                if (String(profile[currentIndex.answer]) === String(v)) {
                   optionWrap.classList.add("selected");
                 }
               } else {
