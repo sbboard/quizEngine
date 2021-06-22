@@ -97,8 +97,12 @@ const questions = [
   },
   {
     question: "TIP",
-    relyOnThisBeingTrue: "pregnantOption",
-    relyAnswer: null,
+    relyOnThisBeingTrue: "pregnant",
+    relyAnswer: [
+      "Hope to be pregnant within 1-2 years",
+      "Prenatal (currently pregnant)",
+      "Postpartum",
+    ],
     img: "preg.jpg",
     tip: `Exposure to flavors in the womb can affect a baby’s food preference later in life.`,
   },
@@ -1037,7 +1041,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Pediatrics";
-        sectionText.innerHTML = `This program is catered to the kiddos! Parents, we understand that your child deserves the best and we’re here to support you. Complete with lab tests, therapies and personalized recommendations for your growing child, our support system is designed to help your child thrive. We’ve even got a candy milkshake smoothie guide (where no one can taste the spirulina!)<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>For your Prenatal & Pregnancy Program, click here to book a consultation call</a>`;
+        sectionText.innerHTML = `This program is catered to the kiddos! Parents, we understand that your child deserves the best and we’re here to support you. Complete with lab tests, therapies and personalized recommendations for your growing child, our support system is designed to help your child thrive. We’ve even got a candy milkshake smoothie guide (where no one can taste the spirulina!)<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>For your Pediatrics Program, click here to book a consultation call</a>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         blurb.appendChild(subSection);

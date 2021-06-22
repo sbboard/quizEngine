@@ -143,6 +143,8 @@ html body {
   pointer-events: none;
   height: auto;
   text-align: center;
+  box-shadow: none;
+  border-radius: 0;
 }
 #quizParent #quiz #quizBlock input#otherInput:focus {
   border: 0;
