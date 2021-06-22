@@ -423,6 +423,7 @@ function startQuiz() {
           currentIndex.question != "TIP" &&
           currentIndex.question != "PROMPT"
         ) {
+          updateProgressbar();
           //create question
           qHead.innerHTML = currentIndex.question;
 
@@ -667,7 +668,6 @@ function startQuiz() {
             submitBtn.innerHTML = "next";
             submitBtn.onclick = () => {
               currentQ++;
-              updateProgressbar();
               postQ(true);
               setTimeout(() => {
                 qHead.classList.remove("tiphead");
@@ -682,7 +682,6 @@ function startQuiz() {
           backBtn.innerHTML = "back";
           backBtn.onclick = () => {
             currentQ = currentQ - 1;
-            updateProgressbar();
             postQ(false);
             qHead.classList.remove("tiphead");
             subQ.classList.remove("tipsubhead");
@@ -724,11 +723,9 @@ function startQuiz() {
       ) {
         if (isForward) {
           currentQ++;
-          updateProgressbar();
           postQ(true);
         } else {
           currentQ = currentQ - 1;
-          updateProgressbar();
           postQ(false);
         }
       }
@@ -737,7 +734,6 @@ function startQuiz() {
 
   function backQ() {
     currentQ = currentQ - 1;
-    updateProgressbar();
     postQ(false);
   }
 
@@ -764,6 +760,7 @@ function startQuiz() {
   //////////////////////////
 
   function displayPriorityChart() {
+    updateProgressbar();
     slideElement();
     const goalSelection = [
       "Digestion",
