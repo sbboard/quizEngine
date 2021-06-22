@@ -390,9 +390,15 @@ function startQuiz() {
   function postQ(isForward) {
     let submitBtn = document.createElement("button");
     function checkForSubmit() {
+      if (profile[`${currentIndex.answer}Other`] != null) {
+        profile[`${currentIndex.answer}Other`].length > 0;
+      }
       if (
-        profile[currentIndex.answer] != null &&
-        profile[currentIndex.answer].length > 0
+        (profile[currentIndex.answer] != null &&
+          profile[currentIndex.answer].length > 0) ||
+        (currentIndex.otherOption == true &&
+          profile[`${currentIndex.answer}Other`] != null &&
+          profile[`${currentIndex.answer}Other`].length > 0)
       ) {
         submitBtn.disabled = false;
       } else {
@@ -472,7 +478,6 @@ function startQuiz() {
               optionWrap.appendChild(spanWrap);
               //check if it's been filled in already
               if (currentIndex.multipleAnsAllow === false) {
-                console.log(profile[currentIndex.answer],v,profile[currentIndex.answer] === v);
                 if (String(profile[currentIndex.answer]) === String(v)) {
                   optionWrap.classList.add("selected");
                 }
@@ -554,6 +559,7 @@ function startQuiz() {
               //on keyup
               qInput.onkeyup = () => {
                 checkOtherInput();
+                checkForSubmit();
               };
 
               if (profile[`${currentIndex.answer}Other`] != null) {
@@ -714,8 +720,11 @@ function startQuiz() {
 
     let currentIndex = questions[currentQ];
     if (
-      profile[currentIndex.answer] != null &&
-      profile[currentIndex.answer].length > 0
+      (profile[currentIndex.answer] != null &&
+        profile[currentIndex.answer].length > 0) ||
+      (currentIndex.otherOption == true &&
+        profile[`${currentIndex.answer}Other`] != null &&
+        profile[`${currentIndex.answer}Other`].length > 0)
     ) {
       if (
         currentIndex.answer != "email" ||
