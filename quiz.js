@@ -370,9 +370,9 @@ function startQuiz() {
     ).length;
   }
   //every question that's not a tip or prompt
-  progressBar.max = questions.filter(
-    (obj) => obj.question != "TIP" && obj.question != "PROMPT"
-  ).length;
+  progressBar.max =
+    questions.filter((obj) => obj.question != "TIP" && obj.question != "PROMPT")
+      .length + 1;
   let qHead = document.createElement("h1");
   let subQ = document.createElement("h2");
   let btnWrap = document.createElement("div");
@@ -899,6 +899,7 @@ function startQuiz() {
   // RESULTS
   /////////////////////////////
   function displayResults() {
+    progressBar.value = progressBar.max;
     slideElement();
     function distanceBlurb() {
       let blurb = document.createElement("div");
