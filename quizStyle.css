@@ -365,6 +365,9 @@ html body {
   text-align: center;
   font-weight: 600;
 }
+#quizParent #quiz #resultsBlock h1#programHeader {
+  margin: 0 auto 0 auto;
+}
 #quizParent #quiz #resultsBlock p {
   text-align: left;
   margin-bottom: 0;
@@ -405,6 +408,7 @@ html body {
   margin-top: 2em;
   width: 45em;
   max-width: 100%;
+  text-align: center;
   padding: 0 1.5em 1em 1.5em;
   border-bottom: 1px solid #b0b2b9;
 }
