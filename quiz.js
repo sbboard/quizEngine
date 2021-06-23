@@ -335,6 +335,7 @@ const questions = [
 
 const quizElement = document.getElementById("quiz");
 let currentQ = 0;
+let preloadedImages = [];
 
 document.addEventListener("DOMContentLoaded", changeHeight);
 
@@ -346,7 +347,7 @@ function changeHeight() {
 }
 
 function startQuiz() {
-  let preloadedImages = [];
+  //quiz stuff
   function preloadImgs() {
     let imagesToLoad = questions.filter((v) => {
       return v.img != null;
@@ -355,9 +356,22 @@ function startQuiz() {
       preloadedImages[i] = new Image();
       preloadedImages[i].src = `./quizAssets/${v.img}`;
     });
-    let headerImg = new Image();
-    headerImg.src = `./quizAssets/resultsHead.png`;
-    preloadedImages.push(headerImg);
+    //results stuff
+    let resultsImgs = [
+      "./quizAssets/resultsHead.png",
+      "./quizAssets/resultsImgs/chiropractic.jpg",
+      "./quizAssets/resultsImgs/demartini.jpg",
+      "./quizAssets/resultsImgs/functional.jpg",
+      "./quizAssets/resultsImgs/intensive.jpg",
+      "./quizAssets/resultsImgs/pediatric.jpg",
+      "./quizAssets/resultsImgs/spa.jpg",
+      "./quizAssets/resultsImgs/thermo.jpg",
+    ];
+    resultsImgs.forEach((v) => {
+      let headerImg = new Image();
+      headerImg.src = v;
+      preloadedImages.push(headerImg);
+    });
   }
   preloadImgs();
   let progressBar = document.getElementById("quizProg");
@@ -955,7 +969,11 @@ function startQuiz() {
       sectionText.innerHTML =
         "At Integrative Wellness Group, we pride ourselves on testing (not guessing). Through IRT (Integrative Response Testing), our team is able to determine which supplements, services, and therapies will benefit you best at every stage of your wellness journey. Most patients are surprised that every supplement they consume should be personally tested for them… and a person’s supplement recommendations change over time as their bodies evolve and heal. IRT is included in every program we offer and implemented during the testing and reevaluation stage!";
       blurb.appendChild(sectionHead);
+      let sectionImage = document.createElement("img");
+      sectionImage.alt = "Integrative Response Testing";
+      sectionImage.src = "./quizAssets/resultsImgs/response.jpg";
       blurb.appendChild(sectionText);
+      blurb.appendChild(sectionImage);
       return blurb;
     }
     function additionalOptions() {
@@ -972,8 +990,14 @@ function startQuiz() {
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Thermography";
         sectionText.innerHTML = `The Alfathermo thermographic imaging machine is used to evaluate breast health, lymphatic health, neoplastic changes, musculoskeletal issues, vascular disease, dental issues, thyroid conditions, and extracranial cerebral and facial vascular disease. Thermography testing is recommended for everyone, although we place special emphasis on those with breast or lymphatic irregularities.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a>.<i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+
+        let sectionImage = document.createElement("img");
+        sectionImage.alt = "Thermography";
+        sectionImage.src = "./quizAssets/resultsImgs/thermo.jpg";
+
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
+        subSection.appendChild(sectionImage);
         blurb.appendChild(subSection);
       }
       //Hyperbaric Chamber
@@ -1010,8 +1034,14 @@ function startQuiz() {
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Chiropractic Care";
         sectionText.innerHTML = `Chiropractic care with IWG is a full-body approach to decreasing pain and increasing function by realigning the joints of the spine and extremities (knees, shoulders, feet). Our chiropractors also eliminate tension with muscle release therapy and work to restore proper function with rehabilitation and cold laser therapy. We recommend this therapy for anyone looking to improve their overall wellness as well as those experiencing chronic or prolonged pain.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/chiropractic-exam-for-new-patients" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+
+        let sectionImage = document.createElement("img");
+        sectionImage.alt = "Chiropractic Care";
+        sectionImage.src = "./quizAssets/resultsImgs/chiropractic.jpg";
+
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
+        subSection.appendChild(sectionImage);
         blurb.appendChild(subSection);
       }
 
@@ -1030,8 +1060,14 @@ function startQuiz() {
         sectionHead.innerHTML = "The Demartini Method®";
         sectionText.innerHTML = `The DeMartini Method® is a breakthrough discovery and cutting edge personal transformation methodology that results in a new perspective and paradigm in thinking and feeling. Developed by Dr. John DeMartini, it is the culmination of more than 44 years of research and studies in numerous disciplines including physics, philosophy, theology, metaphysics, psychology, astronomy, mathematics, neurology and physiology. The DeMartini Method is the most powerful, effective and efficient methodology in personal transformation providing lifelong results that can shift your mindset.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/the-demartini-method-group" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>
       `;
+
+        let sectionImage = document.createElement("img");
+        sectionImage.alt = "The Demartini Method";
+        sectionImage.src = "./quizAssets/resultsImgs/demartini.jpg";
+
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
+        subSection.appendChild(sectionImage);
         blurb.appendChild(subSection);
       }
       if (somethingInThere != false) {
@@ -1052,8 +1088,14 @@ function startQuiz() {
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Pediatrics";
         sectionText.innerHTML = `This program is catered to the kiddos! Parents, we understand that your child deserves the best and we’re here to support you. Complete with lab tests, therapies and personalized recommendations for your growing child, our support system is designed to help your child thrive. We’ve even got a candy milkshake smoothie guide (where no one can taste the spirulina!)<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>Learn More</a>`;
+
+        let sectionImage = document.createElement("img");
+        sectionImage.alt = "Pediatrics";
+        sectionImage.src = "./quizAssets/resultsImgs/pediatric.jpg";
+
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
+        subSection.appendChild(sectionImage);
         blurb.appendChild(subSection);
       }
 
@@ -1072,8 +1114,14 @@ function startQuiz() {
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Prenatal & Pregnancy";
         sectionText.innerHTML = `This program is for anyone looking for care during their pregnancy or the journey to get there. Our team structures the pregnancy portion of this program to best support each individual during their journey, even trimester by trimester. Whether you’re struggling with conception or pregnancy care, we’re here to help.<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>Learn More</a>`;
+
+        let sectionImage = document.createElement("img");
+        sectionImage.alt = "Prenatal & Pregnancy";
+        sectionImage.src = "./quizAssets/resultsImgs/pregnant.jpg";
+
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
+        subSection.appendChild(sectionImage);
         blurb.appendChild(subSection);
       }
 
@@ -1090,8 +1138,14 @@ function startQuiz() {
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Integrative Intensive";
         sectionText.innerHTML = `Our intensive program is perfect for someone who has been on the merry-go-round of NO answers and NO solutions to their symptoms. The advanced testing used in this program allows your doctors to target the root cause of your issues and create a personalized healing approach that allows you to get your life back. This program has helped people with autoimmune conditions, hormonal issues, mystery illness, Lyme disease, toxicity, thyroid issues, migraines, neurological issues, concussions, mental health issues, and so much more!<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>Learn More</a>`;
+
+        let sectionImage = document.createElement("img");
+        sectionImage.alt = "Integrative Intensive";
+        sectionImage.src = "./quizAssets/resultsImgs/intensive.jpg";
+
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
+        subSection.appendChild(sectionImage);
         blurb.appendChild(subSection);
       }
 
@@ -1103,8 +1157,14 @@ function startQuiz() {
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Functional Medicine";
         sectionText.innerHTML = `This program is perfect for those looking to personalize & solidify their path to wellness with an Integrative Medicine evaluation, complete with essential lab tests and recommendations for your diet and lifestyle. Our functional medicine practitioners meet with every patient to create a custom plan that meets their INDIVIDUAL needs and preferences.⁠<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>Learn More</a>`;
+
+        let sectionImage = document.createElement("img");
+        sectionImage.alt = "Functional Medicine";
+        sectionImage.src = "./quizAssets/resultsImgs/functional.jpg";
+
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
+        subSection.appendChild(sectionImage);
         blurb.appendChild(subSection);
       }
       return blurb;
