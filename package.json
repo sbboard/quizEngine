@@ -8,7 +8,7 @@
     "dev": "lite-server",
     "sass": "sass --watch quizStyle.sass:quizStyle.css",
     "minify": "uglifyjs -c -m --keep-fnames -o quiz.min.js -- quiz.js",
-    "postcss": "postcss quizStyle.css --use autoprefixer -o quiz.css -w"
+    "postcss": "postcss quizStyle.css --use autoprefixer -r"
   },
   "author": "",
   "license": "ISC",
