@@ -690,8 +690,10 @@ function startQuiz() {
           backBtn.onclick = () => {
             currentQ = currentQ - 1;
             postQ(false);
-            qHead.classList.remove("tiphead");
-            subQ.classList.remove("tipsubhead");
+            setTimeout(() => {
+              qHead.classList.remove("tiphead");
+              subQ.classList.remove("tipsubhead");
+            }, 300);
           };
           backBtn.type = "button";
           btnWrap.appendChild(backBtn);
