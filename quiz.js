@@ -923,7 +923,7 @@ function startQuiz() {
       } else {
         sectionHead.innerHTML = "Long Distance Care";
         sectionText.innerHTML =
-          "We treat patients near and far. While telehealth is technically the term, we elevate the experience with personal touchpoints, virtual appointments, optional technology & treatment delivery, and much more.<a href='https://integrativewellnessgroup.dream.press/long-distance-patient/' target='_blank'>To learn more about our telehealth options, click here</a>";
+          "We treat patients near and far. While telehealth is technically the term, we elevate the experience with personal touchpoints, virtual appointments, optional technology & treatment delivery, and much more.<a href='https://integrativewellnessgroup.dream.press/long-distance-patient/' target='_blank'>Learn More</a>";
       }
       blurb.appendChild(sectionHead);
       blurb.appendChild(sectionText);
@@ -938,9 +938,9 @@ function startQuiz() {
 
       if (profile.sweat === "false") {
         sectionText.innerHTML =
-          "To maintain your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href='https://shop.integrativewellnessgroup.com/collections/spa-services' target='_blank'>To book your Spa Session, click here</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>";
+          "To maintain your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href='https://shop.integrativewellnessgroup.com/collections/spa-services' target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>";
       } else {
-        sectionText.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href="https://shop.integrativewellnessgroup.com/collections/spa-services" target='_blank'>To book your Spa Session, click here</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+        sectionText.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href="https://shop.integrativewellnessgroup.com/collections/spa-services" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
       }
       blurb.appendChild(sectionHead);
       blurb.appendChild(sectionText);
@@ -971,7 +971,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Thermography";
-        sectionText.innerHTML = `The Alfathermo thermographic imaging machine is used to evaluate breast health, lymphatic health, neoplastic changes, musculoskeletal issues, vascular disease, dental issues, thyroid conditions, and extracranial cerebral and facial vascular disease. Thermography testing is recommended for everyone, although we place special emphasis on those with breast or lymphatic irregularities.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>To book your Thermography Session, click here</a>.<i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+        sectionText.innerHTML = `The Alfathermo thermographic imaging machine is used to evaluate breast health, lymphatic health, neoplastic changes, musculoskeletal issues, vascular disease, dental issues, thyroid conditions, and extracranial cerebral and facial vascular disease. Thermography testing is recommended for everyone, although we place special emphasis on those with breast or lymphatic irregularities.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a>.<i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         blurb.appendChild(subSection);
@@ -987,7 +987,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Hyperbaric Chamber";
-        sectionText.innerHTML = `The hyperbaric chamber is an enclosed pressurized pod where atmospheric pressure is raised 2-3 times regular air pressure. This therapy is recommended for those who would benefit from increased oxygen in blood which improves recovery time, speeds up wound healing, and decreases swelling.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>To book your Hyperbaric Chamber Session, click here</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+        sectionText.innerHTML = `The hyperbaric chamber is an enclosed pressurized pod where atmospheric pressure is raised 2-3 times regular air pressure. This therapy is recommended for those who would benefit from increased oxygen in blood which improves recovery time, speeds up wound healing, and decreases swelling.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         blurb.appendChild(subSection);
@@ -1009,7 +1009,7 @@ function startQuiz() {
         subSection.classList.add("infoBlocks");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Chiropractic Care";
-        sectionText.innerHTML = `Chiropractic care with IWG is a full-body approach to decreasing pain and increasing function by realigning the joints of the spine and extremities (knees, shoulders, feet). Our chiropractors also eliminate tension with muscle release therapy and work to restore proper function with rehabilitation and cold laser therapy. We recommend this therapy for anyone looking to improve their overall wellness as well as those experiencing chronic or prolonged pain.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/chiropractic-exam-for-new-patients" target='_blank'>To book your Chiropractic Onboarding, click here</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+        sectionText.innerHTML = `Chiropractic care with IWG is a full-body approach to decreasing pain and increasing function by realigning the joints of the spine and extremities (knees, shoulders, feet). Our chiropractors also eliminate tension with muscle release therapy and work to restore proper function with rehabilitation and cold laser therapy. We recommend this therapy for anyone looking to improve their overall wellness as well as those experiencing chronic or prolonged pain.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/chiropractic-exam-for-new-patients" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         blurb.appendChild(subSection);
@@ -1028,7 +1028,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "The Demartini Method®";
-        sectionText.innerHTML = `The DeMartini Method® is a breakthrough discovery and cutting edge personal transformation methodology that results in a new perspective and paradigm in thinking and feeling. Developed by Dr. John DeMartini, it is the culmination of more than 44 years of research and studies in numerous disciplines including physics, philosophy, theology, metaphysics, psychology, astronomy, mathematics, neurology and physiology. The DeMartini Method is the most powerful, effective and efficient methodology in personal transformation providing lifelong results that can shift your mindset.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/the-demartini-method-group" target='_blank'>To book your Demartini Method, click here</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>
+        sectionText.innerHTML = `The DeMartini Method® is a breakthrough discovery and cutting edge personal transformation methodology that results in a new perspective and paradigm in thinking and feeling. Developed by Dr. John DeMartini, it is the culmination of more than 44 years of research and studies in numerous disciplines including physics, philosophy, theology, metaphysics, psychology, astronomy, mathematics, neurology and physiology. The DeMartini Method is the most powerful, effective and efficient methodology in personal transformation providing lifelong results that can shift your mindset.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/the-demartini-method-group" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>
       `;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
@@ -1051,7 +1051,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Pediatrics";
-        sectionText.innerHTML = `This program is catered to the kiddos! Parents, we understand that your child deserves the best and we’re here to support you. Complete with lab tests, therapies and personalized recommendations for your growing child, our support system is designed to help your child thrive. We’ve even got a candy milkshake smoothie guide (where no one can taste the spirulina!)<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>For your Pediatrics Program, click here to book a consultation call</a>`;
+        sectionText.innerHTML = `This program is catered to the kiddos! Parents, we understand that your child deserves the best and we’re here to support you. Complete with lab tests, therapies and personalized recommendations for your growing child, our support system is designed to help your child thrive. We’ve even got a candy milkshake smoothie guide (where no one can taste the spirulina!)<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>Learn More</a>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         blurb.appendChild(subSection);
@@ -1071,7 +1071,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Prenatal & Pregnancy";
-        sectionText.innerHTML = `This program is for anyone looking for care during their pregnancy or the journey to get there. Our team structures the pregnancy portion of this program to best support each individual during their journey, even trimester by trimester. Whether you’re struggling with conception or pregnancy care, we’re here to help.<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>For your Prenatal & Pregnancy Program, click here to book a consultation call</a>`;
+        sectionText.innerHTML = `This program is for anyone looking for care during their pregnancy or the journey to get there. Our team structures the pregnancy portion of this program to best support each individual during their journey, even trimester by trimester. Whether you’re struggling with conception or pregnancy care, we’re here to help.<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>Learn More</a>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         blurb.appendChild(subSection);
@@ -1089,7 +1089,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Integrative Intensive";
-        sectionText.innerHTML = `Our intensive program is perfect for someone who has been on the merry-go-round of NO answers and NO solutions to their symptoms. The advanced testing used in this program allows your doctors to target the root cause of your issues and create a personalized healing approach that allows you to get your life back. This program has helped people with autoimmune conditions, hormonal issues, mystery illness, Lyme disease, toxicity, thyroid issues, migraines, neurological issues, concussions, mental health issues, and so much more!<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>For your Integrative Intensive Program, click here to book a consultation call</a>`;
+        sectionText.innerHTML = `Our intensive program is perfect for someone who has been on the merry-go-round of NO answers and NO solutions to their symptoms. The advanced testing used in this program allows your doctors to target the root cause of your issues and create a personalized healing approach that allows you to get your life back. This program has helped people with autoimmune conditions, hormonal issues, mystery illness, Lyme disease, toxicity, thyroid issues, migraines, neurological issues, concussions, mental health issues, and so much more!<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>Learn More</a>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         blurb.appendChild(subSection);
@@ -1102,7 +1102,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Functional Medicine";
-        sectionText.innerHTML = `This program is perfect for those looking to personalize & solidify their path to wellness with an Integrative Medicine evaluation, complete with essential lab tests and recommendations for your diet and lifestyle. Our functional medicine practitioners meet with every patient to create a custom plan that meets their INDIVIDUAL needs and preferences.⁠<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>For your Prenatal & Pregnancy Program, click here to book a consultation call</a>`;
+        sectionText.innerHTML = `This program is perfect for those looking to personalize & solidify their path to wellness with an Integrative Medicine evaluation, complete with essential lab tests and recommendations for your diet and lifestyle. Our functional medicine practitioners meet with every patient to create a custom plan that meets their INDIVIDUAL needs and preferences.⁠<a href="https://integrativewellnessgroup.com/start-your-journey/" target='_blank'>Learn More</a>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         blurb.appendChild(subSection);
@@ -1117,28 +1117,16 @@ function startQuiz() {
     headerImage.src = "/quizAssets/resultsHead.png";
     let resultHeader = document.createElement("h1");
     resultHeader.innerHTML = `${profile.name}'s Healing Journey`;
-    resultsBlock.appendChild(resultHeader);
 
     let resultInfo = document.createElement("div");
     resultInfo.id = "resultInfo";
 
-    //intro
-    // let intro = document.createElement("div");
-    // let introHead = document.createElement("h2");
-    // intro.classList.add("infoBlocks");
-    // intro.classList.add("intro");
-    // introHead.innerHTML = "IWG: <span>We don’t guess, we test.</span>";
-    // intro.appendChild(introHead);
-    // let introText = document.createElement("p");
-    // introText.innerHTML = `At Integrative Wellness Group, you, the patient, come first. Our therapies, testing, and treatment are customized to assess and heal your body. Our practitioners spend time getting to know you and your wellness journey so we can empower you to take back control of your health.`;
-    // intro.appendChild(introText);
-    // resultInfo.appendChild(intro);
-
     resultsBlock.appendChild(headerImage);
+    resultsBlock.appendChild(resultHeader);
 
     let programHeader = document.createElement("h1");
     programHeader.id = "programHeader";
-    programHeader.innerHTML = "Program";
+    programHeader.innerHTML = "Program:";
     resultsBlock.appendChild(programHeader);
 
     resultInfo.appendChild(distanceBlurb());
@@ -1151,14 +1139,19 @@ function startQuiz() {
     }
     resultInfo.appendChild(programOptions());
 
+    let CTA = document.createElement("span");
+    CTA.innerHTML =
+      "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches.";
+    CTA.id = "CTA";
+
     let finalBtn = document.createElement("a");
     finalBtn.href = "https://integrativewellnessgroup.com/start-your-journey/";
     finalBtn.target = "_blank";
     finalBtn.id = "finalBtn";
-    finalBtn.innerHTML =
-      "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches.";
+    finalBtn.innerHTML = "Book Now >";
     //pump it out
     resultsBlock.appendChild(resultInfo);
+    resultsBlock.appendChild(CTA);
     resultsBlock.appendChild(finalBtn);
     setTimeout(() => {
       quizElement.innerHTML = null;
