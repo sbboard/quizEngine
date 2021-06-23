@@ -366,6 +366,10 @@ function startQuiz() {
       "./quizAssets/resultsImgs/pediatric.jpg",
       "./quizAssets/resultsImgs/spa.jpg",
       "./quizAssets/resultsImgs/thermo.jpg",
+      "./quizAssets/resultsImgs/detox.jpg",
+      "./quizAssets/resultsImgs/distance.jpg",
+      "./quizAssets/resultsImgs/hyperbaric.jpg",
+      "./quizAssets/resultsImgs/inperson.jpg",
     ];
     resultsImgs.forEach((v) => {
       let headerImg = new Image();
@@ -928,19 +932,24 @@ function startQuiz() {
       let blurb = document.createElement("div");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
-
+      let sectionImage = document.createElement("img");
       blurb.classList.add("infoBlocks");
       if (profile.nearBelmar === "true") {
         sectionHead.innerHTML = "In-Person Care";
         sectionText.innerHTML =
           "Located in Belmar, New Jersey, Integrative Wellness Group has a beautiful state of the art facility equipped with technology, chiropractic treatment, a full detoxification spa (infrared sauna, ionic foot bath, yoni steam, cupping), and more. The feelings of tranquility are enhanced by the panoramic view of Belmar waterfront. If you’re local to the area, we would love to welcome you into our office to experience hands-on care & healing treatments on your journey.";
+        sectionImage.alt = "In-Person Care";
+        sectionImage.src = "./quizAssets/resultsImgs/inperson.jpg";
       } else {
         sectionHead.innerHTML = "Long Distance Care";
         sectionText.innerHTML =
           "We treat patients near and far. While telehealth is technically the term, we elevate the experience with personal touchpoints, virtual appointments, optional technology & treatment delivery, and much more.<a href='https://integrativewellnessgroup.dream.press/long-distance-patient/' target='_blank'>Learn More</a>";
+        sectionImage.alt = "Long Distance Care";
+        sectionImage.src = "./quizAssets/resultsImgs/distance.jpg";
       }
       blurb.appendChild(sectionHead);
       blurb.appendChild(sectionText);
+      blurb.appendChild(sectionImage);
       return blurb;
     }
     function detoxBlurb() {
@@ -948,6 +957,7 @@ function startQuiz() {
       blurb.classList.add("infoBlocks");
       let sectionHead = document.createElement("h2");
       let sectionText = document.createElement("p");
+      let sectionImage = document.createElement("img");
       sectionHead.innerHTML = "Detoxification";
 
       if (profile.sweat === "false") {
@@ -956,8 +966,11 @@ function startQuiz() {
       } else {
         sectionText.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href="https://shop.integrativewellnessgroup.com/collections/spa-services" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
       }
+      sectionImage.alt = "Detoxification";
+      sectionImage.src = "./quizAssets/resultsImgs/detox.jpg";
       blurb.appendChild(sectionHead);
       blurb.appendChild(sectionText);
+      blurb.appendChild(sectionImage);
       return blurb;
     }
     function supplementBlurb() {
@@ -1010,10 +1023,14 @@ function startQuiz() {
         subSection.classList.add("infoBlocks");
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
+        let sectionImage = document.createElement("img");
+        sectionImage.alt = "Hyperbaric Chamber";
+        sectionImage.src = "./quizAssets/resultsImgs/hyperbaric.jpg";
         sectionHead.innerHTML = "Hyperbaric Chamber";
         sectionText.innerHTML = `The hyperbaric chamber is an enclosed pressurized pod where atmospheric pressure is raised 2-3 times regular air pressure. This therapy is recommended for those who would benefit from increased oxygen in blood which improves recovery time, speeds up wound healing, and decreases swelling.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
+        subSection.appendChild(sectionImage);
         blurb.appendChild(subSection);
       }
       //Chiropractic Care
