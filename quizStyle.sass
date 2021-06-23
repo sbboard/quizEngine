@@ -320,7 +320,7 @@ html
                 margin-top: 2em
                 display: block
             h1
-                margin: 0 auto 1em auto
+                margin: 0 auto 0 auto
                 text-align: center
                 font-weight: 600
                 &#programHeader
@@ -330,14 +330,14 @@ html
                 margin-bottom: 0
                 max-width: calc(65% - 1em)
                 margin-right: 1em
-                display: inline-block
+                justify-content: space-evenly
+                flex-direction: column
                 @include mini
                     max-width: 100%
                     margin-right: 0
                 a
                     max-width: 100%
-                    margin-left: auto
-                    background-color: $thatYellow
+                    background-color: $thatWhite
                     color: $thatBlack
                     display: block
                     font-size: .85em
@@ -366,10 +366,18 @@ html
             .infoBlocks
                 margin-top: 2em
                 width: 100%
+                background-color: $thatYellow
                 text-align: left
-                padding: 0 1.5em 1em 1.5em
+                border-radius: 1em
+                display: flex
+                flex-wrap: wrap
+                padding: 1em 1.5em 1em 1.5em
+                box-shadow: 0px 1px 12px 0px rgb(0 0 0 / 50%)
+                h2
+                    width: 100%
                 img
                     max-width: 35%
+                    height: 100%
                     vertical-align: top
                     @include mini
                         max-width: 100%
