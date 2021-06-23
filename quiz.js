@@ -871,20 +871,20 @@ function startQuiz() {
     });
     goalBlock.appendChild(tableWrap);
 
-    //backbtn
+    //THE CODE
     let newBackBtn = document.createElement("button");
     newBackBtn.id = "backBtn";
     newBackBtn.innerHTML = "back";
     newBackBtn.onclick = () => {
       setTimeout(() => {
         quizElement.innerHTML = null;
-        // document.getElementById("quizParent").classList.remove("startUp");
         quizElement.appendChild(qHead);
         quizElement.appendChild(subQ);
         quizElement.appendChild(quizBlock);
         quizElement.appendChild(btnWrap);
       }, 300);
-      backQ;
+      currentQ = currentQ + 1;
+      backQ();
     };
 
     //create finisj button
