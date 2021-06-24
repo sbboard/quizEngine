@@ -1230,10 +1230,21 @@ function startQuiz() {
     resultsBlock.appendChild(resultInfo);
     resultsBlock.appendChild(CTA);
     resultsBlock.appendChild(finalBtn);
+    sendEmail(resultsBlock);
     setTimeout(() => {
       quizElement.innerHTML = null;
       quizElement.appendChild(resultsBlock);
     }, 300);
+  }
+
+  function sendEmail(html) {
+    let wrap = document.createElement("div");
+    wrap.appendChild(html);
+    //pass wrap.innerHTML to php page
+  }
+
+  function getCalendar() {
+    return "calendar"
   }
 
   function slideElement() {
