@@ -1245,7 +1245,7 @@ function startQuiz() {
   function sendEmail(html) {
     let wrap = document.createElement("div");
     wrap.appendChild(html);
-    //pass wrap.innerHTML to php page
+    //pass wrap.innerHTML and profile.email to php page
   }
 
   function slideElement() {
