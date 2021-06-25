@@ -1221,15 +1221,20 @@ function startQuiz() {
       "To learn more about IWG or any of the information above, please book a complimentary consultation with one of our health coaches.";
     CTA.id = "CTA";
 
-    let finalBtn = document.createElement("a");
-    finalBtn.href = "https://integrativewellnessgroup.com/start-your-journey/";
-    finalBtn.target = "_blank";
-    finalBtn.id = "finalBtn";
-    finalBtn.innerHTML = "Book Now >";
+    // let finalBtn = document.createElement("a");
+    // finalBtn.href = "https://integrativewellnessgroup.com/start-your-journey/";
+    // finalBtn.target = "_blank";
+    // finalBtn.id = "finalBtn";
+    // finalBtn.innerHTML = "Book Now >";
     //pump it out
+    let calendar = document.getElementById("hubspot-cal");
+    var clone = calendar.cloneNode(true);
+    clone.style = "display: initial";
+    clone.id = "quiz-cal";
     resultsBlock.appendChild(resultInfo);
     resultsBlock.appendChild(CTA);
-    resultsBlock.appendChild(finalBtn);
+    resultsBlock.appendChild(clone);
+    // resultsBlock.appendChild(finalBtn);
     sendEmail(resultsBlock);
     setTimeout(() => {
       quizElement.innerHTML = null;
@@ -1241,10 +1246,6 @@ function startQuiz() {
     let wrap = document.createElement("div");
     wrap.appendChild(html);
     //pass wrap.innerHTML to php page
-  }
-
-  function getCalendar() {
-    return "calendar"
   }
 
   function slideElement() {

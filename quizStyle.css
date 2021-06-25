@@ -335,6 +335,10 @@ html body {
   width: 1000px;
   max-width: 100%;
 }
+#quizParent #quiz #resultsBlock #quiz-cal iframe {
+  margin-top: 1em;
+  min-height: 680px !important;
+}
 #quizParent #quiz #resultsBlock #resultsHeaderImg {
   mix-blend-mode: darken;
   max-width: 100%;
