@@ -1,5 +1,5 @@
 const folderName = "/quizAssets/";
-const rootURL = "http://localhost/quizDemo";
+const rootURL = "http://localhost:3000/";
 
 const fileDirectory = `.${folderName}`;
 const absoluteDirectory = `${rootURL}${folderName}`;
