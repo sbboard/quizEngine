@@ -1249,13 +1249,10 @@ function startQuiz() {
   }
 
   function sendEmail(html) {
-    console.log("send email trig");
     let wrap = document.createElement("div");
     wrap.appendChild(html);
-    //pass wrap.innerHTML and profile.email to php page
-
     var hr = new XMLHttpRequest();
-    var url = `${fileDirectory}/sendEmail.php`;
+    var url = `${fileDirectory}sendEmail.php`;
     var vars =
       "email=" +
       encodeURIComponent(profile.email) +
