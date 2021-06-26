@@ -1,5 +1,5 @@
 const folderName = "/quizAssets/";
-const rootURL = "https://sbboard.github.io/quizEngine/";
+const rootURL = "https://www.colinbuffum.com/quizDemo";
 
 const fileDirectory = `.${folderName}`;
 const absoluteDirectory = `${rootURL}${folderName}`;
