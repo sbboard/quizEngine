@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "lite-server",
-    "sass": "sass --watch quizStyle.sass:quizStyle.css",
-    "minify": "uglifyjs -c -m --keep-fnames -o quiz.min.js -- quiz.js",
-    "postcss": "postcss quizStyle.css --use autoprefixer -r"
+    "sass": "sass --watch quizAssets/quizStyle.sass:quizAssets/quizStyle.css",
+    "minify": "uglifyjs -c -m --keep-fnames -o quizAssets/quiz.min.js -- quizAssets/quiz.js",
+    "postcss": "postcss quizAssets/quizStyle.css --use autoprefixer -r"
   },
   "author": "",
   "license": "ISC",

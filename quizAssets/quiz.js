@@ -1,3 +1,9 @@
+const folderName = "/quizAssets/";
+const rootURL = "http://localhost/quizDemo";
+
+const fileDirectory = `.${folderName}`;
+const absoluteDirectory = `${rootURL}${folderName}`;
+
 const yesNo = [true, false];
 
 let profile = {
@@ -52,7 +58,7 @@ const questions = [
   },
   {
     question: "TIP",
-    img: "age.jpg",
+    img: "tipImgs/age.jpg",
     relyOnThisBeingTrue: null,
     tip: `Most people blame aging & genetics on their poor health but oftentimes there’s more to it.`,
   },
@@ -103,7 +109,7 @@ const questions = [
       "Prenatal (currently pregnant)",
       "Postpartum",
     ],
-    img: "preg.jpg",
+    img: "tipImgs/preg.jpg",
     tip: `Exposure to flavors in the womb can affect a baby’s food preference later in life.`,
   },
   {
@@ -159,7 +165,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "functional.jpg",
+    img: "tipImgs/functional.jpg",
     tip: `At IWG we use a hair sample to understand your body’s genetic makeup.`,
   },
   {
@@ -190,7 +196,7 @@ const questions = [
     answer: "nearBelmar",
     multipleAnsAllow: false,
     otherOption: false,
-    img: "map-2.jpg",
+    img: "miscImgs/map-2.jpg",
     options: yesNo,
     relyOnThisBeingTrue: "inUS",
     relyAnswer: null,
@@ -216,7 +222,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "diet.jpg",
+    img: "tipImgs/diet.jpg",
     tip: `Vitamin C enhances the absorption of iron. Pro tip: enjoy dark chocolate (iron) oranges (vitamin C) for dessert!`,
   },
   {
@@ -239,7 +245,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "incorp.jpg",
+    img: "tipImgs/incorp.jpg",
     tip: `As little as one exercise session can improve your mood, memory and focus.`,
   },
   {
@@ -259,7 +265,7 @@ const questions = [
   },
   {
     question: "TIP",
-    img: "level.jpg",
+    img: "tipImgs/level.jpg",
     relyOnThisBeingTrue: null,
     tip: `Hyperbaric oxygen therapy increases the amount of oxygen your blood can carry which can increase recovery time.`,
   },
@@ -289,7 +295,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "sweat.jpg",
+    img: "tipImgs/sweat.jpg",
     tip: `Sweating is great for your body, if you are only glistening, your detox pathways might be clogged.`,
   },
   {
@@ -310,7 +316,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: "age",
-    img: "drink.jpg",
+    img: "tipImgs/drink.jpg",
     relyAnswer: ["20-29", "30-39", "40-49", "50-59", "60+"],
     tip: `Your liver is your body’s filtration system… but just like the filter on your vacuum, your body’s filter needs to be cleaned so it can continue to perform its job and remove toxins over your lifetime.`,
   },
@@ -328,7 +334,7 @@ const questions = [
   {
     question: "TIP",
     relyOnThisBeingTrue: null,
-    img: "supp.jpg",
+    img: "tipImgs/supp.jpg",
     tip: `Turmeric is an herb that is known for its anti-inflammatory properties; it’s main component, curcumin, is “activated” by black pepper, so be sure to sprinkle some atop your golden latte! P.S. Inflammation is a double-edged sword…it helps fights infections but over the long term inflammation leads to damage of the arteries, organs, and joints and is linked to chronic disease.`,
   },
 ];
@@ -354,22 +360,22 @@ function startQuiz() {
     });
     imagesToLoad.forEach((v, i) => {
       preloadedImages[i] = new Image();
-      preloadedImages[i].src = `./quizAssets/${v.img}`;
+      preloadedImages[i].src = `${fileDirectory}${v.img}`;
     });
     //results stuff
     let resultsImgs = [
-      "./quizAssets/resultsHead.png",
-      "./quizAssets/resultsImgs/chiropractic.jpg",
-      "./quizAssets/resultsImgs/demartini.jpg",
-      "./quizAssets/resultsImgs/functional.jpg",
-      "./quizAssets/resultsImgs/intensive.jpg",
-      "./quizAssets/resultsImgs/pediatric.jpg",
-      "./quizAssets/resultsImgs/spa.jpg",
-      "./quizAssets/resultsImgs/thermo.jpg",
-      "./quizAssets/resultsImgs/detox.jpg",
-      "./quizAssets/resultsImgs/distance.jpg",
-      "./quizAssets/resultsImgs/hyperbaric.jpg",
-      "./quizAssets/resultsImgs/inperson.jpg",
+      `${absoluteDirectory}resultsImgs/resultsHead.png`,
+      `${absoluteDirectory}resultsImgs/chiropractic.jpg`,
+      `${absoluteDirectory}resultsImgs/demartini.jpg`,
+      `${absoluteDirectory}resultsImgs/functional.jpg`,
+      `${absoluteDirectory}resultsImgs/intensive.jpg`,
+      `${absoluteDirectory}resultsImgs/pediatric.jpg`,
+      `${absoluteDirectory}resultsImgs/spa.jpg`,
+      `${absoluteDirectory}resultsImgs/thermo.jpg`,
+      `${absoluteDirectory}resultsImgs/detox.jpg`,
+      `${absoluteDirectory}resultsImgs/distance.jpg`,
+      `${absoluteDirectory}resultsImgs/hyperbaric.jpg`,
+      `${absoluteDirectory}resultsImgs/inperson.jpg`,
     ];
     resultsImgs.forEach((v) => {
       let headerImg = new Image();
@@ -595,7 +601,7 @@ function startQuiz() {
           //post map of belmar
           if (currentIndex.img != null) {
             let mapImage = document.createElement("img");
-            mapImage.src = `./quizAssets/${currentIndex.img}`;
+            mapImage.src = `${fileDirectory}${currentIndex.img}`;
             mapImage.id = "map";
             quizBlock.appendChild(mapImage);
           }
@@ -675,7 +681,7 @@ function startQuiz() {
           subQ.innerHTML = null;
           if (currentIndex.img != null) {
             let mapImage = document.createElement("img");
-            mapImage.src = `./quizAssets/${currentIndex.img}`;
+            mapImage.src = `${fileDirectory}${currentIndex.img}`;
             mapImage.id = "map";
             quizBlock.appendChild(mapImage);
           }
@@ -939,13 +945,13 @@ function startQuiz() {
         sectionText.innerHTML =
           "Located in Belmar, New Jersey, Integrative Wellness Group has a beautiful state of the art facility equipped with technology, chiropractic treatment, a full detoxification spa (infrared sauna, ionic foot bath, yoni steam, cupping), and more. The feelings of tranquility are enhanced by the panoramic view of Belmar waterfront. If you’re local to the area, we would love to welcome you into our office to experience hands-on care & healing treatments on your journey.";
         sectionImage.alt = "In-Person Care";
-        sectionImage.src = "./quizAssets/resultsImgs/inperson.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/inperson.jpg`;
       } else {
         sectionHead.innerHTML = "Long Distance Care";
         sectionText.innerHTML =
           "We treat patients near and far. While telehealth is technically the term, we elevate the experience with personal touchpoints, virtual appointments, optional technology & treatment delivery, and much more.<a href='https://integrativewellnessgroup.dream.press/long-distance-patient/' target='_blank'>Learn More</a>";
         sectionImage.alt = "Long Distance Care";
-        sectionImage.src = "./quizAssets/resultsImgs/distance.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/distance.jpg`;
       }
       blurb.appendChild(sectionHead);
       blurb.appendChild(sectionText);
@@ -967,7 +973,7 @@ function startQuiz() {
         sectionText.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href="https://shop.integrativewellnessgroup.com/collections/spa-services" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
       }
       sectionImage.alt = "Detoxification";
-      sectionImage.src = "./quizAssets/resultsImgs/detox.jpg";
+      sectionImage.src = `${absoluteDirectory}resultsImgs/detox.jpg`;
       blurb.appendChild(sectionHead);
       blurb.appendChild(sectionText);
       blurb.appendChild(sectionImage);
@@ -984,7 +990,7 @@ function startQuiz() {
       blurb.appendChild(sectionHead);
       let sectionImage = document.createElement("img");
       sectionImage.alt = "Integrative Response Testing";
-      sectionImage.src = "./quizAssets/resultsImgs/response.jpg";
+      sectionImage.src = `${absoluteDirectory}resultsImgs/response.jpg`;
       blurb.appendChild(sectionText);
       blurb.appendChild(sectionImage);
       return blurb;
@@ -1006,7 +1012,7 @@ function startQuiz() {
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Thermography";
-        sectionImage.src = "./quizAssets/resultsImgs/thermo.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/thermo.jpg`;
 
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
@@ -1025,7 +1031,7 @@ function startQuiz() {
         let sectionText = document.createElement("p");
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Hyperbaric Chamber";
-        sectionImage.src = "./quizAssets/resultsImgs/hyperbaric.jpg";
+        sectionImage.src = `${fileDirectory}/resultsImgs/hyperbaric.jpg`;
         sectionHead.innerHTML = "Hyperbaric Chamber";
         sectionText.innerHTML = `The hyperbaric chamber is an enclosed pressurized pod where atmospheric pressure is raised 2-3 times regular air pressure. This therapy is recommended for those who would benefit from increased oxygen in blood which improves recovery time, speeds up wound healing, and decreases swelling.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
         subSection.appendChild(sectionHead);
@@ -1054,7 +1060,7 @@ function startQuiz() {
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Chiropractic Care";
-        sectionImage.src = "./quizAssets/resultsImgs/chiropractic.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/chiropractic.jpg`;
 
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
@@ -1080,7 +1086,7 @@ function startQuiz() {
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "The Demartini Method";
-        sectionImage.src = "./quizAssets/resultsImgs/demartini.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/demartini.jpg`;
 
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
@@ -1108,7 +1114,7 @@ function startQuiz() {
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Pediatrics";
-        sectionImage.src = "./quizAssets/resultsImgs/pediatric.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/pediatric.jpg`;
 
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
@@ -1134,7 +1140,7 @@ function startQuiz() {
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Prenatal & Pregnancy";
-        sectionImage.src = "./quizAssets/resultsImgs/pregnant.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/pregnant.jpg`;
 
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
@@ -1158,7 +1164,7 @@ function startQuiz() {
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Integrative Intensive";
-        sectionImage.src = "./quizAssets/resultsImgs/intensive.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/intensive.jpg`;
 
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
@@ -1177,7 +1183,7 @@ function startQuiz() {
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Functional Medicine";
-        sectionImage.src = "./quizAssets/resultsImgs/functional.jpg";
+        sectionImage.src = `${absoluteDirectory}resultsImgs/functional.jpg`;
 
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
@@ -1191,7 +1197,7 @@ function startQuiz() {
     resultsBlock.id = "resultsBlock";
     let headerImage = document.createElement("img");
     headerImage.id = "resultsHeaderImg";
-    headerImage.src = "/quizAssets/resultsHead.png";
+    headerImage.src = `${absoluteDirectory}resultsImgs/resultsHead.png`;
     let resultHeader = document.createElement("h1");
     resultHeader.innerHTML = `${profile.name}'s Healing Journey`;
 
@@ -1243,9 +1249,27 @@ function startQuiz() {
   }
 
   function sendEmail(html) {
+    console.log("send email trig");
     let wrap = document.createElement("div");
     wrap.appendChild(html);
     //pass wrap.innerHTML and profile.email to php page
+
+    var hr = new XMLHttpRequest();
+    var url = `${fileDirectory}/sendEmail.php`;
+    var vars =
+      "email=" +
+      encodeURIComponent(profile.email) +
+      "&code=" +
+      encodeURIComponent(wrap.innerHTML);
+    hr.open("POST", url, true);
+    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    hr.onreadystatechange = function () {
+      if (hr.readyState == 4 && hr.status == 200) {
+        var return_data = hr.responseText;
+        console.log(return_data);
+      }
+    };
+    hr.send(vars);
   }
 
   function slideElement() {

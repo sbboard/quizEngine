@@ -1,6 +1,8 @@
 <?php
-$to = "somebody@example.com";
 $subject = "IWG Quiz Results";
+
+$email = $_POST['email'];
+$code = $_POST['code'];
 
 $message = "
 <html>
@@ -29,4 +31,7 @@ $headers .= 'From: <info@integrativewellnessgroup.com>' . "\r\n";
 $headers .= 'Reply-To: info@integrativewellnessgroup.com' . "\r\n";
 $headers .= 'X-Mailer: PHP/' . phpversion();
 
-mail($to, $subject, $message, $headers);
+// mail($email, $subject, $message, $headers);
+
+echo $email;
+echo $code;
