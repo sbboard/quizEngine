@@ -968,9 +968,9 @@ function startQuiz() {
 
       if (profile.sweat === "false") {
         sectionText.innerHTML =
-          "To maintain your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href='https://shop.integrativewellnessgroup.com/collections/spa-services' target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>";
+          "To maintain your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href='https://shop.integrativewellnessgroup.com/collections/spa-services' target='_blank'>Learn More</a><i style='display:block'>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>";
       } else {
-        sectionText.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href="https://shop.integrativewellnessgroup.com/collections/spa-services" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+        sectionText.innerHTML = `If you’re looking to maintain and/or enhance your body’s detoxification pathways, you need to engage in active sweating! Our favorite method is the infrared sauna where you can sweat out your toxins.<a href="https://shop.integrativewellnessgroup.com/collections/spa-services" target='_blank'>Learn More</a><i style='display:block'>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
       }
       sectionImage.alt = "Detoxification";
       sectionImage.src = `${absoluteDirectory}resultsImgs/detox.jpg`;
@@ -1008,7 +1008,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Thermography";
-        sectionText.innerHTML = `The Alfathermo thermographic imaging machine is used to evaluate breast health, lymphatic health, neoplastic changes, musculoskeletal issues, vascular disease, dental issues, thyroid conditions, and extracranial cerebral and facial vascular disease. Thermography testing is recommended for everyone, although we place special emphasis on those with breast or lymphatic irregularities.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a>.<i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+        sectionText.innerHTML = `The Alfathermo thermographic imaging machine is used to evaluate breast health, lymphatic health, neoplastic changes, musculoskeletal issues, vascular disease, dental issues, thyroid conditions, and extracranial cerebral and facial vascular disease. Thermography testing is recommended for everyone, although we place special emphasis on those with breast or lymphatic irregularities.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a>.<i style='display:block'>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Thermography";
@@ -1033,7 +1033,7 @@ function startQuiz() {
         sectionImage.alt = "Hyperbaric Chamber";
         sectionImage.src = `${fileDirectory}/resultsImgs/hyperbaric.jpg`;
         sectionHead.innerHTML = "Hyperbaric Chamber";
-        sectionText.innerHTML = `The hyperbaric chamber is an enclosed pressurized pod where atmospheric pressure is raised 2-3 times regular air pressure. This therapy is recommended for those who would benefit from increased oxygen in blood which improves recovery time, speeds up wound healing, and decreases swelling.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+        sectionText.innerHTML = `The hyperbaric chamber is an enclosed pressurized pod where atmospheric pressure is raised 2-3 times regular air pressure. This therapy is recommended for those who would benefit from increased oxygen in blood which improves recovery time, speeds up wound healing, and decreases swelling.<a href="https://shop.integrativewellnessgroup.com/products/hyperbaric-chamber" target='_blank'>Learn More</a><i style='display:block'>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
         subSection.appendChild(sectionHead);
         subSection.appendChild(sectionText);
         subSection.appendChild(sectionImage);
@@ -1056,7 +1056,7 @@ function startQuiz() {
         subSection.classList.add("infoBlocks");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "Chiropractic Care";
-        sectionText.innerHTML = `Chiropractic care with IWG is a full-body approach to decreasing pain and increasing function by realigning the joints of the spine and extremities (knees, shoulders, feet). Our chiropractors also eliminate tension with muscle release therapy and work to restore proper function with rehabilitation and cold laser therapy. We recommend this therapy for anyone looking to improve their overall wellness as well as those experiencing chronic or prolonged pain.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/chiropractic-exam-for-new-patients" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
+        sectionText.innerHTML = `Chiropractic care with IWG is a full-body approach to decreasing pain and increasing function by realigning the joints of the spine and extremities (knees, shoulders, feet). Our chiropractors also eliminate tension with muscle release therapy and work to restore proper function with rehabilitation and cold laser therapy. We recommend this therapy for anyone looking to improve their overall wellness as well as those experiencing chronic or prolonged pain.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/chiropractic-exam-for-new-patients" target='_blank'>Learn More</a><i style='display:block'>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>`;
 
         let sectionImage = document.createElement("img");
         sectionImage.alt = "Chiropractic Care";
@@ -1081,7 +1081,7 @@ function startQuiz() {
         let sectionHead = document.createElement("h2");
         let sectionText = document.createElement("p");
         sectionHead.innerHTML = "The Demartini Method®";
-        sectionText.innerHTML = `The DeMartini Method® is a breakthrough discovery and cutting edge personal transformation methodology that results in a new perspective and paradigm in thinking and feeling. Developed by Dr. John DeMartini, it is the culmination of more than 44 years of research and studies in numerous disciplines including physics, philosophy, theology, metaphysics, psychology, astronomy, mathematics, neurology and physiology. The DeMartini Method is the most powerful, effective and efficient methodology in personal transformation providing lifelong results that can shift your mindset.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/the-demartini-method-group" target='_blank'>Learn More</a><i>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>
+        sectionText.innerHTML = `The DeMartini Method® is a breakthrough discovery and cutting edge personal transformation methodology that results in a new perspective and paradigm in thinking and feeling. Developed by Dr. John DeMartini, it is the culmination of more than 44 years of research and studies in numerous disciplines including physics, philosophy, theology, metaphysics, psychology, astronomy, mathematics, neurology and physiology. The DeMartini Method is the most powerful, effective and efficient methodology in personal transformation providing lifelong results that can shift your mindset.<a href="https://shop.integrativewellnessgroup.com/collections/iwg-signature-programs/products/the-demartini-method-group" target='_blank'>Learn More</a><i style='display:block'>There is no consultation call required for this therapy. Once purchased, our team will reach out to schedule.</i>
       `;
 
         let sectionImage = document.createElement("img");
@@ -1197,9 +1197,11 @@ function startQuiz() {
     resultsBlock.id = "resultsBlock";
     let headerImage = document.createElement("img");
     headerImage.id = "resultsHeaderImg";
+    headerImage.style = "max-width: 100%;"
     headerImage.src = `${absoluteDirectory}resultsImgs/resultsHead.png`;
     let resultHeader = document.createElement("h1");
     resultHeader.innerHTML = `${profile.name}'s Healing Journey`;
+    resultHeader.style="text-transform: capitalize;text-align: center;"
 
     let resultInfo = document.createElement("div");
     resultInfo.id = "resultInfo";
@@ -1253,6 +1255,7 @@ function startQuiz() {
     wrap.appendChild(html);
     var hr = new XMLHttpRequest();
     var url = `${fileDirectory}sendEmail.php`;
+    console.log(wrap.innerHTML);
     var vars =
       "email=" +
       encodeURIComponent(profile.email) +
