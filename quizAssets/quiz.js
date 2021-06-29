@@ -1,7 +1,7 @@
 const folderName = "/quizAssets/";
 const rootURL = "https://www.colinbuffum.com/quizDemo";
 
-const fileDirectory = `${folderName}`;
+const fileDirectory = `.${folderName}`;
 const absoluteDirectory = `${rootURL}${folderName}`;
 
 const yesNo = [true, false];
