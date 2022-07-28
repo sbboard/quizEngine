@@ -21,7 +21,6 @@ html body {
   background-image: url("./miscImgs/bg3.jpg");
   background-size: cover;
   background-position: center;
-  padding-top: 4em;
 }
 #quizParent.startUp #quiz {
   opacity: 1;
